@@ -1,0 +1,26 @@
+import { useState } from 'react';
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
+
+export default function BasicModal(props: any) {
+  const { styleButton, styleModal, Form, buttonText, Icon } = props;
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  return (
+    <div>
+      <button onClick={handleOpen} className={styleButton}>
+        {Icon && <Icon />}
+        {buttonText}
+      </button>
+      <Modal open={open} onClose={handleClose}>
+        <Box
+          className={`absolute top-[50%] left-[50%] bg-white rounded-2xl transform -translate-x-[50%] -translate-y-[50%] ${styleModal}`}
+        >
+          <Form />
+        </Box>
+      </Modal>
+    </div>
+  );
+}

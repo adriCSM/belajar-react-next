@@ -1,0 +1,11 @@
+import Card from './components/card';
+import cardMenu from './cardMenu';
+export default function MenuPage() {
+  return (
+    <div className="justify-between grid grid-cols-5 gap-6 mt-4 mx-4 ">
+      {cardMenu.map((item, i) => (
+        <Card key={i} name={item.name} href={item.href} Icon={item.icon} />
+      ))}
+    </div>
+  );
+}
