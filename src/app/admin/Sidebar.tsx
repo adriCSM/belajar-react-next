@@ -41,7 +41,10 @@ export default function SidebarAdmin() {
     <nav className="h-screen rounded-r-xl bg-lime-300 w-1/5  sticky top-0 divide-y divide-white ">
       <div className="flex w-full items-center m-5 ">
         <img src="../logo/icon-512x512.png" alt="" className="h-[60px]" />
-        <h1 className="text-xl font-bold ps-5 text-wrap">m-LITE Indonesia</h1>
+        <h1 className="text-3xl font-bold ps-5 text-wrap">
+          <span className="text-lime-600">m</span>
+          <span className="text-white">LITE</span>
+        </h1>
       </div>
 
       <ul className="pt-5 ps-5 ">
@@ -50,7 +53,7 @@ export default function SidebarAdmin() {
             <Link
               key={i}
               href={menu.href}
-              className={`flex px-3 py-2 items-center transition duration-150   ${
+              className={`flex px-3 py-2 items-center transition duration-150 transform   ${
                 pathname == menu.href ? 'bg-gray-100' : 'hover:bg-lime-200'
               }  rounded-s-xl`}
             >

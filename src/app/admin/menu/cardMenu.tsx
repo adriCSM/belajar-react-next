@@ -34,7 +34,7 @@ interface Item {
 const cardMenu: Item[] = [
   {
     name: 'Dashboard',
-    href: '/admin/menu/dashboard',
+    href: '/admin',
     icon: FaHome,
   },
   {

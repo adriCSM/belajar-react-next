@@ -4,10 +4,11 @@ import Switch from '@mui/material/Switch';
 import FormRegistrasi from '@/components/Fragments/FormRegistrasi';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormReservasi from '@/components/Fragments/FormReservasi';
+import Card from '@/components/Fragments/CardPasien';
 
 export default function PasienPage() {
   return (
-    <div className="m-5">
+    <div className="p-5 text-gray-500">
       <div className="flex">
         <div className="w-2/3 bg-register h-80 bg-cover bg-center shadow-lg rounded-2xl  ">
           <div className="h-full w-full flex p-5 items-end justify-start">
@@ -31,15 +32,15 @@ export default function PasienPage() {
         </div>
       </div>
 
-      <div className="w-full h-60 bg-white mt-5 rounded-2xl shadow-lg p-5">
-        <h1 className="text-xl font-bold">
+      <div className="w-full h-auto bg-white mt-5 rounded-2xl shadow-lg p-5">
+        <h1 className="text-xl font-bold ">
           Pasien <span className="font-normal text-[16px]">(546 total)</span>
         </h1>
         <div>
           <div>
             <select
               id="view"
-              className=" rounded-md border-0 bg-transparent p-2 pr-7 text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+              className=" rounded-md me-3 border-0 bg-transparent p-2 pr-7 text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
             >
               <option>Grid View</option>
               <option>List View</option>
@@ -50,19 +51,26 @@ export default function PasienPage() {
               className="text-gray-500"
             />
           </div>
-          <div className="flex justify-end -mt-3">
+
+          <div className="flex justify-end -mt-3 me-2">
             <BasicModal
               Form={FormRegistrasi}
-              styleButton="bg-transparent text-blue-500 ring-2 ring-blue-500 rounded-full p-3 me-3"
+              styleButton="bg-transparent text-blue-500  rounded-full p-3 me-3"
               buttonText="Daftar Reservasi"
-              styleModal="w-2/3 h-3/4"
+              styleModal="w-5/6 sm:w-2/3 h-auto p-5 "
             />
             <BasicModal
-              Form={FormReservasi}
-              styleButton="bg-blue-500 rounded-full text-white hover:bg-blue-600 p-3"
+              Form={FormRegistrasi}
+              styleButton="bg-blue-500  text-white hover:bg-blue-600"
               buttonText="Pasien Baru"
+              styleModal="w-4/5 sm:w-2/3 h-auto p-5"
             />
           </div>
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 justify-between rounded-2xl p-5 ring-2 mt-5 mx-2 ring-lime-100">
+          {Array.from({ length: 9 }).map((_, index) => {
+            return <Card key={index} />;
+          })}
         </div>
       </div>
     </div>

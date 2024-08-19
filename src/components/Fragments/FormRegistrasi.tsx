@@ -1,55 +1,87 @@
 import Input from '../Elements/Input';
+import Button from '@/components/Elements/Button';
+import { FaSave } from 'react-icons/fa';
+import Select from '../Elements/Select';
+import TextArea from '../Elements/TextArea';
 export default function FormRegistrasi() {
+  const listGolDarah = ['A', 'B', 'AB', 'O'];
+  const listGender = ['Laki-laki', 'Perempuan'];
+  const listStatus = ['Menikah', 'Belum Menikah', 'Janda', 'Duda'];
+  const listAgama = ['Islam', 'Kristen', 'Katolik', 'Hindu', 'Buddha', 'Konghucu', 'Lainnya'];
+  const listPendidikan = [
+    'TS',
+    'TK',
+    'SD',
+    'SMP',
+    'SMA',
+    'SLTA/SEDERAJAT',
+    'D1',
+    'D2',
+    'D3',
+    'D4',
+    'S1',
+    'S2',
+    'S3',
+  ];
+  const jaminan = ['BPJS Kesehatan', 'Umum'];
+  const keluarga = ['Ayah', 'Ibu', 'Suami', 'Istri', 'Saudara', 'Anak'];
   return (
-    <div className="m-5 ">
-      <h1>Pendaftaran Pasien</h1>
-      <div className="flex">
-        <div className="grid grid-cols-2 gap-4 text-gray-600">
-          <Input id="nomorRM" label="Nomor RM" placeholder="Masukkan Nomor RM" />
-          <Input id="nomorRM" label="Tgl. Daftar" placeholder="Tanggal Daftar" />
+    <div className=" sm:m-5 ">
+      <h1 className="text-2xl font-bold ">Pendaftaran Pasien</h1>
+      <div className="flex flex-col sm:flex-row text-sm w-full justify-between  ">
+        <div className="grid grid-cols-2 gap-x-4 p-5 text-gray-600  max-h-[500px] overflow-auto ">
+          <Input type="text" id="nomorRm" label="Nomor RM" placeholder="Nomor RM" />
+          <Input type="date" id="tglDaftar" label="Tgl. Daftar" />
           <Input
-            id="nomorRM"
+            type="text"
+            id="jenisKelamin"
             label="Nama"
             placeholder="Nama Lengkap"
-            styleParent="col-span-2 flex"
-            className="w-full"
+            styleParent="col-span-2 w-full"
           />
-          <Input id="nomorRM" label="Jenis Kelamin" placeholder="Jenis Kelamin" />
-          <Input id="nomorRM" label="Tgl. Lahir" placeholder="Tanggal Lahir" />
-          <Input id="nomorRM" label="Nama Ibu" placeholder="Nama Ibu" />
-          <Input id="nomorRM" label="Gol. Darah" placeholder="Golong Darah" />
-          <Input id="nomorRM" label="Status Nikah" placeholder="Masukkan Nomor RM" />
-          <Input id="nomorRM" label="Agama" placeholder="Masukkan Nomor RM" />
-          <Input id="nomorRM" label="Nomor RM" placeholder="Masukkan Nomor RM" />
-          <Input id="nomorRM" label="Nomor RM" placeholder="Masukkan Nomor RM" />
-          <Input id="nomorRM" label="Nomor RM" placeholder="Masukkan Nomor RM" />
-          <Input id="nomorRM" label="Nomor RM" placeholder="Masukkan Nomor RM" />
+          <Select label="Jenis Kelamin" id="nama" list={listGender} />
+          <Input type="date" id="tgllahir" label="Tgl. Lahir" />
+          <Input type="text" id="namaIbu" label="Nama Ibu" placeholder="Nama Ibu" />
+          <Select label="Darah" id="darah " list={listGolDarah} />
+          <Select label="Status Nikah" id="status " list={listStatus} />
+          <Select label="Agama" id="agama " list={listAgama} />
+          <Input type="text" id="pekerjaan" label="Pekerjaan" placeholder="Pekerjaan" />
+          <Select label="Pendidikan" id="pendidikan " list={listPendidikan} />
+          <Select label="Penjamin" id="jaminan " list={jaminan} />
+          <Input type="text" id="kartu" label="No. Kartu" placeholder="Nomor Kartu" />
         </div>
-        <div className="grid grid-cols-2 gap-4 text-gray-600">
-          <Input id="nomorRM" label="Nomor RM" placeholder="Masukkan Nomor RM" />
-          <Input id="nomorRM" label="Tgl. Daftar" placeholder="Tanggal Daftar" />
+        <div className="grid grid-cols-2 gap-x-4 p-5 text-gray-600 max-h-[500px] overflow-auto ">
+          <Select label="Keluarga" id="keluarga " list={keluarga} styleParent=" pb-5" />
+          <Input type="text" id="nama" label="Nama" placeholder="Nama Keluarga" />
           <Input
-            id="nomorRM"
-            label="Nama"
-            placeholder="Nama Lengkap"
-            styleParent="col-span-2 flex"
-            className="w-full"
+            type="text"
+            id="ktp"
+            label="No. KTP"
+            placeholder="No. KTP"
+            styleParent="col-span-2 w-full"
+          />
+          <TextArea
+            id="alamat"
+            label="Alamat"
+            placeholder="Alamat Lengkap"
+            styleParent="col-span-2 w-full rows-span-2"
           />
           <Input
-            id="nomorRM"
-            label="Jenis Kelamin"
-            placeholder="Jenis Kelamin"
-            styleParent="col-span-2 row-span-2 h-full"
-            type="textarea"
+            type="text"
+            id="propinsi"
+            label="Provinsi"
+            placeholder="Provinsi"
+            styleParent="row-start-5"
           />
-
-          <Input id="nomorRM" label="Status Nikah" placeholder="Masukkan Nomor RM" />
-          <Input id="nomorRM" label="Agama" placeholder="Masukkan Nomor RM" />
-          <Input id="nomorRM" label="Nomor RM" placeholder="Masukkan Nomor RM" />
-          <Input id="nomorRM" label="Nomor RM" placeholder="Masukkan Nomor RM" />
-          <Input id="nomorRM" label="Nomor RM" placeholder="Masukkan Nomor RM" />
-          <Input id="nomorRM" label="Nomor RM" placeholder="Masukkan Nomor RM" />
+          <Input type="text" id="kota" label="Kabupaten/Kota" placeholder="Kabupaten/Kota" />
+          <Input type="text" id="kecamatan" label="Kecamatan" placeholder="Kecamatan" />
+          <Input type="text" id="desa" label="Desa" placeholder="Desa" />
+          <Input type="text" id="nohp" label="No.Hp" placeholder="No. Handphone" />
+          <Input type="email" id="email" label="Email" placeholder="Email" />
         </div>
+      </div>
+      <div className="flex justify-end py-3">
+        <Button text="Simpan" styleButton="bg-blue-500 text-white " Icon={FaSave} />
       </div>
     </div>
   );

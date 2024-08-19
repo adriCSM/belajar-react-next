@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
-
+import Button from '@/components/Elements/Button';
+import { FaSave } from 'react-icons/fa';
 export default function BasicModal(props: any) {
   const { styleButton, styleModal, Form, buttonText, Icon } = props;
   const [open, setOpen] = useState(false);
@@ -10,13 +11,10 @@ export default function BasicModal(props: any) {
 
   return (
     <div>
-      <button onClick={handleOpen} className={styleButton}>
-        {Icon && <Icon />}
-        {buttonText}
-      </button>
+      <Button handleClick={handleOpen} styleButton={styleButton} text={buttonText} Icon={Icon} />
       <Modal open={open} onClose={handleClose}>
         <Box
-          className={`absolute top-[50%] left-[50%] bg-white rounded-2xl transform -translate-x-[50%] -translate-y-[50%] ${styleModal}`}
+          className={`relative top-[50%]  left-[50%] bg-white rounded-md transform -translate-x-[50%] -translate-y-[50%] ${styleModal}`}
         >
           <Form />
         </Box>
