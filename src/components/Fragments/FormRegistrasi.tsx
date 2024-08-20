@@ -1,7 +1,4 @@
 import Input from '../Elements/Input';
-import Button from '@/components/Elements/Button';
-import { FaSave } from 'react-icons/fa';
-import { FaXmark } from 'react-icons/fa6';
 import Select from '../Elements/Select';
 import TextArea from '../Elements/TextArea';
 export default function FormRegistrasi({ ...props }) {

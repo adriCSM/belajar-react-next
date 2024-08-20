@@ -18,7 +18,7 @@ export default function BasicModal(props: any) {
           className={`relative top-[50%]  left-[50%] bg-white rounded-md transform -translate-x-[50%] -translate-y-[50%] ${styleModal}`}
         >
           <FaXmark
-            className="absolute top-2 right-2 text-red-500 text-xl cursor-pointer rounded-full shadow-lg hover:bg-gray-300"
+            className="absolute top-2 right-2 text-red-500 text-xl cursor-pointer rounded-full shadow-sm hover:bg-gray-300"
             onClick={handleClose}
           />
           <Form title={title} />

@@ -1,26 +1,36 @@
 import Input from '../Elements/Input';
-import Button from '@/components/Elements/Button';
-import { FaSave } from 'react-icons/fa';
 import Select from '../Elements/Select';
-import { FaXmark } from 'react-icons/fa6';
+
 export default function FormRawatInap({ ...props }) {
   const dokters = ['dr. FAUZAN AZHARI MARZUKI, Sp. KK-D002', 'dr. Ataaka Muhammad'];
   const jaminan = ['BPJS Kesehatan', 'Umum'];
-
+  const kamar = ['ANGREK-Ang01', 'ANGREK-Ang02', 'ANGREK-Ang03'];
+  const status = [
+    'Sehat',
+    'Rujuk',
+    'APS',
+    '+',
+    'Meninggal',
+    'Sembuh',
+    'Membaik',
+    'Pulang Paksa',
+    '-',
+    'Pindah Kamar',
+    'Status Belum Lengkap',
+    'Atas Persetujuan Dokter',
+    'Atas Permintaan Sendiri',
+  ];
   return (
     <div className="  sm:m-5 ">
       <h1 className="text-md sm:text-2xl font-bold ">{props.title}</h1>
       <div className="flex flex-col sm:flex-row text-sm w-full justify-between items-start divide-x">
         <div className="grid grid-cols-2 gap-x-4 pb-5 sm:p-5 text-gray-600 sm:w-2/3  sm:max-h-[500px] overflow-auto ">
-          <Input type="date" id="tglDaftar" label="Tgl. Daftar" />
-          <Input type="time" id="jam" label="Jam" />
-          <Input
-            type="text"
-            id="pasien"
-            label="Pasien"
-            placeholder="Cari nama pasien/nomor rekam medik"
-            styleParent="col-span-2 w-full"
-          />
+          <Input type="date" id="tglDaftar" label="Tgl. Masuk" />
+          <Input type="time" id="jammasuk" label="Jam" />
+          <Input type="date" id="tglDaftar" label="Tgl. Keluar" />
+          <Input type="time" id="jamkeluar" label="Jam" />
+          <Select label="Kamar" id="kamar " list={kamar} />
+          <Input type="text" id="lama" label="Lama (Hari)" />
           <Select label="Dokter" id="dokter " list={dokters} styleParent="col-span-2 w-full" />
           <Select label="Penjamin" id="penjamin" list={jaminan} styleParent="col-span-2 w-full" />
         </div>
@@ -48,6 +58,15 @@ export default function FormRawatInap({ ...props }) {
               <td>: -</td>
             </tr>
           </table>
+          <div>
+            <Input type="text" id="lama" label="Diagnosa Keluar" />
+            <Select
+              label="Status Keluar"
+              id="dokter "
+              list={status}
+              styleParent="col-span-2 w-full"
+            />
+          </div>
         </div>
       </div>
     </div>

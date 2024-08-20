@@ -4,11 +4,51 @@ import Switch from '@mui/material/Switch';
 import FormRegistrasi from '@/components/Fragments/FormRegistrasi';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Card from '@/components/Fragments/CardPasien';
-import { FaPlus } from 'react-icons/fa';
-
+import { FaPlus, FaList } from 'react-icons/fa';
+import Table from '@/components/Fragments/Table';
+import { useState } from 'react';
 export default function PasienPage() {
+  const headers = [
+    'No. RM',
+    'Nama Pasien',
+    'Nomor Rawat',
+    'Bangsal/Kamar',
+    'Dokter',
+    'Penjamin',
+    'Nomor Asuransi',
+    'Tanggal Masuk',
+    'Tanggal Keluar',
+    'Status Bayar',
+    'Status',
+  ];
+  const values = [
+    '023293223',
+    'Adri Candra',
+    '2024/02/22/000001',
+    'Anggrek - ANG01',
+    'dr. FAUZAN AZHARI MARZUKI, Sp. KK - D002',
+    'BPJS',
+    '-',
+    '2024-06-03 07:20:30',
+    '0000-00-00 00:00:00',
+    'Belum Bayar',
+    '-',
+  ];
+
+  const [viewGrid, setViewGrid] = useState(true);
+  const [viewTable, setViewTable] = useState(false);
+
+  const ubahView = (e: any) => {
+    if (e.target.value == 'list') {
+      setViewGrid(false);
+      setViewTable(true);
+    } else {
+      setViewGrid(true);
+      setViewTable(false);
+    }
+  };
   return (
-    <div className="p-5 text-gray-500">
+    <div className="p-5">
       <div className="flex">
         <div className="w-2/3 border-4 border-cyan-500  bg-register bg-contain bg-no-repeat bg-[#66cdcc]  h-80  shadow-lg rounded-2xl me-5  ">
           <div className="h-full  w-full flex items-center justify-center ">
@@ -22,6 +62,7 @@ export default function PasienPage() {
         <div className="grid grid-cols-2 gap-4 w-1/3 ">
           {Array.from({ length: 4 }).map((_, index) => (
             <div
+              key={index}
               className={`ring-2  text-center rounded-lg p-2 flex flex-col   text-white  w-full justify-center ${
                 index == 0 && 'ring-cyan-500 bg-cyan-400'
               } ${index == 1 && 'ring-blue-500 bg-blue-400'} ${
@@ -51,16 +92,13 @@ export default function PasienPage() {
           <div>
             <select
               id="view"
-              className=" rounded-md me-3 border-0 bg-transparent p-2 pr-7 text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+              className=" rounded-md me-3 border-2 bg-transparent p-2 pr-7 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm"
+              onChange={ubahView}
             >
-              <option>Grid View</option>
-              <option>List View</option>
+              <option value="grid">Grid View</option>
+              <option value="list">List View</option>
             </select>
-            <FormControlLabel
-              control={<Switch defaultChecked />}
-              label="(Pasien Aktif)"
-              className="text-gray-500"
-            />
+            <FormControlLabel control={<Switch defaultChecked />} label="(Pasien Aktif)" />
           </div>
 
           <div className="flex justify-end -mt-3 me-2">
@@ -74,11 +112,23 @@ export default function PasienPage() {
             />
           </div>
         </div>
-        <div className="border-t-4 border-blue-300 grid grid-cols-2 max-h-[560px] overflow-auto sm:grid-cols-4 gap-4 justify-between rounded-2xl p-5 ring-2 mt-5 mx-2 ring-lime-100">
-          {Array.from({ length: 9 }).map((_, index) => {
-            return <Card key={index} />;
-          })}
-        </div>
+        {!viewGrid && (
+          <div
+            className={` border-t-4 border-blue-300 max-h-[560px]  overflow-auto rounded-2xl ring-2 mt-5 mx-2 ring-lime-100`}
+          >
+            <Table headers={headers} values={values} />
+          </div>
+        )}
+
+        {!viewTable && (
+          <div
+            className={` border-t-4 border-blue-300 grid grid-cols-2 max-h-[560px] overflow-auto sm:grid-cols-4 gap-4 justify-between rounded-2xl p-5 ring-2 mt-5 mx-2 ring-lime-100`}
+          >
+            {Array.from({ length: 9 }).map((_, index) => {
+              return <Card key={index} />;
+            })}
+          </div>
+        )}
       </div>
     </div>
   );

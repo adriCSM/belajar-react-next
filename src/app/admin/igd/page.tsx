@@ -2,7 +2,7 @@
 import BasicModal from '@/components/Fragments/Modal';
 import Switch from '@mui/material/Switch';
 import FormIgd from '@/components/Fragments/FormIgd';
-import FormRegistrasi from '@/components/Fragments/FormRegistrasi';
+
 import FormControlLabel from '@mui/material/FormControlLabel';
 import CardPasien from '@/components/Fragments/CardPasien';
 import { FaAddressBook, FaPlus } from 'react-icons/fa';
@@ -11,12 +11,12 @@ import Button from '@/components/Elements/Button';
 import CardRiwayat from '@/components/Fragments/CardRiwayat';
 export default function RawatJalanPage() {
   return (
-    <div className="p-5 text-gray-500">
+    <div className="p-5 ">
       <div className="flex">
         <div className="w-2/3 border-4 border-blue-300 me-5 bg-igd h-80 bg-contain bg-no-repeat bg-left bg-[#bee8f6] bg-center shadow-lg rounded-2xl  ">
           <div className="h-full  w-full flex items-center justify-center ">
             <div className="w-1/2"></div>
-            <div className="w-1/2 ps-5 font-bold text-gray-500 text-center  ">
+            <div className="w-1/2 ps-5 font-bold text-center  ">
               <p className="text-5xl">IGD</p>
               <p className="text-2xl">( Instalasi Gawat Darurat )</p>
             </div>
@@ -53,28 +53,17 @@ export default function RawatJalanPage() {
           <div>
             <select
               id="view"
-              className=" rounded-md me-3 border-0 bg-transparent p-2 pr-7 text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+              className=" rounded-md me-3 border-0 bg-transparent p-2 pr-7  focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
             >
               <option>Grid View</option>
               <option>List View</option>
             </select>
-            <FormControlLabel
-              control={<Switch defaultChecked />}
-              label="(Pasien Aktif)"
-              className="text-gray-500"
-            />
+            <FormControlLabel control={<Switch defaultChecked />} label="(Pasien Aktif)" />
           </div>
 
           <div className="flex justify-end -mt-3 me-2 ">
             <BasicModal
               Form={FormIgd}
-              styleButton="bg-transparent text-blue-500  rounded-full p-3 me-3"
-              buttonText="Daftar Reservasi"
-              styleModal="w-5/6 sm:w-2/3 h-auto p-5"
-              Icon={FaAddressBook}
-            />
-            <BasicModal
-              Form={FormRegistrasi}
               styleButton="bg-blue-500  text-white hover:bg-blue-600"
               buttonText="Pasien Baru"
               styleModal="w-2/3 h-auto p-5"

@@ -1,7 +1,7 @@
 export default function TextArea(props: any) {
   const { id, type, label, placeholder, styleParent } = props;
   return (
-    <div className={`flex flex-col text-gray-500 ${styleParent} `}>
+    <div className={`flex flex-col  ${styleParent} `}>
       <label className="py-2" htmlFor={id}>
         {label}
       </label>

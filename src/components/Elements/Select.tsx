@@ -3,7 +3,7 @@ import * as React from 'react';
 export default function Select({ ...props }) {
   const { list } = props;
   return (
-    <div className={`flex flex-col text-gray-500 ${props.styleParent}`}>
+    <div className={`flex flex-col  ${props.styleParent}`}>
       <label className="py-2" htmlFor={props.id}>
         {props.label}
       </label>

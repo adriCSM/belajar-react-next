@@ -1,11 +1,10 @@
 'use client';
 import BasicModal from '@/components/Fragments/Modal';
-import FormRegistrasi from '@/components/Fragments/FormRegistrasi';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Card from '@/components/Fragments/CardPasien';
 import Switch from '@mui/material/Switch';
-import FormIgd from '@/components/Fragments/FormIgd';
-import { FaAddressBook, FaPlus } from 'react-icons/fa';
+import ForwRawatInap from '@/components/Fragments/FormRawatInap';
+import { FaPlus } from 'react-icons/fa';
 import CheckBox from '@/components/Elements/CheckBox';
 import { TfiReload } from 'react-icons/tfi';
 import CardRiwayat from '@/components/Fragments/CardRiwayat';
@@ -14,7 +13,7 @@ import Button from '@/components/Elements/Button';
 export default function RawatInapPage() {
   const pembiayaan = ['Umum', 'BPJS', 'BPJS Non PBI', 'Karyawan RS'];
   return (
-    <div className="px-5 flex h-full">
+    <div className="px-5 flex h-full ">
       <div className="w-3/4 max-h-[113vh] me-5 overflow-auto">
         <div className=" h-1/5  shadow-lg rounded-2xl bg-rawat-inap bg-contain bg-[#00b1d7] bg-no-repeat  mb-5">
           <div className="h-full  w-full flex items-center justify-center ">
@@ -33,33 +32,22 @@ export default function RawatInapPage() {
               <div>
                 <select
                   id="view"
-                  className=" rounded-md me-3 border-0 bg-transparent p-2 pr-7 text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+                  className=" rounded-md me-3 border-0 bg-transparent p-2 pr-7  focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
                 >
                   <option>Grid View</option>
                   <option>List View</option>
                 </select>
-                <FormControlLabel
-                  control={<Switch defaultChecked />}
-                  label="(Pasien Aktif)"
-                  className="text-gray-500"
-                />
+                <FormControlLabel control={<Switch defaultChecked />} label="(Pasien Aktif)" />
               </div>
 
               <div className="flex justify-end -mt-3 me-2">
                 <BasicModal
-                  Form={FormIgd}
-                  styleButton="bg-transparent text-blue-500  rounded-full p-3 me-3"
-                  buttonText="Daftar Reservasi"
-                  styleModal="w-5/6 sm:w-2/3 h-auto p-5"
-                  Icon={FaAddressBook}
-                />
-                <BasicModal
-                  Form={FormRegistrasi}
+                  Form={ForwRawatInap}
                   styleButton="bg-blue-500  text-white hover:bg-blue-600"
                   buttonText="Pasien Baru"
                   styleModal="w-2/3 h-auto p-5"
                   Icon={FaPlus}
-                  title="Registrasi Pasien"
+                  title="Registrasi Pasien Rawat Inap"
                 />
               </div>
             </div>
