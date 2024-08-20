@@ -11,7 +11,7 @@ export default function PasienPage() {
   return (
     <div className="p-5 text-gray-500">
       <div className="flex">
-        <div className="w-2/3 bg-register bg-contain bg-no-repeat bg-[#66cdcc]  h-80  shadow-lg rounded-2xl  ">
+        <div className="w-2/3 bg-register bg-contain bg-no-repeat bg-[#66cdcc]  h-80  shadow-lg rounded-2xl me-5  ">
           <div className="h-full  w-full flex items-center justify-center ">
             <div className="w-1/2"></div>
             <div className="w-1/2 ps-12 font-bold text-center text-white ">
@@ -20,17 +20,24 @@ export default function PasienPage() {
             </div>
           </div>
         </div>
-        <div className="justify-between bg-white rounded-3xl shadow-lg p-3 grid grid-cols-2 ms-5 gap-2 w-1/3">
+        <div className="grid grid-cols-2 gap-4 w-1/3">
           {Array.from({ length: 4 }).map((_, index) => (
-            <div className="items-center flex justify-center " key={index}>
-              <div className=" ring-2 ring-lime-300 items-center rounded-lg p-2 flex bg-lime-100 justify-center ">
-                <div>
-                  <img src="../images/img-person.jpg" alt="" className="w-12 h-12 rounded-full" />
-                </div>
-                <div className="flex flex-col justify-start ps-2">
-                  <h1>569</h1>
-                  <p>Antrian Pasien</p>
-                </div>
+            <div
+              className={`ring-2  text-center rounded-lg p-2 flex flex-col  text-white  w-full justify-center ${
+                index == 0 && 'ring-cyan-300 bg-cyan-400'
+              } ${index == 1 && 'ring-blue-300 bg-blue-400'} ${
+                index == 2 && 'ring-red-300 bg-red-400'
+              } ${index == 3 && 'ring-purple-300 bg-purple-400'} `}
+            >
+              <img
+                src="../images/img-person.jpg"
+                alt=""
+                className="w-12 h-12 rounded-full self-center mb-2"
+              />
+
+              <div className="flex flex-col justify-start ps-2">
+                <h1>569</h1>
+                <p>Antrian Pasien</p>
               </div>
             </div>
           ))}

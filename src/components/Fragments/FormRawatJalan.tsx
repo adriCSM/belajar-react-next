@@ -50,14 +50,6 @@ export default function FormRawatJalan({ ...props }) {
           </table>
         </div>
       </div>
-      <div className="flex justify-end py-3">
-        <Button
-          text="Batal"
-          styleButton="bg-white ring-red-500 text-red-500 me-2 "
-          Icon={FaXmark}
-        />
-        <Button text="Simpan" styleButton="bg-blue-500 text-white " Icon={FaSave} />
-      </div>
     </div>
   );
 }

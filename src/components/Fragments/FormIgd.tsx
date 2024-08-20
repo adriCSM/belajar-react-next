@@ -1,8 +1,6 @@
 import Input from '../Elements/Input';
-import Button from '@/components/Elements/Button';
-import { FaSave } from 'react-icons/fa';
 import Select from '../Elements/Select';
-import { FaXmark } from 'react-icons/fa6';
+
 export default function FormLanjutan({ ...props }) {
   const dokters = ['dr. FAUZAN AZHARI MARZUKI, Sp. KK-D002', 'dr. Ataaka Muhammad'];
   const jaminan = ['BPJS Kesehatan', 'Umum'];
@@ -26,7 +24,7 @@ export default function FormLanjutan({ ...props }) {
         </div>
         <div className="flex flex-col sm:p-5 text-gray-600 max-h-[500px] w-full sm:w-1/3 overflow-auto text-start">
           <h1 className="text-center font-bold pb-5">Profil Pasien</h1>
-          <table className="table-auto  text-left">
+          <table className="table-auto  text-left overflow-x-auto">
             <tr>
               <th className="w-1/3 sm:w-1/2">Nomor RM</th>
               <td>: -</td>
@@ -49,14 +47,6 @@ export default function FormLanjutan({ ...props }) {
             </tr>
           </table>
         </div>
-      </div>
-      <div className="flex justify-end py-3">
-        <Button
-          text="Batal"
-          styleButton="bg-white ring-red-500 text-red-500 me-2 "
-          Icon={FaXmark}
-        />
-        <Button text="Simpan" styleButton="bg-blue-500 text-white " Icon={FaSave} />
       </div>
     </div>
   );

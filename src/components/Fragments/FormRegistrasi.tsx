@@ -27,10 +27,10 @@ export default function FormRegistrasi({ ...props }) {
   const jaminan = ['BPJS Kesehatan', 'Umum'];
   const keluarga = ['Ayah', 'Ibu', 'Suami', 'Istri', 'Saudara', 'Anak'];
   return (
-    <div className=" sm:m-5 ">
-      <h1 className="text-2xl font-bold ">{props.title}</h1>
-      <div className="flex flex-col sm:flex-row text-sm w-full justify-between  ">
-        <div className="grid grid-cols-2 gap-x-4 p-5 text-gray-600  max-h-[500px] overflow-auto ">
+    <div className=" m-2 sm:m-3 ">
+      <h1 className="text-2xl font-bold pb-4">{props.title}</h1>
+      <div className="flex flex-col sm:flex-row text-sm w-full justify-between ">
+        <div className="grid grid-cols-2 gap-x-4 p-5 text-gray-600  max-h-[500px] mx-5 overflow-auto border-t-4 border-blue-300">
           <Input type="text" id="nomorRm" label="Nomor RM" placeholder="Nomor RM" />
           <Input type="date" id="tglDaftar" label="Tgl. Daftar" />
           <Input
@@ -51,7 +51,7 @@ export default function FormRegistrasi({ ...props }) {
           <Select label="Penjamin" id="jaminan " list={jaminan} />
           <Input type="text" id="kartu" label="No. Kartu" placeholder="Nomor Kartu" />
         </div>
-        <div className="grid grid-cols-2 gap-x-4 p-5 text-gray-600 max-h-[500px] overflow-auto ">
+        <div className="grid grid-cols-2 gap-x-4 p-5 text-gray-600 max-h-[500px] overflow-auto mx-5 border-t-4 border-red-300 ">
           <Select label="Keluarga" id="keluarga " list={keluarga} styleParent=" pb-5" />
           <Input type="text" id="nama" label="Nama" placeholder="Nama Keluarga" />
           <Input
@@ -80,14 +80,6 @@ export default function FormRegistrasi({ ...props }) {
           <Input type="text" id="nohp" label="No.Hp" placeholder="No. Handphone" />
           <Input type="email" id="email" label="Email" placeholder="Email" />
         </div>
-      </div>
-      <div className="flex justify-end py-3">
-        <Button
-          text="Batal"
-          styleButton="bg-white ring-red-500 text-red-500 me-2 "
-          Icon={FaXmark}
-        />
-        <Button text="Simpan" styleButton="bg-blue-500 text-white " Icon={FaSave} />
       </div>
     </div>
   );

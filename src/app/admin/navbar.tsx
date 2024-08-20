@@ -1,7 +1,7 @@
 import { FaBars, FaMoon, FaRegSun, FaRegBell, FaSistrix, FaUserMd } from 'react-icons/fa';
 export default function NavbarAdmin() {
   return (
-    <nav className="flex w-full h-20 bg-white justify-between rounded-b-xl p-3 sticky top-0 z-10 shadow-md items-center">
+    <nav className="flex w-full h-20 bg-white mb-5 justify-between rounded-b-xl p-3 sticky top-0 z-10 shadow-md items-center">
       <div className="flex items-center">
         <button className="ms-2 text-lime-500">
           <FaBars />
