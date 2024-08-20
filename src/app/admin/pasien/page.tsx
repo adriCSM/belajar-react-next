@@ -3,7 +3,6 @@ import BasicModal from '@/components/Fragments/Modal';
 import Switch from '@mui/material/Switch';
 import FormRegistrasi from '@/components/Fragments/FormRegistrasi';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import FormReservasi from '@/components/Fragments/FormReservasi';
 import Card from '@/components/Fragments/CardPasien';
 import { FaPlus } from 'react-icons/fa';
 
@@ -11,7 +10,7 @@ export default function PasienPage() {
   return (
     <div className="p-5 text-gray-500">
       <div className="flex">
-        <div className="w-2/3 bg-register bg-contain bg-no-repeat bg-[#66cdcc]  h-80  shadow-lg rounded-2xl me-5  ">
+        <div className="w-2/3 border-4 border-cyan-500  bg-register bg-contain bg-no-repeat bg-[#66cdcc]  h-80  shadow-lg rounded-2xl me-5  ">
           <div className="h-full  w-full flex items-center justify-center ">
             <div className="w-1/2"></div>
             <div className="w-1/2 ps-12 font-bold text-center text-white ">
@@ -20,14 +19,14 @@ export default function PasienPage() {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4 w-1/3">
+        <div className="grid grid-cols-2 gap-4 w-1/3 ">
           {Array.from({ length: 4 }).map((_, index) => (
             <div
-              className={`ring-2  text-center rounded-lg p-2 flex flex-col  text-white  w-full justify-center ${
-                index == 0 && 'ring-cyan-300 bg-cyan-400'
-              } ${index == 1 && 'ring-blue-300 bg-blue-400'} ${
-                index == 2 && 'ring-red-300 bg-red-400'
-              } ${index == 3 && 'ring-purple-300 bg-purple-400'} `}
+              className={`ring-2  text-center rounded-lg p-2 flex flex-col   text-white  w-full justify-center ${
+                index == 0 && 'ring-cyan-500 bg-cyan-400'
+              } ${index == 1 && 'ring-blue-500 bg-blue-400'} ${
+                index == 2 && 'ring-red-500 bg-red-400'
+              } ${index == 3 && 'ring-purple-500 bg-purple-400'} `}
             >
               <img
                 src="../images/img-person.jpg"
@@ -75,7 +74,7 @@ export default function PasienPage() {
             />
           </div>
         </div>
-        <div className="grid grid-cols-2 max-h-[560px] overflow-auto sm:grid-cols-4 gap-4 justify-between rounded-2xl p-5 ring-2 mt-5 mx-2 ring-lime-100">
+        <div className="border-t-4 border-blue-300 grid grid-cols-2 max-h-[560px] overflow-auto sm:grid-cols-4 gap-4 justify-between rounded-2xl p-5 ring-2 mt-5 mx-2 ring-lime-100">
           {Array.from({ length: 9 }).map((_, index) => {
             return <Card key={index} />;
           })}

@@ -14,6 +14,7 @@ const config: Config = {
         register: 'url("/images/img-register.jpg")',
         igd: 'url("/images/img-igd.jpg")',
         'rawat-jalan': 'url("/images/img-rawatjalan.jpg")',
+        'rawat-inap': 'url("/images/img-rawatinap.jpg")',
       },
       borderRadius: {
         xl: '1rem',

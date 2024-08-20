@@ -2,9 +2,10 @@
 import BasicModal from '@/components/Fragments/Modal';
 import Switch from '@mui/material/Switch';
 import FormIgd from '@/components/Fragments/FormIgd';
+import FormRegistrasi from '@/components/Fragments/FormRegistrasi';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import CardPasien from '@/components/Fragments/CardPasien';
-import { FaAddressBook, FaLongArrowAltRight, FaPlus } from 'react-icons/fa';
+import { FaAddressBook, FaPlus } from 'react-icons/fa';
 import { TfiReload } from 'react-icons/tfi';
 import Button from '@/components/Elements/Button';
 import CardRiwayat from '@/components/Fragments/CardRiwayat';
@@ -12,7 +13,7 @@ export default function RawatJalanPage() {
   return (
     <div className="p-5 text-gray-500">
       <div className="flex">
-        <div className="w-2/3 me-5 bg-igd h-80 bg-contain bg-no-repeat bg-left bg-[#bee8f6] bg-center shadow-lg rounded-2xl  ">
+        <div className="w-2/3 border-4 border-blue-300 me-5 bg-igd h-80 bg-contain bg-no-repeat bg-left bg-[#bee8f6] bg-center shadow-lg rounded-2xl  ">
           <div className="h-full  w-full flex items-center justify-center ">
             <div className="w-1/2"></div>
             <div className="w-1/2 ps-5 font-bold text-gray-500 text-center  ">
@@ -25,10 +26,10 @@ export default function RawatJalanPage() {
           {Array.from({ length: 4 }).map((_, index) => (
             <div
               className={`ring-2  text-center rounded-lg p-2 flex flex-col  text-white  w-full justify-center ${
-                index == 0 && 'ring-cyan-300 bg-cyan-400'
-              } ${index == 1 && 'ring-blue-300 bg-blue-400'} ${
-                index == 2 && 'ring-red-300 bg-red-400'
-              } ${index == 3 && 'ring-purple-300 bg-purple-400'} `}
+                index == 0 && 'ring-cyan-500 bg-cyan-400'
+              } ${index == 1 && 'ring-blue-500 bg-blue-400'} ${
+                index == 2 && 'ring-red-500 bg-red-400'
+              } ${index == 3 && 'ring-purple-500 bg-purple-400'} `}
             >
               <img
                 src="../images/img-person.jpg"
@@ -73,12 +74,12 @@ export default function RawatJalanPage() {
               Icon={FaAddressBook}
             />
             <BasicModal
-              Form={FormIgd}
+              Form={FormRegistrasi}
               styleButton="bg-blue-500  text-white hover:bg-blue-600"
               buttonText="Pasien Baru"
               styleModal="w-2/3 h-auto p-5"
               Icon={FaPlus}
-              title="IGD"
+              title="Registrasi Pasien"
             />
           </div>
         </div>
