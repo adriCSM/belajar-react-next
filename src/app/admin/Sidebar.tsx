@@ -38,7 +38,7 @@ export default function SidebarAdmin() {
     },
   ];
   return (
-    <nav className="h-screen rounded-r-xl bg-lime-300 w-1/5  sticky top-0 divide-y divide-white ">
+    <nav className="h-screen rounded-r-xl bg-gradient-to-tr from-lime-400 to-lime-300 w-1/5  sticky top-0 divide-y divide-white ">
       <div className="flex w-full items-center m-5 ">
         <img src="../logo/icon-512x512.png" alt="" className="h-[60px]" />
         <h1 className="text-3xl font-bold ps-5 text-wrap">
@@ -54,7 +54,9 @@ export default function SidebarAdmin() {
               key={i}
               href={menu.href}
               className={`flex px-3 py-2 items-center transition duration-150 transform   ${
-                pathname == menu.href ? 'bg-gray-100' : 'hover:bg-lime-200'
+                pathname == menu.href
+                  ? 'bg-gray-100 shadow-lg border-l-2 border-y-2 border-lime-400'
+                  : 'hover:bg-lime-200 hover:shadow-md'
               }  rounded-s-xl`}
             >
               <img src={menu.src} alt={menu.name} className="h-[30px] w-[30px]" />

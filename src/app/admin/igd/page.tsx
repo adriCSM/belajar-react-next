@@ -1,17 +1,25 @@
 'use client';
 import BasicModal from '@/components/Fragments/Modal';
 import Switch from '@mui/material/Switch';
-import FormRegistrasi from '@/components/Fragments/FormRegistrasi';
+import FormIgd from '@/components/Fragments/FormIgd';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import FormReservasi from '@/components/Fragments/FormReservasi';
-import Card from '@/components/Fragments/CardPasien';
-export default function IPage() {
+import CardPasien from '@/components/Fragments/CardPasien';
+import { FaAddressBook, FaLongArrowAltRight, FaPlus } from 'react-icons/fa';
+import { TfiReload } from 'react-icons/tfi';
+import Button from '@/components/Elements/Button';
+import CardRiwayat from '@/components/Fragments/CardRiwayat';
+
+export default function IgdPage() {
   return (
     <div className="p-5 text-gray-500">
       <div className="flex">
-        <div className="w-2/3 bg-register h-80 bg-cover bg-center shadow-lg rounded-2xl  ">
-          <div className="h-full w-full flex p-5 items-end justify-start">
-            <span className="text-5xl font-bold text-white mb-5 ">Registrasi</span>
+        <div className="w-2/3 bg-igd h-80 bg-contain bg-no-repeat bg-left bg-[#bee8f6] bg-center shadow-lg rounded-2xl  ">
+          <div className="h-full  w-full flex items-center justify-center ">
+            <div className="w-1/2"></div>
+            <div className="w-1/2 ps-5 font-bold text-gray-500 text-center  ">
+              <p className="text-5xl">IGD</p>
+              <p className="text-2xl">( Instalasi Gawat Darurat )</p>
+            </div>
           </div>
         </div>
         <div className="justify-between bg-white rounded-3xl shadow-lg p-3 grid grid-cols-2 ms-5 gap-2 w-1/3">
@@ -30,8 +38,7 @@ export default function IPage() {
           ))}
         </div>
       </div>
-
-      <div className="w-full h-auto bg-white mt-5 rounded-2xl shadow-lg p-5">
+      <div className="flex w-full h-auto flex-col  bg-white mt-5 rounded-2xl shadow-lg p-5">
         <h1 className="text-xl font-bold ">
           Pasien <span className="font-normal text-[16px]">(546 total)</span>
         </h1>
@@ -51,25 +58,50 @@ export default function IPage() {
             />
           </div>
 
-          <div className="flex justify-end -mt-3 me-2">
+          <div className="flex justify-end -mt-3 me-2 ">
             <BasicModal
-              Form={FormRegistrasi}
+              Form={FormIgd}
               styleButton="bg-transparent text-blue-500  rounded-full p-3 me-3"
               buttonText="Daftar Reservasi"
-              styleModal="w-2/3 h-auto p-5"
+              styleModal="w-5/6 sm:w-2/3 h-auto p-5"
+              Icon={FaAddressBook}
             />
             <BasicModal
-              Form={FormRegistrasi}
+              Form={FormIgd}
               styleButton="bg-blue-500  text-white hover:bg-blue-600"
               buttonText="Pasien Baru"
               styleModal="w-2/3 h-auto p-5"
+              Icon={FaPlus}
+              title="IGD ( Instalasi Gawat Darurat )"
             />
           </div>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 justify-between rounded-2xl p-5 ring-2 mt-5 mx-2 ring-lime-100">
-          {Array.from({ length: 9 }).map((_, index) => {
-            return <Card key={index} />;
-          })}
+
+        <div className="w-full h-full flex  ">
+          <div className="overflow-auto max-h-[560px] grid grid-cols-2 sm:grid-cols-4 gap-4 justify-between rounded-2xl p-5 ring-2 mt-5 mx-2 ring-lime-100">
+            {Array.from({ length: 19 }).map((_, index) => {
+              return <CardPasien key={index} />;
+            })}
+          </div>
+          <div className="w-1/4 max-h-[560px] border-2 overflow-auto  mt-5 rounded-2xl px-3">
+            <div className="sticky top-0 bg-white py-3">
+              <div className="pb-2 flex justify-between  items-center">
+                <h1>Riwayat Registrasi</h1>
+                <Button
+                  Icon={TfiReload}
+                  styleButton="rounded-full h-8 w-6 pe-1 ring-gray-500 text-xs"
+                />
+              </div>
+              <div>
+                <h1 className="font-bold text-center mb-3">IGD</h1>
+              </div>
+            </div>
+            <div className="  p-2 rounded-lg  overflow-auto ">
+              {Array.from({ length: 15 }).map((_, index) => {
+                return <CardRiwayat />;
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </div>

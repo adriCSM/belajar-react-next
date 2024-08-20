@@ -1,9 +1,10 @@
 import Input from '../Elements/Input';
 import Button from '@/components/Elements/Button';
 import { FaSave } from 'react-icons/fa';
+import { FaXmark } from 'react-icons/fa6';
 import Select from '../Elements/Select';
 import TextArea from '../Elements/TextArea';
-export default function FormRegistrasi() {
+export default function FormRegistrasi({ ...props }) {
   const listGolDarah = ['A', 'B', 'AB', 'O'];
   const listGender = ['Laki-laki', 'Perempuan'];
   const listStatus = ['Menikah', 'Belum Menikah', 'Janda', 'Duda'];
@@ -27,7 +28,7 @@ export default function FormRegistrasi() {
   const keluarga = ['Ayah', 'Ibu', 'Suami', 'Istri', 'Saudara', 'Anak'];
   return (
     <div className=" sm:m-5 ">
-      <h1 className="text-2xl font-bold ">Pendaftaran Pasien</h1>
+      <h1 className="text-2xl font-bold ">{props.title}</h1>
       <div className="flex flex-col sm:flex-row text-sm w-full justify-between  ">
         <div className="grid grid-cols-2 gap-x-4 p-5 text-gray-600  max-h-[500px] overflow-auto ">
           <Input type="text" id="nomorRm" label="Nomor RM" placeholder="Nomor RM" />
@@ -81,6 +82,11 @@ export default function FormRegistrasi() {
         </div>
       </div>
       <div className="flex justify-end py-3">
+        <Button
+          text="Batal"
+          styleButton="bg-white ring-red-500 text-red-500 me-2 "
+          Icon={FaXmark}
+        />
         <Button text="Simpan" styleButton="bg-blue-500 text-white " Icon={FaSave} />
       </div>
     </div>

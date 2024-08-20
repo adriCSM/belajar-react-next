@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Button from '@/components/Elements/Button';
 import { FaSave } from 'react-icons/fa';
 export default function BasicModal(props: any) {
-  const { styleButton, styleModal, Form, buttonText, Icon } = props;
+  const { styleButton, styleModal, Form, buttonText, Icon, title } = props;
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -16,7 +16,7 @@ export default function BasicModal(props: any) {
         <Box
           className={`relative top-[50%]  left-[50%] bg-white rounded-md transform -translate-x-[50%] -translate-y-[50%] ${styleModal}`}
         >
-          <Form />
+          <Form title={title} />
         </Box>
       </Modal>
     </div>

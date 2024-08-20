@@ -11,7 +11,7 @@ export default function Input(props: any) {
         type={type}
         id={id}
         placeholder={placeholder}
-        className={`rounded-2xl outline outline-2 outline-gray-300 text-sm p-2 focus:outline-lime-300 `}
+        className={`rounded-2xl outline outline-2 outline-gray-300 text-sm p-2 focus:outline-lime-300 italic`}
       />
     </div>
   );
