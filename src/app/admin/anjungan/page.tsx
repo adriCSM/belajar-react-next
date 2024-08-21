@@ -1,6 +1,6 @@
 export default function AnjunganPage() {
   return (
-    <div>
+    <div className="h-svh animate-pulse">
       <h1>Ini Page anjungan</h1>
     </div>
   );

@@ -6,7 +6,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Card from '@/components/Fragments/CardPasien';
 import { FaPlus, FaList } from 'react-icons/fa';
 import Table from '@/components/Fragments/Table';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 export default function PasienPage() {
   const headers = [
     'No. RM',
@@ -33,6 +33,10 @@ export default function PasienPage() {
     '0000-00-00 00:00:00',
     'Belum Bayar',
     '-',
+    '-',
+    '-',
+    '-',
+    '-',
   ];
 
   const [viewGrid, setViewGrid] = useState(true);
@@ -48,9 +52,9 @@ export default function PasienPage() {
     }
   };
   return (
-    <div className="p-5">
+    <div className="p-5 w-auto">
       <div className="flex">
-        <div className="w-2/3 border-4 border-cyan-500  bg-register bg-contain bg-no-repeat bg-[#66cdcc]  h-80  shadow-lg rounded-2xl me-5  ">
+        <div className="w-2/3 border-2 border-cyan-500  bg-register bg-contain bg-no-repeat bg-[#66cdcc]  h-80  shadow-md rounded-xl me-5  ">
           <div className="h-full  w-full flex items-center justify-center ">
             <div className="w-1/2"></div>
             <div className="w-1/2 ps-12 font-bold text-center text-white ">
@@ -84,7 +88,7 @@ export default function PasienPage() {
         </div>
       </div>
 
-      <div className="w-full h-auto bg-white mt-5 rounded-2xl shadow-lg p-5">
+      <div className="w-full h-auto bg-white mt-5 rounded-xl shadow-md p-5">
         <h1 className="text-xl font-bold ">
           Pasien <span className="font-normal text-[16px]">(546 total)</span>
         </h1>
@@ -92,7 +96,7 @@ export default function PasienPage() {
           <div>
             <select
               id="view"
-              className=" rounded-md me-3 border-2 bg-transparent p-2 pr-7 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm"
+              className=" rounded-full me-3 border-2 bg-transparent p-1 pr-7 focus:ring-2 focus:outline-none focus:ring-2 focus:ring-blue-600 sm:text-sm"
               onChange={ubahView}
             >
               <option value="grid">Grid View</option>
@@ -112,17 +116,17 @@ export default function PasienPage() {
             />
           </div>
         </div>
-        {!viewGrid && (
+        {viewTable && (
           <div
-            className={` border-t-4 border-blue-300 max-h-[560px]  overflow-auto rounded-2xl ring-2 mt-5 mx-2 ring-lime-100`}
+            className={` border-t-4 border-blue-300 max-h-[560px]  overflow-auto rounded-lg ring-2 mt-5 mx-2 ring-lime-100`}
           >
             <Table headers={headers} values={values} />
           </div>
         )}
 
-        {!viewTable && (
+        {viewGrid && (
           <div
-            className={` border-t-4 border-blue-300 grid grid-cols-2 max-h-[560px] overflow-auto sm:grid-cols-4 gap-4 justify-between rounded-2xl p-5 ring-2 mt-5 mx-2 ring-lime-100`}
+            className={` border-t-4 border-blue-300 grid grid-cols-2 max-h-[560px]  overflow-auto sm:grid-cols-4 gap-4 justify-between rounded-lg p-5 ring-2 mt-5 mx-2 ring-lime-100`}
           >
             {Array.from({ length: 9 }).map((_, index) => {
               return <Card key={index} />;

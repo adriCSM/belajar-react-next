@@ -1,12 +1,24 @@
 import { FaBars, FaMoon, FaRegSun, FaRegBell, FaSistrix, FaUserMd } from 'react-icons/fa';
-export default function NavbarAdmin() {
+import MenuBar from '@/components/Fragments/MenuBar';
+export default function NavbarAdmin(props: any) {
+  const { onClick, showSidebar } = props;
+  const show = showSidebar;
   return (
-    <nav className="flex w-full h-20 bg-white mb-5 justify-between rounded-b-xl p-3 sticky top-0 z-10 shadow-md items-center">
+    <nav
+      className={`w-full flex h-20 bg-white  justify-between rounded-b-xl p-3 sticky top-0 shadow-md items-center`}
+    >
       <div className="flex items-center">
-        <button className="ms-2 text-lime-500">
+        <div className={` flex w-full items-center `}>
+          <img src="../logo/icon-512x512.png" alt="" className={`h-[40px] animate-bounce`} />
+          <h1 className={`text-3xl font-bold ps-5 text-wrap animate-pulse`}>
+            <span className="text-lime-600">m</span>
+            <span className="text-lime-400 text-2xl ">LITE</span>
+          </h1>
+        </div>
+        {/* <button className="ms-2 text-lime-500" onClick={onClick}>
           <FaBars />
-        </button>
-        <form className="group relative ms-5 ">
+        </button> */}
+        {/* <form className="group relative ms-5 ">
           <FaSistrix className="absolute left-3 top-1/2 -mt-2.5 text-slate-400 pointer-events-none group-focus-within:text-blue-500" />
           <input
             className="rounded-3xl focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none w-full text-sm leading-6 text-slate-900 placeholder-slate-400 rounded-md py-2 pl-10 ring-1 ring-slate-200 shadow-sm"
@@ -14,7 +26,10 @@ export default function NavbarAdmin() {
             aria-label="Filter projects"
             placeholder="Filter projects..."
           />
-        </form>
+        </form> */}
+      </div>
+      <div>
+        <MenuBar />
       </div>
       <div>
         <ul className="flex items-center text-[1.4rem]">

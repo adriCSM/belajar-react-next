@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import Input from '../Elements/Input';
 import Select from '../Elements/Select';
 import TextArea from '../Elements/TextArea';
@@ -23,13 +24,41 @@ export default function FormRegistrasi({ ...props }) {
   ];
   const jaminan = ['BPJS Kesehatan', 'Umum'];
   const keluarga = ['Ayah', 'Ibu', 'Suami', 'Istri', 'Saudara', 'Anak'];
+  const [data, setData] = useState({
+    nomorRm: '',
+    tglDaftar: '',
+    jenisKelamin: '',
+    tglLahir: '',
+    golDarah: '',
+    status: '',
+    agama: '',
+    pendidikan: '',
+    alamat: '',
+    keluarga: '',
+    jaminan: '',
+  });
+
+  const date = new Date();
+  const yyyy = date.getFullYear();
+  const mm = String(date.getMonth() + 1).padStart(2, '0');
+  const dd = String(date.getDate()).padStart(2, '0');
+
+  const [daftar, setDaftar] = useState(`${yyyy}-${mm}-${dd}`);
+  const [lahir, setLahir] = useState(`${yyyy}-${mm}-${dd}`);
+
   return (
     <div className=" m-2 sm:m-3 ">
       <h1 className="text-2xl font-bold pb-4">{props.title}</h1>
       <div className="flex flex-col sm:flex-row text-sm w-full justify-between ">
         <div className="grid grid-cols-2 gap-x-4 p-5 text-gray-600  max-h-[500px] mx-5 overflow-auto border-t-4 border-blue-300">
-          <Input type="text" id="nomorRm" label="Nomor RM" placeholder="Nomor RM" />
-          <Input type="date" id="tglDaftar" label="Tgl. Daftar" />
+          <Input type="text" id="nomorRm" label="Nomor RM" placeholder="Nomor RM" required={true} />
+          <Input
+            type="date"
+            id="tglDaftar"
+            label="Tgl. Daftar"
+            value={daftar}
+            onChange={(e: any) => setDaftar(e.target.value)}
+          />
           <Input
             type="text"
             id="jenisKelamin"
@@ -38,7 +67,13 @@ export default function FormRegistrasi({ ...props }) {
             styleParent="col-span-2 w-full"
           />
           <Select label="Jenis Kelamin" id="nama" list={listGender} />
-          <Input type="date" id="tgllahir" label="Tgl. Lahir" />
+          <Input
+            type="date"
+            id="tgllahir"
+            label="Tgl. Lahir"
+            value={lahir}
+            onChange={(e: any) => setLahir(e.target.value)}
+          />
           <Input type="text" id="namaIbu" label="Nama Ibu" placeholder="Nama Ibu" />
           <Select label="Darah" id="darah " list={listGolDarah} />
           <Select label="Status Nikah" id="status " list={listStatus} />

@@ -9,6 +9,7 @@ export default function BasicModal(props: any) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [btnDesible, setBtnDesible] = useState(true);
 
   return (
     <div>
@@ -29,7 +30,12 @@ export default function BasicModal(props: any) {
               Icon={FaXmark}
               handleClick={handleClose}
             />
-            <Button text="Simpan" styleButton="bg-blue-500 text-white " Icon={FaSave} />
+            <Button
+              text="Simpan"
+              styleButton="bg-blue-500 text-white "
+              Icon={FaSave}
+              disable={btnDesible}
+            />
           </div>
         </Box>
       </Modal>

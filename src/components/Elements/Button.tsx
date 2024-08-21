@@ -1,13 +1,14 @@
 export default function Button(props: any) {
-  const { styleButton, handleClick, text, Icon } = props;
+  const { styleButton, styleIcon, handleClick, text, Icon, disable } = props;
   return (
     <button
       onClick={handleClick}
       className={`px-3 py-1 flex items-center justify-between ${styleButton} ring-1 ring-blue-500 rounded-full w-auto  `}
+      disabled={disable}
     >
       {Icon && (
         <span className="me-2">
-          <Icon />{' '}
+          <Icon className={`${styleIcon}`} />{' '}
         </span>
       )}{' '}
       {text && <span>{text}</span>}

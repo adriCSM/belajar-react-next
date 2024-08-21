@@ -3,7 +3,8 @@ import { Manuale } from 'next/font/google';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-export default function SidebarAdmin() {
+export default function SidebarAdmin({ ...props }) {
+  const show = props.showSidebar;
   const pathname = usePathname();
   const menus = [
     {
@@ -38,16 +39,20 @@ export default function SidebarAdmin() {
     },
   ];
   return (
-    <nav className="h-screen rounded-r-xl bg-gradient-to-tr from-lime-400 to-lime-300 w-1/5  sticky top-0 divide-y divide-white ">
-      <div className="flex w-full items-center m-5 ">
-        <img src="../logo/icon-512x512.png" alt="" className="h-[60px]" />
-        <h1 className="text-3xl font-bold ps-5 text-wrap">
+    <nav
+      className={` fixed transition transform duration-300  sm:inline h-screen rounded-r-xl bg-gradient-to-tr from-lime-400 to-lime-300  ${
+        show ? 'w-1/5' : ' -translate-x-3/4'
+      }   divide-y divide-white z-10`}
+    >
+      <div className={` flex w-full items-center mx-2 my-5 p-5`}>
+        <img src="../logo/icon-512x512.png" alt="" className={`h-[60px]`} />
+        <h1 className={`text-3xl font-bold ps-5 text-wrap`}>
           <span className="text-lime-600">m</span>
           <span className="text-white">LITE</span>
         </h1>
       </div>
 
-      <ul className="pt-5 ps-5 ">
+      <ul className={`pt-5 `}>
         {menus.map((menu, i) => {
           return (
             <Link
@@ -60,7 +65,7 @@ export default function SidebarAdmin() {
               }  rounded-s-xl`}
             >
               <img src={menu.src} alt={menu.name} className="h-[30px] w-[30px]" />
-              <li className="cursor-pointer  ps-5">{menu.name}</li>
+              <li className={`cursor-pointer  ps-5 `}>{menu.name}</li>
             </Link>
           );
         })}

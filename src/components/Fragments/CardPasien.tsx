@@ -2,7 +2,7 @@ import { FaCheck, FaEllipsisV, FaMars, FaVenus } from 'react-icons/fa';
 
 export default function Card({ ...props }) {
   return (
-    <div className="h-auto w-auto text-xs rounded-xl text-sm ring-1 ring-lime-300">
+    <div className="h-auto w-auto text-xs rounded-xl text-sm md:text-base ring-1 ring-lime-300">
       <div className="w-full bg-lime-200 rounded-t-xl p-2 flex items-center justify-between">
         <div className="text-gray-800">
           <h1>Poliklinik Jantung</h1>
@@ -19,9 +19,11 @@ export default function Card({ ...props }) {
             <FaEllipsisV {...props} />
           </div>
         </div>
-        <div className="flex  justify-center">
-          <img src="../images/img-person.jpg" alt="" className={`rounded-full w-28 h-28 `} />
-          <FaMars className="text-blue-400 font-bold " />
+        <div className=" flex  justify-center">
+          <div className="relative ">
+            <img src="../images/img-person.jpg" alt="" className={`rounded-full w-28 h-28 `} />
+            <FaMars className="text-blue-400 font-bold absolute bottom-4 right-4 bg-white rounded-full " />
+          </div>
         </div>
         <div className="text-center  py-3 text-wrap ">
           <h1 className="font-bold p-2 h-auto">Adri candra saputra mangidi</h1>

@@ -9,11 +9,56 @@ import { FaAddressBook, FaPlus } from 'react-icons/fa';
 import { TfiReload } from 'react-icons/tfi';
 import Button from '@/components/Elements/Button';
 import CardRiwayat from '@/components/Fragments/CardRiwayat';
+import { useState } from 'react';
+import Table from '@/components/Fragments/Table';
 export default function RawatJalanPage() {
+  const headers = [
+    'No. RM',
+    'Nama Pasien',
+    'Nomor Rawat',
+    'Bangsal/Kamar',
+    'Dokter',
+    'Penjamin',
+    'Nomor Asuransi',
+    'Tanggal Masuk',
+    'Tanggal Keluar',
+    'Status Bayar',
+    'Status',
+  ];
+  const values = [
+    '023293223',
+    'Adri Candra',
+    '2024/02/22/000001',
+    'Anggrek - ANG01',
+    'dr. FAUZAN AZHARI MARZUKI, Sp. KK - D002',
+    'BPJS',
+    '-',
+    '2024-06-03 07:20:30',
+    '0000-00-00 00:00:00',
+    'Belum Bayar',
+    '-',
+    '-',
+    '-',
+    '-',
+    '-',
+  ];
+
+  const [viewGrid, setViewGrid] = useState(true);
+  const [viewTable, setViewTable] = useState(false);
+
+  const ubahView = (e: any) => {
+    if (e.target.value == 'list') {
+      setViewGrid(false);
+      setViewTable(true);
+    } else {
+      setViewGrid(true);
+      setViewTable(false);
+    }
+  };
   return (
     <div className="p-5 ">
       <div className="flex">
-        <div className="w-2/3 border-4 border-blue-300 me-5 bg-igd h-80 bg-contain bg-no-repeat bg-left bg-[#bee8f6] bg-center shadow-lg rounded-2xl  ">
+        <div className="w-2/3 border-2 border-blue-300 me-5 bg-igd h-80 bg-contain bg-no-repeat bg-left bg-[#bee8f6] bg-center shadow-md rounded-xl  ">
           <div className="h-full  w-full flex items-center justify-center ">
             <div className="w-1/2"></div>
             <div className="w-1/2 ps-5 font-bold text-center  ">
@@ -45,7 +90,7 @@ export default function RawatJalanPage() {
           ))}
         </div>
       </div>
-      <div className="flex w-full h-auto flex-col  bg-white mt-5 rounded-2xl shadow-lg p-5">
+      <div className="flex w-full h-auto flex-col  bg-white mt-5 rounded-xl shadow-md p-5">
         <h1 className="text-xl font-bold ">
           Pasien <span className="font-normal text-[16px]">(546 total)</span>
         </h1>
@@ -53,10 +98,11 @@ export default function RawatJalanPage() {
           <div>
             <select
               id="view"
-              className=" rounded-md me-3 border-0 bg-transparent p-2 pr-7  focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+              className=" rounded-full me-3 border-2 bg-transparent p-1 pr-7 focus:ring-2 focus:outline-none focus:ring-2 focus:ring-blue-600 sm:text-sm"
+              onChange={ubahView}
             >
-              <option>Grid View</option>
-              <option>List View</option>
+              <option value="grid">Grid View</option>
+              <option value="list">List View</option>
             </select>
             <FormControlLabel control={<Switch defaultChecked />} label="(Pasien Aktif)" />
           </div>
@@ -74,12 +120,24 @@ export default function RawatJalanPage() {
         </div>
 
         <div className="w-full h-full flex ">
-          <div className=" border-t-4 border-blue-300 overflow-auto max-h-[560px] grid grid-cols-2 sm:grid-cols-4 gap-4 justify-between rounded-2xl p-5 ring-2 mt-5 mx-2 ring-lime-100">
-            {Array.from({ length: 19 }).map((_, index) => {
-              return <CardPasien key={index} />;
-            })}
-          </div>
-          <div className="w-1/4 max-h-[560px] border-2 overflow-auto  mt-5 rounded-2xl px-3">
+          {viewTable && (
+            <div
+              className={` border-t-4 border-blue-300 w-full max-h-[560px]  overflow-auto rounded-lg ring-2 mt-5 mx-2 ring-lime-100`}
+            >
+              <Table headers={headers} values={values} />
+            </div>
+          )}
+
+          {viewGrid && (
+            <div
+              className={` border-t-4 border-blue-300 grid grid-cols-2 max-h-[560px]  overflow-auto sm:grid-cols-4 gap-4 justify-between rounded-lg p-5 ring-2 mt-5 mx-2 ring-lime-100`}
+            >
+              {Array.from({ length: 9 }).map((_, index) => {
+                return <CardPasien key={index} />;
+              })}
+            </div>
+          )}
+          <div className="w-1/4 max-h-[560px] border-2 overflow-auto  mt-5 rounded-lg px-3">
             <div className="sticky top-0 bg-white py-3 border-b-4 border-red-300">
               <div className="pb-2 flex justify-between  items-center">
                 <h1>Riwayat Registrasi</h1>
