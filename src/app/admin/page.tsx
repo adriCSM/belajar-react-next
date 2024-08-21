@@ -1,3 +1,5 @@
+'use client';
+import { useState } from 'react';
 import { FaMinus, FaExpand, FaCalendar, FaBed, FaList, FaHospitalAlt } from 'react-icons/fa';
 
 export default function AdminPage() {
@@ -31,12 +33,20 @@ export default function AdminPage() {
       textColor: 'text-orange-300',
     },
   ];
+
+  const [show, setShow] = useState(false);
   return (
     <div className="w-full  bg-white mt-5 pb-10 pt-3  rounded-2xl">
       <h1 className="text-gray-400 ps-5 pt-5">Informasi Kamar</h1>
       <div className="flex justify-end px-5 text-gray-400 -mt-4 pb-5">
-        <FaExpand className="me-3 h-4 w-4" />
-        <FaMinus className="me-3 h-4 w-4" />
+        <FaExpand
+          className="me-5 h-4 w-4 text-blue-500 cursor-pointer hover:scale-125"
+          onClick={() => setShow(true)}
+        />
+        <FaMinus
+          className="me-5 h-4 w-4 text-red-400 cursor-pointer hover:scale-125"
+          onClick={() => setShow(false)}
+        />
       </div>
       <div className="grid grid-cols-4 gap-4 p-5 ">
         {info.map((item, i) => {
@@ -44,14 +54,17 @@ export default function AdminPage() {
           return (
             <div key={i} className="ring-2 ring-gray-100  rounded-xl shadow-lg ">
               <div className="flex justify-between p-3">
-                <Icon className={`${item.color} text-white h-16 w-16 rounded-xl p-3  -mt-7 `} />
-                <div>
-                  <h1 className={`${item.textColor} text-xl font-bold`}>{item.jenis}</h1>
-                  <h1 className="text-end text-gray-400">{item.jumlah}</h1>
+                <Icon
+                  className={`${item.color} text-white ${
+                    show ? 'h-16 w-16 -mt-7  ' : 'h-32 w-32 m-auto'
+                  } rounded-xl p-3   transition-m  duration-700 `}
+                />
+                <div className={`${show ? '' : 'hidden'}`}>
+                  <h1 className={`${item.textColor} md:text-3xl font-bold `}>{item.jenis}</h1>
+                  <h1 className="text-end md:text-2xl ">{item.jumlah}</h1>
                 </div>
               </div>
-
-              <FaCalendar key={i} className={`${item.textColor}  m-5`} />
+              <FaCalendar key={i} className={`${item.textColor}  m-5 ${show ? '' : 'hidden'}`} />
             </div>
           );
         })}

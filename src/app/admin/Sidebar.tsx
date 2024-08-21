@@ -2,10 +2,12 @@
 import { Manuale } from 'next/font/google';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { FaXmark } from 'react-icons/fa6';
 
 export default function SidebarAdmin({ ...props }) {
   const show = props.showSidebar;
   const pathname = usePathname();
+  const handleShow = props.handleShow;
   const menus = [
     {
       name: 'Menu',
@@ -40,9 +42,9 @@ export default function SidebarAdmin({ ...props }) {
   ];
   return (
     <nav
-      className={` fixed transition transform duration-300  sm:inline h-screen rounded-r-xl bg-gradient-to-tr from-lime-400 to-lime-300  ${
-        show ? 'w-1/5' : ' -translate-x-3/4'
-      }   divide-y divide-white z-10`}
+      className={`md:hidden w-screen fixed transition transform duration-300  sm:inline h-full rounded-r-xl bg-gradient-to-tr from-lime-400 to-lime-300  ${
+        show ? 'w-1/5' : ' -translate-x-full'
+      }   divide-y divide-white z-20`}
     >
       <div className={` flex w-full items-center mx-2 my-5 p-5`}>
         <img src="../logo/icon-512x512.png" alt="" className={`h-[60px]`} />
@@ -50,12 +52,17 @@ export default function SidebarAdmin({ ...props }) {
           <span className="text-lime-600">m</span>
           <span className="text-white">LITE</span>
         </h1>
+        <FaXmark
+          className="absolute right-2 top-2 rounded-full bg-gray-200  h-8 w-8 p-2  text-lime-500 text-2xl"
+          onClick={() => handleShow()}
+        />
       </div>
 
       <ul className={`pt-5 `}>
         {menus.map((menu, i) => {
           return (
             <Link
+              onClick={() => handleShow()}
               key={i}
               href={menu.href}
               className={`flex px-3 py-2 items-center transition duration-150 transform   ${

@@ -2,17 +2,17 @@ import Link from 'next/link';
 
 Link;
 export default function Card(props: any) {
-  const { name, href, Icon, i, colorCard, colorText } = props;
+  const { name, href, Icon, i, styleCard, styleText } = props;
   return (
     <Link href={href}>
       <div
         key={i}
-        className={`${colorCard} h-60 items-center flex flex-col  ring-4 shadow-md  rounded-2xl transition transform duration-300 hover:scale-105`}
+        className={`${styleCard} flex flex-col items-center min-h-32  md:h-60  items-center flex flex-col  ring-4 shadow-md  md:rounded-2xl transition transform duration-300 hover:scale-105`}
       >
         <div className=" w-auto h-4/5   m-3 ">
-          <Icon className={`h-full text-7xl text-lime-500 ${colorText}`} />
+          <Icon className={`h-full text-5xl md:text-7xl text-lime-500 ${styleText}`} />
         </div>
-        <h1 className={`text-xl font-bold h-1/5 ${colorText}`}>{name}</h1>
+        <h1 className={`md:text-xl h-full text-center font-bold ${styleText}`}>{name}</h1>
       </div>
     </Link>
   );
