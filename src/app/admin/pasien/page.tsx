@@ -3,7 +3,7 @@ import BasicModal from '@/components/Fragments/Modal';
 import Switch from '@mui/material/Switch';
 import FormRegistrasi from '@/components/Fragments/FormRegistrasi';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import Card from '@/components/Fragments/CardPasien';
+import CardPasien from '@/components/Fragments/CardPasien';
 import { FaPlus, FaList } from 'react-icons/fa';
 import Table from '@/components/Fragments/Table';
 import { useEffect, useState } from 'react';
@@ -53,17 +53,17 @@ export default function PasienPage() {
   };
   return (
     <div className="p-5 w-auto">
-      <div className="flex">
-        <div className="w-2/3 border-2 border-cyan-500  bg-register bg-contain bg-no-repeat bg-[#66cdcc]  h-80  shadow-md rounded-xl me-5  ">
-          <div className="h-full  w-full flex items-center justify-center ">
-            <div className="w-1/2"></div>
-            <div className="w-1/2 ps-12 font-bold text-center text-white ">
-              <p className="text-5xl">Registrasi</p>
+      <div className="flex flex-col md:flex-row">
+        <div className="w-full md:w-2/3 border-2 border-cyan-500  bg-register bg-contain bg-no-repeat bg-[#66cdcc]  h-80  shadow-md rounded-xl me-5  ">
+          <div className="h-full  w-full flex md:items-center items-end justify-center ">
+            <div className="w-1/2 hidden md:block"></div>
+            <div className="w-full md:w-1/2 ps-5 md:ps-12 font-bold text-start  md:text-center text-white ">
+              <p className="text-3xl md:text-5xl">Registrasi</p>
               <p className="text-2xl">Pasien</p>
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4 w-1/3 ">
+        <div className="grid grid-cols-2 gap-4 mt-5 md:mt-0 md:w-1/3 ">
           {Array.from({ length: 4 }).map((_, index) => (
             <div
               key={index}
@@ -89,23 +89,27 @@ export default function PasienPage() {
       </div>
 
       <div className="w-full h-auto bg-white mt-5 rounded-xl shadow-md p-5">
-        <h1 className="text-xl font-bold ">
-          Pasien <span className="font-normal text-[16px]">(546 total)</span>
+        <h1 className="text-md md:text-xl font-bold ">
+          Pasien <span className="font-normal text-sm md:text-md">(546 total)</span>
         </h1>
         <div>
           <div>
             <select
               id="view"
-              className=" rounded-full me-3 border-2 bg-transparent p-1 pr-7 focus:ring-2 focus:outline-none focus:ring-2 focus:ring-blue-600 sm:text-sm"
+              className=" rounded-full me-3 border-2 bg-transparent p-1 pr-7 focus:ring-2 focus:outline-none focus:ring-2 focus:ring-blue-600 text-xs md:text-sm"
               onChange={ubahView}
             >
               <option value="grid">Grid View</option>
               <option value="list">List View</option>
             </select>
-            <FormControlLabel control={<Switch defaultChecked />} label="(Pasien Aktif)" />
+            <FormControlLabel
+              control={<Switch defaultChecked />}
+              label="(Pasien Aktif)"
+              className="text-xs md:text-sm"
+            />
           </div>
 
-          <div className="flex justify-end -mt-3 me-2">
+          <div className="flex justify-end md:-mt-3 me-2">
             <BasicModal
               Form={FormRegistrasi}
               styleButton="bg-blue-500  text-white hover:bg-blue-600"
@@ -126,10 +130,10 @@ export default function PasienPage() {
 
         {viewGrid && (
           <div
-            className={` border-t-4 border-blue-300 grid grid-cols-2 max-h-[560px]  overflow-auto sm:grid-cols-4 gap-4 justify-between rounded-lg p-5 ring-2 mt-5 mx-2 ring-lime-100`}
+            className={` border-t-4 border-blue-300 grid grid-cols-2 max-h-[560px]  overflow-auto md:grid-cols-4 gap-4 justify-between rounded-lg py-2 md:p-5 ring-2 mt-5 md:mx-2 ring-lime-100`}
           >
             {Array.from({ length: 9 }).map((_, index) => {
-              return <Card key={index} />;
+              return <CardPasien key={index} />;
             })}
           </div>
         )}

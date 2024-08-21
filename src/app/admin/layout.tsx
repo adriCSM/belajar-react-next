@@ -15,10 +15,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   return (
     <div className="bg-gray-100 text-gray-600  ">
       <SidebarAdmin showSidebar={sidebar} handleShow={unShow} />
-      <div className={`w-full   `}>
+      <div className={`w-full h-full `}>
         <NavbarAdmin onClick={changeSidebar} showSidebar={sidebar} />
-        <FaRegSun className="rounded-full bg-gray-200  h-12 w-12 p-2 me-5 text-lime-500 text-2xl z-auto absolute bottom-12 right-3 md:hidden" />
         {children}
+
+        <FaRegSun className="rounded-full bg-gray-200  h-12 w-12 p-2 me-5 text-lime-500 text-2xl z-auto fixed bottom-7 right-3 md:hidden" />
       </div>
     </div>
   );

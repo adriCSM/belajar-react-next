@@ -13,7 +13,7 @@ export default function Card({ ...props }) {
       <div>
         <div className=" flex  items-center justify-between p-2">
           <div className="px-2 py-1 text-white bg-blue-500 rounded-lg ">
-            <p className=" text-xs">BPJS</p>
+            <p>BPJS</p>
           </div>
           <div>
             <FaEllipsisV {...props} />
