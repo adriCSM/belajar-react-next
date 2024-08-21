@@ -1,8 +1,8 @@
 import Link from 'next/link';
 export default function Table({ ...props }) {
   return (
-    <div className="max-w-prose">
-      <table className="table-auto   hover:table-fixed divide-y-2 text-center text-sm text-nowrap">
+    <div>
+      <table className="table-auto   hover:table-fixed divide-y-2 text-center text-xs md:text-base text-nowrap">
         <thead className="sticky top-0 ">
           <tr className="">
             {props.headers.map((item: string, index: number) => {

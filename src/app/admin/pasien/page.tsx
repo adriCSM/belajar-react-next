@@ -102,11 +102,7 @@ export default function PasienPage() {
               <option value="grid">Grid View</option>
               <option value="list">List View</option>
             </select>
-            <FormControlLabel
-              control={<Switch defaultChecked />}
-              label="(Pasien Aktif)"
-              className="text-xs md:text-sm"
-            />
+            <FormControlLabel control={<Switch defaultChecked />} label="(Pasien Aktif)" />
           </div>
 
           <div className="flex justify-end md:-mt-3 me-2">

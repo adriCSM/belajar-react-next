@@ -3,7 +3,7 @@ import cardMenu from './cardMenu';
 
 export default function MenuPage() {
   return (
-    <div className="justify-between grid grid-cols-3 md:grid-cols-5 gap-6 mt-4 mx-4 text-gray-500">
+    <div className="justify-between grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-4 mx-4 text-gray-500">
       {cardMenu.map((item, i) => {
         return (
           <Card

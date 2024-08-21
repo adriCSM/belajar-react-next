@@ -56,16 +56,16 @@ export default function RawatInapPage() {
   };
   return (
     <div className="p-5">
-      <div className="flex">
-        <div className="w-2/3 border-2 border-gray-300 me-5 bg-rawat-inap h-80 bg-contain bg-no-repeat bg-left bg-[#00b1d7] bg-center shadow-md rounded-xl  ">
-          <div className="h-full  w-full flex items-center justify-center ">
-            <div className="w-1/2"></div>
+      <div className="flex flex-col md:flex-row">
+        <div className="md:w-2/3 border-2 border-gray-300 md:me-5 bg-rawat-inap h-80 bg-contain bg-no-repeat bg-left bg-[#00b1d7] bg-center shadow-md rounded-xl  ">
+          <div className="h-full  w-full flex items-end md:items-center justify-center ">
+            <div className="w-1/2 hidden md:block"></div>
             <div className="w-1/2 ps-5 font-bold text-center text-white  ">
-              <p className="text-5xl">Rawat Inap</p>
+              <p className="md:text-5xl text-3xl">Rawat Inap</p>
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4 w-1/3">
+        <div className="grid grid-cols-2 gap-4 mt-5 md:mt-0 md:w-1/3">
           {Array.from({ length: 4 }).map((_, index) => (
             <div
               className={`ring-2  text-center rounded-lg p-2 flex flex-col w-full justify-center ${
@@ -89,14 +89,14 @@ export default function RawatInapPage() {
         </div>
       </div>
       <div className="flex w-full h-auto flex-col  bg-white mt-5 rounded-xl shadow-md p-5">
-        <h1 className="text-xl font-bold ">
-          Pasien <span className="font-normal text-[16px]">(546 total)</span>
+        <h1 className="text-md md:text-xl font-bold ">
+          Pasien <span className="font-normal text-sm md:text-md">(546 total)</span>
         </h1>
         <div>
           <div>
             <select
               id="view"
-              className=" rounded-full me-3 border-2 bg-transparent p-1 pr-7 focus:ring-2 focus:outline-none focus:ring-2 focus:ring-blue-600 sm:text-sm"
+              className=" rounded-full me-3 border-2 bg-transparent p-1 pr-7 focus:ring-2 focus:outline-none focus:ring-2 focus:ring-blue-600 text-xs md:text-sm"
               onChange={ubahView}
             >
               <option value="grid">Grid View</option>
@@ -109,10 +109,10 @@ export default function RawatInapPage() {
             />
           </div>
 
-          <div className="flex justify-end -mt-3 me-2 ">
+          <div className="flex justify-end md:-mt-3 me-2 ">
             <BasicModal
               Form={FormRawatInap}
-              styleButton="bg-blue-500  text-white hover:bg-blue-600"
+              styleButton="bg-blue-500  text-white hover:bg-blue-600 text-sm md:text-base"
               buttonText="Pasien Baru"
               styleModal="w-2/3 h-auto p-5"
               Icon={FaPlus}
@@ -121,10 +121,10 @@ export default function RawatInapPage() {
           </div>
         </div>
 
-        <div className="w-full h-full flex ">
+        <div className="w-full h-full md:flex ">
           {viewTable && (
             <div
-              className={` border-t-4 border-blue-300 w-3/4 max-h-[560px]  overflow-auto rounded-lg ring-2 mt-5 mx-2 ring-lime-100`}
+              className={` border-t-4 border-blue-300 md:w-3/4 max-h-[560px]  overflow-auto rounded-lg ring-2 mt-5 mx-2 ring-lime-100`}
             >
               <Table headers={headers} values={values} />
             </div>
@@ -132,7 +132,7 @@ export default function RawatInapPage() {
 
           {viewGrid && (
             <div
-              className={` border-t-4 border-blue-300 grid w-3/4 grid-cols-2 max-h-[560px]  overflow-auto sm:grid-cols-4 gap-4 justify-between rounded-lg p-5 ring-2 mt-5 mx-2 ring-lime-100`}
+              className={` border-t-4 border-blue-300 grid md:w-3/4 grid-cols-2 max-h-[560px]  overflow-auto sm:grid-cols-4 gap-4 justify-between rounded-lg md:p-5 ring-2 mt-5 md:mx-2 ring-lime-100`}
             >
               {Array.from({ length: 9 }).map((_, index) => {
                 return <CardPasien key={index} />;
@@ -140,7 +140,7 @@ export default function RawatInapPage() {
             </div>
           )}
 
-          <div className="w-1/4 max-h-[560px] border-2 overflow-auto  mt-5 rounded-lg px-3">
+          <div className="md:w-1/4 max-h-[560px] border-2 overflow-auto  mt-5 rounded-lg px-3">
             <div className="sticky top-0 bg-white py-3 border-b-4 border-red-300">
               <div className="pb-2 flex justify-between  items-center">
                 <h1>Riwayat Registrasi</h1>
