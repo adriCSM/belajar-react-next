@@ -10,6 +10,7 @@ import { TfiReload } from 'react-icons/tfi';
 import CardRiwayat from '@/components/Fragments/CardRiwayat';
 import { useState } from 'react';
 import Table from '@/components/Fragments/Table';
+import { FaUserGroup } from 'react-icons/fa6';
 export default function RawatInapPage() {
   const headers = [
     'No. RM',
@@ -54,6 +55,28 @@ export default function RawatInapPage() {
       setViewTable(false);
     }
   };
+  const kondisi = [
+    {
+      name: 'Total Pasien',
+      jumlah: '350',
+      icon: FaUserGroup,
+    },
+    {
+      name: 'Menunggu dipanggil',
+      jumlah: '150',
+      icon: FaUserGroup,
+    },
+    {
+      name: 'Dalam Pelayanan',
+      jumlah: '100',
+      icon: FaUserGroup,
+    },
+    {
+      name: 'Selesai',
+      jumlah: '100',
+      icon: FaUserGroup,
+    },
+  ];
   return (
     <div className="p-5">
       <div className="flex flex-col md:flex-row">
@@ -65,24 +88,21 @@ export default function RawatInapPage() {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4 mt-5 md:mt-0 md:w-1/3">
-          {Array.from({ length: 4 }).map((_, index) => (
+        <div className="grid grid-cols-2 gap-4 mt-5 md:mt-0 md:w-1/3 ">
+          {kondisi.map((item, index) => (
             <div
-              className={`ring-2  text-center rounded-lg p-2 flex flex-col w-full justify-center ${
+              key={index}
+              className={`ring-2  text-center rounded-lg p-2 flex flex-col   text-white  w-full justify-center ${
                 index == 0 && 'ring-cyan-500 bg-cyan-400'
               } ${index == 1 && 'ring-blue-500 bg-blue-400'} ${
                 index == 2 && 'ring-red-500 bg-red-400'
               } ${index == 3 && 'ring-purple-500 bg-purple-400'} `}
             >
-              <img
-                src="../images/img-person.jpg"
-                alt=""
-                className="w-12 h-12 rounded-full self-center mb-2"
-              />
+              <item.icon className="w-16 h-16 rounded-full self-center mb-2" />
 
-              <div className="flex flex-col justify-start ps-2   text-white  ">
-                <h1>569</h1>
-                <p>Antrian Pasien</p>
+              <div className="flex flex-col justify-start ps-2">
+                <h1 className="text-xl font-bold">{item.jumlah}</h1>
+                <p className="text-sm">{item.name}</p>
               </div>
             </div>
           ))}
@@ -114,7 +134,7 @@ export default function RawatInapPage() {
               Form={FormRawatInap}
               styleButton="bg-blue-500  text-white hover:bg-blue-600 text-sm md:text-base"
               buttonText="Pasien Baru"
-              styleModal="w-2/3 h-auto p-5"
+              styleModal="w-5/6 md:w-2/3 h-auto p-3  md:p-5"
               Icon={FaPlus}
               title="Registrasi Pasien"
             />
@@ -132,7 +152,7 @@ export default function RawatInapPage() {
 
           {viewGrid && (
             <div
-              className={` border-t-4 border-blue-300 grid md:w-3/4 grid-cols-2 max-h-[560px]  overflow-auto sm:grid-cols-4 gap-4 justify-between rounded-lg md:p-5 ring-2 mt-5 md:mx-2 ring-lime-100`}
+              className={` border-t-4 border-blue-300 grid md:w-3/4 grid-cols-2 max-h-[560px]  overflow-auto md:grid-cols-3 lg:grid-cols-4 gap-4 justify-between rounded-lg md:p-5 ring-2 mt-5 md:mx-2 ring-lime-100`}
             >
               {Array.from({ length: 9 }).map((_, index) => {
                 return <CardPasien key={index} />;
@@ -140,21 +160,21 @@ export default function RawatInapPage() {
             </div>
           )}
 
-          <div className="md:w-1/4 max-h-[560px] border-2 overflow-auto  mt-5 rounded-lg px-3">
-            <div className="sticky top-0 bg-white py-3 border-b-4 border-red-300">
-              <div className="pb-2 flex justify-between  items-center">
+          <div className="md:w-1/4 max-h-[560px] border-2 overflow-auto  mt-5 rounded-lg md:px-1 lg:px-3">
+            <div className="sticky top-0 bg-white py-3 border-b-4 text-sm lg-text-md border-red-300">
+              <div className="pb-2 flex justify-between   items-center">
                 <h1>Riwayat Registrasi</h1>
                 <div className="bg-gray-100 hover:bg-gray-200 text-blue-500 cursor-pointer h-9 w-9 p-2 rounded-full flex">
                   <TfiReload className="animate-spin m-auto" />
                 </div>
               </div>
               <div>
-                <h1 className="font-bold text-center mb-3">Instalasi Rawat Inap</h1>
+                <h1 className="font-bold text-center mb-3">Instalasi Rawat Jalan</h1>
               </div>
             </div>
             <div className="  p-2 rounded-lg   overflow-auto ">
               {Array.from({ length: 15 }).map((_, index) => {
-                return <CardRiwayat />;
+                return <CardRiwayat key={index} />;
               })}
             </div>
           </div>

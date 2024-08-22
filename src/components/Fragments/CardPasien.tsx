@@ -2,7 +2,10 @@ import { FaCheck, FaEllipsisV, FaMars, FaVenus } from 'react-icons/fa';
 
 export default function Card({ ...props }) {
   return (
-    <div className="h-auto w-auto text-xs rounded-xl text-sm md:text-base ring-1 ring-lime-300">
+    <div
+      className="h-auto w-auto text-xs rounded-xl text-xs  lg:text-sm ring-1 ring-lime-300"
+      key={props.key}
+    >
       <div className="w-full bg-lime-200 rounded-t-xl p-2 flex items-center justify-between">
         <div className="text-gray-800">
           <h1>Poliklinik Jantung</h1>

@@ -42,18 +42,20 @@ export default function SidebarAdmin({ ...props }) {
   ];
   return (
     <nav
-      className={`md:hidden w-screen fixed transition transform duration-300  sm:inline h-full rounded-r-xl bg-gradient-to-tr from-lime-400 to-lime-300  ${
-        show ? 'w-1/5' : ' -translate-x-full'
+      className={`lg:hidden w-screen md:w-1/2 fixed transition transform duration-300  sm:inline h-full rounded-r-xl bg-gradient-to-tr from-lime-400 to-lime-300  ${
+        show ? '' : ' -translate-x-full'
       }   divide-y divide-white z-20`}
     >
-      <div className={` flex w-full items-center mx-2 my-5 p-5`}>
-        <img src="../logo/icon-512x512.png" alt="" className={`h-[60px]`} />
-        <h1 className={`text-3xl font-bold ps-5 text-wrap`}>
-          <span className="text-lime-600">m</span>
-          <span className="text-white">LITE</span>
-        </h1>
+      <div className={`  w-full  items-center mx-2 my-5 p-5`}>
+        <Link href={'/admin'} className="flex items-center " onClick={() => handleShow()}>
+          <img src="../logo/icon-512x512.png" alt="" className={`h-[60px]`} />
+          <h1 className={`text-3xl font-bold ps-5 text-wrap`}>
+            <span className="text-lime-600">m</span>
+            <span className="text-white">LITE</span>
+          </h1>
+        </Link>
         <FaXmark
-          className="absolute right-2 top-2 rounded-full bg-gray-200  h-8 w-8 p-2  text-lime-500 text-2xl"
+          className="absolute right-2 top-2 cursor-pointer rounded-full bg-gray-200  h-8 w-8 p-2  text-lime-500 text-2xl"
           onClick={() => handleShow()}
         />
       </div>

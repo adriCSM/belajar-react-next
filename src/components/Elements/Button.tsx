@@ -3,7 +3,7 @@ export default function Button(props: any) {
   return (
     <button
       onClick={handleClick}
-      className={`px-3 py-1 flex items-center justify-between ${styleButton} ring-1 ring-blue-500 rounded-full w-auto  `}
+      className={`${styleButton} px-3 py-1 flex items-center justify-center  ring-1 ring-blue-500 rounded-full w-auto  `}
       disabled={disable}
     >
       {Icon && (

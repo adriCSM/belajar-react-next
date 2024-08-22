@@ -7,6 +7,7 @@ import CardPasien from '@/components/Fragments/CardPasien';
 import { FaPlus, FaList } from 'react-icons/fa';
 import Table from '@/components/Fragments/Table';
 import { useEffect, useState } from 'react';
+import { FaUserGroup } from 'react-icons/fa6';
 export default function PasienPage() {
   const headers = [
     'No. RM',
@@ -51,20 +52,43 @@ export default function PasienPage() {
       setViewTable(false);
     }
   };
+
+  const kondisi = [
+    {
+      name: 'Total Pasien',
+      jumlah: '350',
+      icon: FaUserGroup,
+    },
+    {
+      name: 'Menunggu dipanggil',
+      jumlah: '150',
+      icon: FaUserGroup,
+    },
+    {
+      name: 'Dalam Pelayanan',
+      jumlah: '100',
+      icon: FaUserGroup,
+    },
+    {
+      name: 'Selesai',
+      jumlah: '100',
+      icon: FaUserGroup,
+    },
+  ];
   return (
     <div className="p-5 w-auto">
       <div className="flex flex-col md:flex-row">
         <div className="w-full md:w-2/3 border-2 border-cyan-500  bg-register bg-contain bg-no-repeat bg-[#66cdcc]  h-80  shadow-md rounded-xl me-5  ">
-          <div className="h-full  w-full flex md:items-center items-end justify-center ">
-            <div className="w-1/2 hidden md:block"></div>
-            <div className="w-full md:w-1/2 ps-5 md:ps-12 font-bold text-start  md:text-center text-white ">
-              <p className="text-3xl md:text-5xl">Registrasi</p>
+          <div className="h-full  w-full flex lg:items-center items-end  lg:justify-center ">
+            <div className="w-1/2 hidden lg:block"></div>
+            <div className="w-full lg:w-1/2 ps-5 lg:ps-12 font-bold text-start  lg:text-center text-white md:text-gray-500 lg:text-white">
+              <p className="text-3xl lg:text-5xl">Registrasi</p>
               <p className="text-2xl">Pasien</p>
             </div>
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4 mt-5 md:mt-0 md:w-1/3 ">
-          {Array.from({ length: 4 }).map((_, index) => (
+          {kondisi.map((item, index) => (
             <div
               key={index}
               className={`ring-2  text-center rounded-lg p-2 flex flex-col   text-white  w-full justify-center ${
@@ -73,15 +97,11 @@ export default function PasienPage() {
                 index == 2 && 'ring-red-500 bg-red-400'
               } ${index == 3 && 'ring-purple-500 bg-purple-400'} `}
             >
-              <img
-                src="../images/img-person.jpg"
-                alt=""
-                className="w-12 h-12 rounded-full self-center mb-2"
-              />
+              <item.icon className="w-16 h-16 rounded-full self-center mb-2" />
 
               <div className="flex flex-col justify-start ps-2">
-                <h1>569</h1>
-                <p>Antrian Pasien</p>
+                <h1 className="text-xl font-bold">{item.jumlah}</h1>
+                <p className="text-sm">{item.name}</p>
               </div>
             </div>
           ))}
@@ -95,7 +115,6 @@ export default function PasienPage() {
         <div>
           <div>
             <select
-              id="view"
               className=" rounded-full me-3 border-2 bg-transparent p-1 pr-7 focus:ring-2 focus:outline-none focus:ring-2 focus:ring-blue-600 text-xs md:text-sm"
               onChange={ubahView}
             >
@@ -110,29 +129,31 @@ export default function PasienPage() {
               Form={FormRegistrasi}
               styleButton="bg-blue-500  text-white hover:bg-blue-600"
               buttonText="Pasien Baru"
-              styleModal="w-4/5 sm:w-2/3 h-auto p-5"
+              styleModal="w-5/6 md:w-4/5 sm:w-2/3 h-auto p-3 md:p-5"
               Icon={FaPlus}
               title="Registrasi Pasien Baru"
             />
           </div>
         </div>
-        {viewTable && (
-          <div
-            className={` border-t-4 border-blue-300 max-h-[560px]  overflow-auto rounded-lg ring-2 mt-5 mx-2 ring-lime-100`}
-          >
-            <Table headers={headers} values={values} />
-          </div>
-        )}
+        <div className="transition-width duration-300">
+          {viewTable && (
+            <div
+              className={` border-t-4 border-blue-300 max-h-[560px]   overflow-auto rounded-lg ring-2 mt-5 mx-2 ring-lime-100`}
+            >
+              <Table headers={headers} values={values} />
+            </div>
+          )}
 
-        {viewGrid && (
-          <div
-            className={` border-t-4 border-blue-300 grid grid-cols-2 max-h-[560px]  overflow-auto md:grid-cols-4 gap-4 justify-between rounded-lg py-2 md:p-5 ring-2 mt-5 md:mx-2 ring-lime-100`}
-          >
-            {Array.from({ length: 9 }).map((_, index) => {
-              return <CardPasien key={index} />;
-            })}
-          </div>
-        )}
+          {viewGrid && (
+            <div
+              className={` border-t-4 border-blue-300 grid grid-cols-2 max-h-[560px]  overflow-auto md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 justify-between rounded-lg py-2 md:p-5 ring-2 mt-5 md:mx-2 ring-lime-100 transition-width duration-300"`}
+            >
+              {Array.from({ length: 9 }).map((_, index) => {
+                return <CardPasien key={index} />;
+              })}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

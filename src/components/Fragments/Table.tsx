@@ -2,9 +2,9 @@ import Link from 'next/link';
 export default function Table({ ...props }) {
   return (
     <div>
-      <table className="table-auto   hover:table-fixed divide-y-2 text-center text-xs md:text-base text-nowrap">
+      <table className="table-auto   hover:table-fixed divide-y-2 text-center text-xs md:text-sm lg:text-md text-nowrap">
         <thead className="sticky top-0 ">
-          <tr className="">
+          <tr className="odd:bg-white even:bg-slate-50">
             {props.headers.map((item: string, index: number) => {
               return (
                 <th className="bg-lime-100 p-2" key={index}>
@@ -16,7 +16,7 @@ export default function Table({ ...props }) {
         </thead>
         <tbody className="divide-y ">
           {props.values.map((item: string, index: number) => (
-            <tr key={index} className={`${index % 2 === 0 ? 'bg-white' : 'bg-lime-50'}`}>
+            <tr key={index} className={`odd:bg-white even:bg-lime-50`}>
               {props.headers.map((header: string, i: number) => (
                 <td key={i} className="p-3 ">
                   {header == 'Nama Pasien' && (

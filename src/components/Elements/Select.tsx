@@ -1,17 +1,24 @@
-import * as React from 'react';
+import { useState } from 'react';
 
 export default function Select({ ...props }) {
   const { list } = props;
+  const [valueSelect, setValueSelect] = useState('pilih');
+  const handleChange = (event: any) => {
+    setValueSelect(event.target.value);
+    console.log(event.target.value);
+  };
   return (
     <div className={`flex flex-col  ${props.styleParent}`}>
       <label className="py-2" htmlFor={props.id}>
         {props.label}
       </label>
       <select
+        onChange={handleChange}
+        value={valueSelect}
         id={props.id}
-        className="rounded-2xl outline outline-2 outline-gray-300 text-sm p-2 pr-5 focus:outline-lime-300 "
+        className="rounded-2xl outline w-auto outline-2 outline-gray-300 text-sm p-2 pr-5 focus:outline-lime-300 "
       >
-        <option value="" disabled selected>
+        <option value={'pilih'} disabled selected>
           Pilih
         </option>
         {list.map((item: string, index: number) => {

@@ -36,38 +36,40 @@ export default function AdminPage() {
 
   const [show, setShow] = useState(false);
   return (
-    <div className="w-full  bg-white mt-5 pb-10 pt-3  rounded-2xl">
-      <h1 className="text-gray-400 ps-5 pt-5">Informasi Kamar</h1>
-      <div className="flex justify-end px-5 text-gray-400 -mt-4 pb-5">
-        <FaExpand
-          className="me-5 h-4 w-4 text-blue-500 cursor-pointer hover:scale-125"
-          onClick={() => setShow(true)}
-        />
-        <FaMinus
-          className="me-5 h-4 w-4 text-red-400 cursor-pointer hover:scale-125"
-          onClick={() => setShow(false)}
-        />
-      </div>
-      <div className="grid grid-cols-4 gap-4 p-5 ">
-        {info.map((item, i) => {
-          const Icon = item.icon;
-          return (
-            <div key={i} className="ring-2 ring-gray-100  rounded-xl shadow-lg ">
-              <div className="flex justify-between p-3">
-                <Icon
-                  className={`${item.color} text-white ${
-                    show ? 'h-16 w-16 -mt-7  ' : 'h-32 w-32 m-auto'
-                  } rounded-xl p-3   transition-m  duration-700 `}
-                />
-                <div className={`${show ? '' : 'hidden'}`}>
-                  <h1 className={`${item.textColor} md:text-3xl font-bold `}>{item.jenis}</h1>
-                  <h1 className="text-end md:text-2xl ">{item.jumlah}</h1>
+    <div className="min-h-svh">
+      <div className="w-full h-auto  bg-white my-5 pb-10 pt-3 px-2  rounded-2xl">
+        <h1 className="text-gray-400 ps-5 pt-5">Informasi Kamar</h1>
+        <div className="flex justify-end px-5 text-gray-400 -mt-4 pb-5">
+          <FaExpand
+            className="me-5 h-4 w-4 text-blue-500 cursor-pointer hover:scale-125"
+            onClick={() => setShow(true)}
+          />
+          <FaMinus
+            className="me-5 h-4 w-4 text-red-400 cursor-pointer hover:scale-125"
+            onClick={() => setShow(false)}
+          />
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-5 ">
+          {info.map((item, i) => {
+            const Icon = item.icon;
+            return (
+              <div key={i} className="ring-2 ring-gray-100  rounded-xl shadow-lg ">
+                <div className="flex justify-between p-3">
+                  <Icon
+                    className={`${item.color} text-white ${
+                      show ? 'h-16 w-16 -mt-7  ' : 'h-20 w-20   md:h-32 md:w-32 m-auto'
+                    } rounded-xl p-3   transition-m  duration-700 `}
+                  />
+                  <div className={`${show ? 'text-end' : 'hidden'}`}>
+                    <h1 className={`${item.textColor} md:text-3xl font-bold `}>{item.jenis}</h1>
+                    <h1 className="text-end md:text-2xl ">{item.jumlah}</h1>
+                  </div>
                 </div>
+                <FaCalendar key={i} className={`${item.textColor}  m-5 ${show ? '' : 'hidden'}`} />
               </div>
-              <FaCalendar key={i} className={`${item.textColor}  m-5 ${show ? '' : 'hidden'}`} />
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </div>
   );

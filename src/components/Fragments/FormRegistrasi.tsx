@@ -47,10 +47,10 @@ export default function FormRegistrasi({ ...props }) {
   const [lahir, setLahir] = useState(`${yyyy}-${mm}-${dd}`);
 
   return (
-    <div className=" m-2 sm:m-3 ">
-      <h1 className="text-2xl font-bold pb-4">{props.title}</h1>
-      <div className="flex flex-col sm:flex-row text-sm w-full justify-between ">
-        <div className="grid grid-cols-2 gap-x-4 p-5 text-gray-600  max-h-[500px] mx-5 overflow-auto border-t-4 border-blue-300">
+    <div className="  sm:m-3 ">
+      <h1 className="md:text-2xl text-lg font-bold pb-4">{props.title}</h1>
+      <div className="flex flex-col sm:flex-row text-sm w-full justify-between max-h-[70vh]  overflow-auto ">
+        <div className="grid grid-cols-2 gap-x-4 md:p-5 text-gray-600  md:max-h-[500px] mx-5 md:overflow-auto border-t-4 border-blue-300">
           <Input type="text" id="nomorRm" label="Nomor RM" placeholder="Nomor RM" required={true} />
           <Input
             type="date"
@@ -66,7 +66,12 @@ export default function FormRegistrasi({ ...props }) {
             placeholder="Nama Lengkap"
             styleParent="col-span-2 w-full"
           />
-          <Select label="Jenis Kelamin" id="nama" list={listGender} />
+          <Select
+            label="Jenis Kelamin"
+            id="nama"
+            list={listGender}
+            onChange={(e: any) => props.onChange()}
+          />
           <Input
             type="date"
             id="tgllahir"
@@ -75,16 +80,47 @@ export default function FormRegistrasi({ ...props }) {
             onChange={(e: any) => setLahir(e.target.value)}
           />
           <Input type="text" id="namaIbu" label="Nama Ibu" placeholder="Nama Ibu" />
-          <Select label="Darah" id="darah " list={listGolDarah} />
-          <Select label="Status Nikah" id="status " list={listStatus} />
-          <Select label="Agama" id="agama " list={listAgama} />
+          <Select
+            label="Darah"
+            id="darah "
+            list={listGolDarah}
+            onChange={(e: any) => props.onChange()}
+          />
+          <Select
+            label="Status Nikah"
+            id="status "
+            list={listStatus}
+            onChange={(e: any) => props.onChange()}
+          />
+          <Select
+            label="Agama"
+            id="agama "
+            list={listAgama}
+            onChange={(e: any) => props.onChange()}
+          />
           <Input type="text" id="pekerjaan" label="Pekerjaan" placeholder="Pekerjaan" />
-          <Select label="Pendidikan" id="pendidikan " list={listPendidikan} />
-          <Select label="Penjamin" id="jaminan " list={jaminan} />
+          <Select
+            label="Pendidikan"
+            id="pendidikan "
+            list={listPendidikan}
+            onChange={(e: any) => props.onChange()}
+          />
+          <Select
+            label="Penjamin"
+            id="jaminan "
+            list={jaminan}
+            onChange={(e: any) => props.onChange()}
+          />
           <Input type="text" id="kartu" label="No. Kartu" placeholder="Nomor Kartu" />
         </div>
-        <div className="grid grid-cols-2 gap-x-4 p-5 text-gray-600 max-h-[500px] overflow-auto mx-5 border-t-4 border-red-300 ">
-          <Select label="Keluarga" id="keluarga " list={keluarga} styleParent=" pb-5" />
+        <div className="grid grid-cols-2 gap-x-4 md:p-5 text-gray-600 md:max-h-[500px] md:overflow-auto mx-5 md:border-t-4 border-red-300 ">
+          <Select
+            label="Keluarga"
+            id="keluarga "
+            list={keluarga}
+            styleParent=" pb-5"
+            onChange={(e: any) => props.onChange()}
+          />
           <Input type="text" id="nama" label="Nama" placeholder="Nama Keluarga" />
           <Input
             type="text"
