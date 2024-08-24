@@ -8,18 +8,21 @@ export default function Select({ ...props }) {
     console.log(event.target.value);
   };
   return (
-    <div className={`flex flex-col  ${props.styleParent}`}>
-      <label className="py-2" htmlFor={props.id}>
-        {props.label}
-      </label>
+    <div className={`flex  ${props.styleParent} flex-col`}>
+      {props.label && (
+        <label className="py-2" htmlFor={props.id}>
+          {props.label}
+        </label>
+      )}
+
       <select
         onChange={handleChange}
         value={valueSelect}
         id={props.id}
-        className="rounded-2xl outline w-auto outline-2 outline-gray-300 text-sm p-2 pr-5 focus:outline-lime-300 "
+        className="rounded-2xl outline w-auto outline-2 outline-gray-300 text-sm px-2 py-1 pr-5 focus:outline-lime-300 "
       >
         <option value={'pilih'} disabled selected>
-          Pilih
+          {props.placeholder}
         </option>
         {list.map((item: string, index: number) => {
           return (

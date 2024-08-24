@@ -82,7 +82,7 @@ export default function RawatJalanPage() {
     console.log('adri');
   };
   return (
-    <div className="p-5">
+    <div className="p-5  container mx-auto">
       <div className="md:flex ">
         <div className="md:w-2/3 border-2 border-gray-300 md:me-5 bg-rawat-jalan h-80 bg-contain bg-no-repeat bg-left bg-[#fcf8ec] bg-center shadow-md rounded-xl  ">
           <div className="h-full  w-full flex items-end md:items-center justify-center ">
@@ -160,7 +160,7 @@ export default function RawatJalanPage() {
               className={` border-t-4 border-blue-300 grid md:w-3/4 grid-cols-2 max-h-[560px]  overflow-auto md:grid-cols-3 lg:grid-cols-4 gap-4 justify-between rounded-lg md:p-5 ring-2 mt-5 md:mx-2 ring-lime-100`}
             >
               {Array.from({ length: 9 }).map((_, index) => {
-                return <CardPasien key={`ralan${index}`} path="/admin/rawat_jalan/123" />;
+                return <CardPasien key={`ralan${index}`} path="/admin/pasien/ralan" />;
               })}
             </div>
           )}

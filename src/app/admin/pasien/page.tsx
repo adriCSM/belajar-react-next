@@ -81,7 +81,7 @@ export default function PasienPage() {
     console.log('adri');
   };
   return (
-    <div className="p-5 w-auto">
+    <div className="p-5 w-auto container mx-auto">
       <div className="flex flex-col md:flex-row">
         <div className="w-full md:w-2/3 border-2 border-cyan-500  bg-register bg-contain bg-no-repeat bg-[#66cdcc]  h-80  shadow-md rounded-xl me-5  ">
           <div className="h-full  w-full flex lg:items-center items-end  lg:justify-center ">
