@@ -3,7 +3,7 @@ import Button from '@/components/Elements/Button';
 import Input from '@/components/Elements/Input';
 import { FaLock, FaUser } from 'react-icons/fa6';
 
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 export default function Home() {
   const router = useRouter();
   const login = () => {
@@ -38,7 +38,7 @@ export default function Home() {
             />
           </div>
           <Button
-            styleButton="my-5 w-full  bg-lime-300 shadow-md ring-0"
+            styleButton="my-5 w-full  bg-lime-300 shadow-md ring-lime-300"
             handleClick={login}
             text="Login"
             disable={false}

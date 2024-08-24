@@ -10,7 +10,9 @@ export default function Card(props: any) {
         className={`${styleCard} flex flex-col items-center min-h-32 justify-around md:h-40 lg:h-60  items-center flex flex-col  ring-4 shadow-md rounded-md md:rounded-2xl transition transform duration-300 hover:scale-105`}
       >
         <div className=" w-auto h-4/5  m-3 flex ">
-          <Icon className={`text-5xl md:text-7xl self-center ${styleText}`} />
+          <Icon
+            className={`text-5xl md:text-7xl self-center hover:scale-125 transition scale duration-300 ${styleText}`}
+          />
         </div>
         <h1 className={`md:text-xl h-1/5 text-center font-bold ${styleText}`}>{name}</h1>
       </div>

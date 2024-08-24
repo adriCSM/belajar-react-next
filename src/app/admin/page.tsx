@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { FaMinus, FaExpand, FaCalendar, FaBed, FaList, FaHospitalAlt } from 'react-icons/fa';
+import { FaCompress } from 'react-icons/fa6';
 
 export default function AdminPage() {
   const info = [
@@ -39,15 +40,18 @@ export default function AdminPage() {
     <div className="min-h-svh">
       <div className="w-full h-auto  bg-white my-5 pb-10 pt-3 px-2  rounded-2xl">
         <h1 className="text-gray-400 ps-5 pt-5">Informasi Kamar</h1>
-        <div className="flex justify-end px-5 text-gray-400 -mt-4 pb-5">
-          <FaExpand
-            className="me-5 h-4 w-4 text-blue-500 cursor-pointer hover:scale-125"
-            onClick={() => setShow(true)}
-          />
-          <FaMinus
-            className="me-5 h-4 w-4 text-red-400 cursor-pointer hover:scale-125"
-            onClick={() => setShow(false)}
-          />
+        <div className="flex justify-end px-5 text-gray-400 -mt-4 pb-5 transition-change duration-700">
+          {!show ? (
+            <FaExpand
+              className="me-5 h-4 w-4 text-blue-500 cursor-pointer hover:scale-125"
+              onClick={() => setShow(true)}
+            />
+          ) : (
+            <FaCompress
+              className="me-5 h-4 w-4 text-blue-500 cursor-pointer hover:scale-125"
+              onClick={() => setShow(false)}
+            />
+          )}
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-5 ">
           {info.map((item, i) => {

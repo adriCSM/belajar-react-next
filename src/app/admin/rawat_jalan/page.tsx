@@ -11,6 +11,7 @@ import CardRiwayat from '@/components/Fragments/CardRiwayat';
 import Table from '@/components/Fragments/Table';
 import { useState } from 'react';
 import { FaUserGroup } from 'react-icons/fa6';
+import Search from '@/components/Elements/Search';
 export default function RawatJalanPage() {
   const headers = [
     'No. RM',
@@ -77,6 +78,9 @@ export default function RawatJalanPage() {
       icon: FaUserGroup,
     },
   ];
+  const search = () => {
+    console.log('adri');
+  };
   return (
     <div className="p-5">
       <div className="md:flex ">
@@ -129,7 +133,8 @@ export default function RawatJalanPage() {
             />
           </div>
 
-          <div className="flex justify-end md:-mt-3 me-2 ">
+          <div className="flex flex-col md:flex-row justify-end md:-mt-3 me-2 mt-2">
+            <Search search={search} />
             <BasicModal
               Form={FormRawatJalan}
               styleButton="bg-blue-500  text-white hover:bg-blue-600 text-sm md:text-base"
@@ -155,7 +160,7 @@ export default function RawatJalanPage() {
               className={` border-t-4 border-blue-300 grid md:w-3/4 grid-cols-2 max-h-[560px]  overflow-auto md:grid-cols-3 lg:grid-cols-4 gap-4 justify-between rounded-lg md:p-5 ring-2 mt-5 md:mx-2 ring-lime-100`}
             >
               {Array.from({ length: 9 }).map((_, index) => {
-                return <CardPasien key={`ralan${index}`} />;
+                return <CardPasien key={`ralan${index}`} path="/admin/rawat_jalan/123" />;
               })}
             </div>
           )}

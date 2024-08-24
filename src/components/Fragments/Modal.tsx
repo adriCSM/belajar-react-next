@@ -12,7 +12,7 @@ export default function BasicModal(props: any) {
   const [btnDesible, setBtnDesible] = useState(true);
 
   return (
-    <div>
+    <div className="flex justify-end md:block">
       <Button handleClick={handleOpen} styleButton={styleButton} text={buttonText} Icon={Icon} />
       <Modal open={open} onClose={handleClose}>
         <Box

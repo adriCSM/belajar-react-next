@@ -8,6 +8,7 @@ import { FaPlus, FaList } from 'react-icons/fa';
 import Table from '@/components/Fragments/Table';
 import { useEffect, useState } from 'react';
 import { FaUserGroup } from 'react-icons/fa6';
+import Search from '@/components/Elements/Search';
 export default function PasienPage() {
   const headers = [
     'No. RM',
@@ -75,6 +76,10 @@ export default function PasienPage() {
       icon: FaUserGroup,
     },
   ];
+
+  const search = () => {
+    console.log('adri');
+  };
   return (
     <div className="p-5 w-auto">
       <div className="flex flex-col md:flex-row">
@@ -124,10 +129,11 @@ export default function PasienPage() {
             <FormControlLabel control={<Switch defaultChecked />} label="(Pasien Aktif)" />
           </div>
 
-          <div className="flex justify-end md:-mt-3 me-2">
+          <div className="flex flex-col md:flex-row justify-end md:-mt-3 me-2 mt-2">
+            <Search search={search} />
             <BasicModal
               Form={FormRegistrasi}
-              styleButton="bg-blue-500  text-white hover:bg-blue-600"
+              styleButton="bg-blue-500  text-white hover:bg-blue-600 "
               buttonText="Pasien Baru"
               styleModal="w-5/6 md:w-4/5 sm:w-2/3 h-auto p-3 md:p-5"
               Icon={FaPlus}
@@ -149,7 +155,7 @@ export default function PasienPage() {
               className={` border-t-4 border-blue-300 grid grid-cols-2 max-h-[560px]  overflow-auto md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 justify-between rounded-lg py-2 md:p-5 ring-2 mt-5 md:mx-2 ring-lime-100 transition-width duration-300"`}
             >
               {Array.from({ length: 9 }).map((_, index) => {
-                return <CardPasien key={index} />;
+                return <CardPasien key={index} path="/admin/pasien/detail" />;
               })}
             </div>
           )}

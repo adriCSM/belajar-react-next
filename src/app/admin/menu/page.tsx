@@ -1,4 +1,4 @@
-import Card from './components/card';
+import CardMenu from '../../../components/Fragments/CardMenu';
 import listMenu from './listMenu';
 
 export default function MenuPage() {
@@ -6,7 +6,7 @@ export default function MenuPage() {
     <div className="justify-between grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-4 mx-4 text-gray-500">
       {listMenu.map((item, i) => {
         return (
-          <Card
+          <CardMenu
             key={i}
             name={item.name}
             href={item.href}

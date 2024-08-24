@@ -1,4 +1,6 @@
 import { FaCheck, FaEllipsisV, FaMars, FaVenus } from 'react-icons/fa';
+import AccountMenu from '../Elements/AccountMenu';
+import DetailMenu from '../Elements/DetailsMenu';
 
 export default function Card({ ...props }) {
   return (
@@ -7,7 +9,7 @@ export default function Card({ ...props }) {
       key={props.key}
     >
       <div className="w-full bg-lime-200 rounded-t-xl p-2 flex items-center justify-between">
-        <div className="text-gray-800">
+        <div className="text-gray-800  ">
           <h1>Poliklinik Jantung</h1>
           <p>Jum, 2 feb 24 18:00</p>
         </div>
@@ -19,7 +21,7 @@ export default function Card({ ...props }) {
             <p>BPJS</p>
           </div>
           <div>
-            <FaEllipsisV {...props} />
+            <DetailMenu icon={FaEllipsisV} path={props.path} />
           </div>
         </div>
         <div className=" flex  justify-center">

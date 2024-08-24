@@ -7,7 +7,7 @@ export default function NavbarAdmin(props: any) {
   const show = showSidebar;
   return (
     <nav
-      className={`w-full flex h-20 bg-white  justify-between rounded-b-xl p-3 z-10 sticky top-0 shadow-md items-center`}
+      className={`w-full flex h-20 bg-white px-5  justify-between rounded-b-xl p-3 z-10 sticky top-0 shadow-md items-center`}
     >
       <div className=" lg:hidden">
         <button>
@@ -27,17 +27,6 @@ export default function NavbarAdmin(props: any) {
             <span className="text-lime-400 text-2xl ">LITE</span>
           </h1>
         </Link>
-
-        {/* serch */}
-        {/* <form className="group relative ms-5 ">
-          <FaSistrix className="absolute left-3 top-1/2 -mt-2.5 text-slate-400 pointer-events-none group-focus-within:text-blue-500" />
-          <input
-            className="rounded-3xl focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none w-full text-sm leading-6 text-slate-900 placeholder-slate-400 rounded-md py-2 pl-10 ring-1 ring-slate-200 shadow-sm"
-            type="text"
-            aria-label="Filter projects"
-            placeholder="Filter projects..."
-          />
-        </form> */}
       </div>
       <div className="hidden lg:block">
         <MenuBar />
@@ -49,7 +38,10 @@ export default function NavbarAdmin(props: any) {
             <FaRegSun className="rounded-full bg-gray-200  h-10 w-10 p-2 me-5 text-lime-500 text-2xl hidden md:block" />
           </li>
           <li>
-            <AccountMenu className="h-10 w-10 ring-2 ring-lime-500 rounded-full" />
+            <AccountMenu
+              className="h-10 w-10 ring-2 ring-lime-500 rounded-full"
+              src={'../images/img-person.jpg'}
+            />
           </li>
         </ul>
       </div>

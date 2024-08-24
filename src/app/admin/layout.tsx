@@ -19,7 +19,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   return (
     <div className="bg-gray-100 text-gray-600  ">
       <SidebarAdmin showSidebar={sidebar} handleShow={unShow} />
-      <div className={`w-full h-full `}>
+      <div className={`w-full h-full container`}>
         <NavbarAdmin onClick={changeSidebar} showSidebar={sidebar} />
         {children}
 
