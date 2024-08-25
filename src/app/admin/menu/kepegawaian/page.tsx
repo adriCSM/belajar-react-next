@@ -42,8 +42,8 @@ export default function LayoutKepegawaian() {
     }
   };
   return (
-    <div className="h-auto  container mx-auto bg-white mt-6 flex rounded-xl shadow-lg ">
-      <div className="w-full p-5">
+    <div className="h-auto px-5 container mx-auto  mt-6 flex  ">
+      <div className="w-full p-5 bg-white rounded-xl shadow-lg ">
         <div className="flex justify-between items-center mb-2  sticky top-0 bg-white">
           <div className="flex">
             <Search />

@@ -38,9 +38,9 @@ export default function AdminPage() {
   const [show, setShow] = useState(false);
   return (
     <div className="min-h-svh">
-      <div className="w-full h-auto  bg-white my-5 pb-10 pt-3 px-2  rounded-2xl">
+      <div className="w-full h-auto  bg-white my-5 pb-10 pt-3  rounded-2xl">
         <h1 className="text-gray-400 ps-5 pt-5">Informasi Kamar</h1>
-        <div className="flex justify-end px-5 text-gray-400 -mt-4 pb-5 transition-change duration-700">
+        <div className="flex justify-end  text-gray-400 -mt-4 pb-5 transition-change duration-700">
           {!show ? (
             <FaExpand
               className="me-5 h-4 w-4 text-blue-500 cursor-pointer hover:scale-125"

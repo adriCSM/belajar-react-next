@@ -7,9 +7,9 @@ export default function NavbarAdmin(props: any) {
   const show = showSidebar;
   return (
     <nav
-      className={`w-full flex h-20 bg-white px-5  justify-between rounded-b-xl p-3 z-10 sticky top-0 shadow-md items-center`}
+      className={`w-full flex h-20 bg-white px-5  justify-between rounded-br-xl p-3 z-10 sticky top-0 shadow-md items-center`}
     >
-      <div className=" lg:hidden">
+      <div className="">
         <button>
           <FaBars
             className="text-3xl text-lime-400"
@@ -18,18 +18,6 @@ export default function NavbarAdmin(props: any) {
             }}
           />
         </button>
-      </div>
-      <div className="flex items-center">
-        <Link href={'/admin'} className="flex items-center">
-          <img src="/logo/icon-512x512.png" alt="" className={`h-8 md:h-10 animate-bounce`} />
-          <h1 className={`text-3xl font-bold ps-5 text-wrap animate-pulse`}>
-            <span className="text-lime-600">m</span>
-            <span className="text-lime-400 text-2xl ">LITE</span>
-          </h1>
-        </Link>
-      </div>
-      <div className="hidden lg:block">
-        <MenuBar />
       </div>
       <div>
         <ul className="flex items-center text-[1.4rem]">
