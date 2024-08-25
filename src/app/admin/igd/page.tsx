@@ -139,7 +139,7 @@ export default function RawatJalanPage() {
               buttonText="Pasien Baru"
               styleModal="w-5/6 md:w-2/3 h-auto p-3 md:p-5"
               Icon={FaPlus}
-              title="Registrasi Pasien"
+              title="Registrasi Pasien IGD"
             />
           </div>
         </div>

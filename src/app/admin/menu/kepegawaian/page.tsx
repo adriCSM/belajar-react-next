@@ -1,37 +1,89 @@
 'use client';
 import Search from '@/components/Elements/Search';
-import FormRegistrasi from '@/components/Fragments/FormRegistrasi';
+import FormPegawai from '@/components/Fragments/FormPegawai';
 import BasicModal from '@/components/Fragments/Modal';
 import { FaPlus } from 'react-icons/fa6';
-import CardPasien from '@/components/Fragments/CardPasien';
-import CheckBox from '@/components/Elements/CheckBox';
+import CardPegawai from '@/components/Fragments/CardPegawai';
 import Select from '@/components/Elements/Select';
+import { useState } from 'react';
+import Table from '@/components/Fragments/Table';
 export default function LayoutKepegawaian() {
+  const headers = [
+    'Kode Pegawai',
+    'Nama Pegawai',
+    'Tempat Lahir',
+    'Tanggal Lahir',
+    'Departemen',
+    'Bidang',
+    'Status',
+    'Aksi',
+  ];
+  const values = [
+    '023293223',
+    'Adri Candra',
+    '2024/02/22/000001',
+    'Anggrek - ANG01',
+    'dr. FAUZAN AZHARI MARZUKI, Sp. KK - D002',
+    'BPJS',
+    '-',
+    '2024-06-03 07:20:30',
+  ];
   const list = ['Semua', 'A to Z', 'Z to A', 'Latest', 'Oldest'];
+  const [viewGrid, setViewGrid] = useState(true);
+  const [viewTable, setViewTable] = useState(false);
+
+  const ubahView = (e: any) => {
+    if (e.target.value == 'list') {
+      setViewGrid(false);
+      setViewTable(true);
+    } else {
+      setViewGrid(true);
+      setViewTable(false);
+    }
+  };
   return (
     <div className="h-auto  container mx-auto bg-white mt-6 flex rounded-xl shadow-lg ">
       <div className="w-full p-5">
         <div className="flex justify-between items-center mb-2  sticky top-0 bg-white">
-          <Search />
+          <div className="flex">
+            <Search />
+            <select
+              id="view"
+              className=" rounded-full me-3 border-2 bg-transparent p-1 pr-7 focus:ring-2 focus:outline-none focus:ring-2 focus:ring-blue-600 text-xs md:text-sm"
+              onChange={ubahView}
+            >
+              <option value="grid">Grid View</option>
+              <option value="list">List View</option>
+            </select>
+          </div>
           <div className="flex items-center">
             <Select list={list} styleParent="w-40 " placeholder="Sort By" />
             <BasicModal
-              Form={FormRegistrasi}
+              Form={FormPegawai}
               styleButton="bg-blue-500  text-white hover:bg-blue-600 ms-5 "
               buttonText="Add Pegawai"
               styleModal="w-5/6 md:w-4/5 sm:w-2/3 h-auto p-3 md:p-5"
               Icon={FaPlus}
-              title="Registrasi Pasien Baru"
+              title="Registrasi Pegawai"
             />
           </div>
         </div>
-        <div
-          className={` border-t-4 border-blue-300 grid grid-cols-2   md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 justify-between rounded-lg py-2 md:p-5 ring-2 mt-5 md:mx-2 ring-lime-100 transition-width duration-300"`}
-        >
-          {Array.from({ length: 9 }).map((_, index) => {
-            return <CardPasien key={index} path="/admin/pasien/detail" />;
-          })}
-        </div>
+        {viewGrid && (
+          <div
+            className={` border-t-4 border-blue-300 grid grid-cols-2   md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 justify-between rounded-lg py-2 md:p-5 ring-2 mt-5 md:mx-2 ring-lime-100 transition-width duration-300"`}
+          >
+            {Array.from({ length: 9 }).map((_, index) => {
+              return <CardPegawai key={index} path="/admin/pasien/detail" />;
+            })}
+          </div>
+        )}
+        {viewTable && (
+          <div
+            className={`  border-t-4 border-blue-300 md:w-full max-h-[560px]  overflow-auto rounded-lg ring-2 mt-5 mx-2 ring-lime-100`}
+          >
+            <Table headers={headers} values={values} />
+          </div>
+        )}
       </div>
     </div>
   );

@@ -19,8 +19,20 @@ export default function FormLanjutan({ ...props }) {
             placeholder="Cari nama pasien/nomor rekam medik"
             styleParent="col-span-2 w-full"
           />
-          <Select label="Dokter" id="dokter " list={dokters} styleParent="col-span-2 w-full" />
-          <Select label="Penjamin" id="penjamin" list={jaminan} styleParent="col-span-2 w-full" />
+          <Select
+            label="Dokter"
+            id="dokter "
+            list={dokters}
+            styleParent="col-span-2 w-full"
+            placeholder="Pilihi Dokter"
+          />
+          <Select
+            label="Penjamin"
+            id="penjamin"
+            list={jaminan}
+            styleParent="col-span-2 w-full"
+            placeholder="Pilihi Jaminan"
+          />
         </div>
         <div className="flex flex-col p-5 text-gray-600 max-h-[500px] w-full sm:w-1/3 overflow-auto text-start">
           <h1 className="text-center font-bold pb-5">Profil Pasien</h1>

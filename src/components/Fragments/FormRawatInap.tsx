@@ -23,16 +23,28 @@ export default function FormRawatInap({ ...props }) {
   return (
     <div className="  sm:m-5 ">
       <h1 className="text-md sm:text-2xl font-bold ">{props.title}</h1>
-      <div className="md:flex  text-sm w-full justify-between h-[70vh] md:h-auto  overflow-auto items-start divide-x">
+      <div className="md:flex  text-sm w-full justify-center h-[70vh] md:h-auto  overflow-auto items-start divide-x">
         <div className="grid grid-cols-2 gap-x-4 pb-5 sm:p-5 text-gray-600 sm:w-2/3  sm:max-h-[500px] overflow-auto ">
           <Input type="date" id="tglDaftar" label="Tgl. Masuk" />
           <Input type="time" id="jammasuk" label="Jam" />
           <Input type="date" id="tglDaftar" label="Tgl. Keluar" />
           <Input type="time" id="jamkeluar" label="Jam" />
-          <Select label="Kamar" id="kamar " list={kamar} />
+          <Select label="Kamar" id="kamar " list={kamar} placeholder="Pilihi Kamar" />
           <Input type="text" id="lama" label="Lama (Hari)" />
-          <Select label="Dokter" id="dokter " list={dokters} styleParent="col-span-2 w-full" />
-          <Select label="Penjamin" id="penjamin" list={jaminan} styleParent="col-span-2 w-full" />
+          <Select
+            label="Dokter"
+            id="dokter "
+            list={dokters}
+            styleParent="col-span-2 w-full"
+            placeholder="Pilihi Dokter"
+          />
+          <Select
+            label="Penjamin"
+            id="penjamin"
+            list={jaminan}
+            styleParent="col-span-2 w-full"
+            placeholder="Pilihi Jaminan"
+          />
         </div>
         <div className="flex flex-col sm:p-5 text-gray-600 max-h-[500px] pb-5 sm:w-1/3 overflow-auto text-start">
           <h1 className="text-center font-bold pb-5">Profil Pasien</h1>
@@ -69,6 +81,7 @@ export default function FormRawatInap({ ...props }) {
               id="dokter "
               list={status}
               styleParent="col-span-2 w-full"
+              placeholder="Status"
             />
           </div>
         </div>

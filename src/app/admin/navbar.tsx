@@ -21,7 +21,7 @@ export default function NavbarAdmin(props: any) {
       </div>
       <div className="flex items-center">
         <Link href={'/admin'} className="flex items-center">
-          <img src="../logo/icon-512x512.png" alt="" className={`h-8 md:h-10 animate-bounce`} />
+          <img src="/logo/icon-512x512.png" alt="" className={`h-8 md:h-10 animate-bounce`} />
           <h1 className={`text-3xl font-bold ps-5 text-wrap animate-pulse`}>
             <span className="text-lime-600">m</span>
             <span className="text-lime-400 text-2xl ">LITE</span>
@@ -40,7 +40,7 @@ export default function NavbarAdmin(props: any) {
           <li>
             <AccountMenu
               className="h-10 w-10 ring-2 ring-lime-500 rounded-full"
-              src={'../images/img-person.jpg'}
+              src={'/images/img-person.jpg'}
             />
           </li>
         </ul>
