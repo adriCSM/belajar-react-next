@@ -12,7 +12,7 @@ export default function NavbarAdmin(props: any) {
       <div className="">
         <button>
           <FaBars
-            className="text-3xl text-lime-400"
+            className="text-2xl text-lime-400"
             onClick={() => {
               onClick();
             }}
@@ -22,7 +22,6 @@ export default function NavbarAdmin(props: any) {
       <div>
         <ul className="flex items-center text-[1.4rem]">
           <li>
-            {/* <FaMoon /> */}
             <FaRegSun className="rounded-full bg-gray-200  h-10 w-10 p-2 me-5 text-lime-500 text-2xl hidden md:block" />
           </li>
           <li>
