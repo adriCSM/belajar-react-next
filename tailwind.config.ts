@@ -15,6 +15,7 @@ const config: Config = {
         igd: 'url("/images/img-igd.jpg"  )',
         'rawat-jalan': 'url("/images/img-rawatjalan.jpg")',
         'rawat-inap': 'url("/images/img-rawatinap.jpg")',
+        home: 'url("/images/wallpaper.jpg")',
       },
       borderRadius: {
         xl: '1rem',

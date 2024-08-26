@@ -44,7 +44,7 @@ export default function SidebarAdmin({ ...props }) {
   ];
   return (
     <nav
-      className={`sticky top-0 h-[100vh]  transition-width transform duration-300   rounded-br-xl bg-gradient-to-tr from-lime-400 to-lime-300  ${
+      className={`sticky top-0 h-[100vh]  transition-width transform duration-300   rounded-br-xl bg-gradient-to-tr from-lime-500 to-lime-400  ${
         show ? 'w-[5%] ' : 'w-[20%]'
       }   divide-y divide-white z-20`}
     >
@@ -70,7 +70,7 @@ export default function SidebarAdmin({ ...props }) {
         </Link>
       </div>
 
-      <ul className={`pt-5 ps-2  overflow-hidden `}>
+      <ul className={`pt-5 ps-2  overflow-hidden text-white`}>
         {menus.map((menu, i) => {
           return (
             <Link
@@ -78,8 +78,8 @@ export default function SidebarAdmin({ ...props }) {
               href={menu.href}
               className={`flex px-3 py-2 items-center transition duration-150 transform   ${
                 pathname == menu.href
-                  ? 'bg-gray-100  border-l-2 border-y-2 border-lime-400'
-                  : 'hover:bg-lime-200 hover:shadow-md'
+                  ? 'bg-gray-100  border-l-2 text-black border-y-2 border-lime-400'
+                  : 'hover:bg-lime-200 hover:shadow-md hover:text-black'
               }  rounded-s-xl`}
             >
               <li className={`cursor-pointer flex`}>

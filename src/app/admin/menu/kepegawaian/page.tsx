@@ -41,8 +41,16 @@ export default function LayoutKepegawaian() {
       setViewTable(false);
     }
   };
+  const listPegawai = ['Dokter', 'Perawat', 'Staf', 'Satpam'];
   return (
     <div className="h-auto px-5 container mx-auto  mt-6 flex  ">
+      <div className="w-1/6 h-full bg-white me-5 rounded-xl shadow-md p-5 sticky top-[105px]">
+        <ul>
+          {listPegawai.map((item, index) => {
+            return <li>{item}</li>;
+          })}
+        </ul>
+      </div>
       <div className="w-full p-5 bg-white rounded-xl shadow-lg ">
         <div className="flex justify-between items-center mb-2  sticky top-0 bg-white">
           <div className="flex">

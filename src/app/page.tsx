@@ -10,13 +10,15 @@ export default function Home() {
     router.push('/admin');
   };
   return (
-    <main className="flex h-screen items-center justify-center bg-gray-200">
-      <div className="md:h-2/3 w-5/6 md:w-1/3 bg-white rounded-xl shadow-md">
-        <div className="h-48 :h-1/2 bg-lime-300 rounded-t-xl flex items-center justify-center">
-          <img src="../logo/icon-512x512.png" alt="" className="h-16 w-16 me-5" />
-          <p className="text-5xl font-bold">mLite</p>
+    <main className="flex h-screen items-center  bg-home bg-cover justify-center bg-white">
+      <div className="h-auto w-5/6 md:w-[25vw] flex flex-col bg-white   rounded-xl flex items-center">
+        <div className="h-20  rounded-t-xl  w-full   flex items-center justify-center">
+          <div className="container   mx-5 -mt-[80px] p-5 flex items-center justify-center rounded-lg bg-lime-300 shadow-lg">
+            <img src="../logo/icon-512x512.png" alt="" className="h-16 w-16 me-5" />
+            <p className="text-3xl md:text-5xl font-bold">mLite</p>
+          </div>
         </div>
-        <div className="md:h-1/2  p-5">
+        <div className="md:h-2/3 w-full p-5">
           <div className="relative   ">
             <FaUser className="absolute left-3 top-12 text-slate-400 pointer-events-none group-focus-within:text-blue-500" />
             <Input
