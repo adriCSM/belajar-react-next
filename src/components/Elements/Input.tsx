@@ -1,20 +1,23 @@
 import * as React from 'react';
 
 export default function Input(props: any) {
-  const { id, type, label, styleParent, onChange, value, required, inputStyle } = props;
+  const { id, type, label, styleParent, onChange, value, required, inputStyle, placeholder } =
+    props;
   return (
     <div className={`flex flex-col ${styleParent} `}>
-      <label className="py-2" htmlFor={id}>
-        {label}
-      </label>
+      {label && (
+        <label className="py-2 w-auto" htmlFor={id}>
+          {label}
+        </label>
+      )}
       <input
         value={value}
         onChange={onChange}
         type={type}
         id={id}
         required={required}
-        placeholder={label}
-        className={`rounded-2xl outline outline-2 outline-gray-300 text-sm p-2 focus:outline-lime-300 italic invalid:border-pink-500 ${inputStyle}`}
+        placeholder={placeholder}
+        className={`rounded-2xl outline  text-sm p-2   invalid:border-pink-500 ${inputStyle}`}
       />
     </div>
   );
