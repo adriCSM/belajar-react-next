@@ -1,4 +1,5 @@
 import MainTab from '@/components/Fragments/tab/MainTab';
+import Image from 'next/image';
 
 type id = { params: { id: string } };
 export default function DetailKepegawaian(props: id) {
@@ -10,7 +11,7 @@ export default function DetailKepegawaian(props: id) {
       </div>
       <div className="flex">
         <div className="w-1/3 p-5 bg-white rounded-2xl me-5 shadow-md">
-          <img src="/images/img-person.jpg" alt="" className="rounded-full" />
+          <Image src="/images/img-person.jpg" alt="" className="rounded-full" />
         </div>
         <div className="w-2/3 p-5 bg-white rounded-2xl shadow-md">
           <table className="table-auto text-left  h-full">
