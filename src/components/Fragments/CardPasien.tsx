@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { FaCheck, FaEllipsisV, FaMars, FaVenus } from 'react-icons/fa';
 import AccountMenu from '../Elements/AccountMenu';
 import DetailMenu from '../Elements/DetailsMenu';
@@ -26,7 +27,7 @@ export default function Card({ ...props }) {
         </div>
         <div className=" flex  justify-center">
           <div className="relative ">
-            <img src="/images/img-person.jpg" alt="" className={`rounded-full w-28 h-28 `} />
+            <Image src="/images/img-person.jpg" alt="" className={`rounded-full w-28 h-28 `} />
             <FaMars className="text-blue-400 font-bold absolute bottom-4 right-4 bg-white rounded-full " />
           </div>
         </div>

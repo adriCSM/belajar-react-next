@@ -55,7 +55,7 @@ export default function SidebarAdmin({ ...props }) {
         }  items-center mx-auto  p-3 h-24 overflow-hidden`}
       >
         <Link href={'/admin'} className="flex h-full  items-center ">
-          <img
+          <Image
             src="/logo/icon-512x512.png"
             alt=""
             className={`${!show ? 'h-[50px]' : 'h-[40px] w-[40px] animate-bounce'} z-100  `}
@@ -94,7 +94,7 @@ export default function SidebarAdmin({ ...props }) {
                     />
                   </Tooltip>
                 ) : (
-                  <img
+                  <Image
                     src={menu.src}
                     alt={menu.name}
                     className="h-[30px] w-[30px]"

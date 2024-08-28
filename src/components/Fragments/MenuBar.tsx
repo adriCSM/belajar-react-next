@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -48,7 +49,7 @@ export default function MenuBar() {
                 : 'hover:text-lime-300 '
             }  rounded-xl`}
           >
-            <img src={menu.src} alt={menu.name} className="h-[20px] w-[20px]" />
+            <Image src={menu.src} alt={menu.name} className="h-[20px] w-[20px]" />
             <li className={`cursor-pointer ps-1 `}>{menu.name}</li>
           </Link>
         );
