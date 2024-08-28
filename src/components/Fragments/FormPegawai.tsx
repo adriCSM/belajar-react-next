@@ -226,42 +226,42 @@ export default function FormRegistrasi({ ...props }) {
           <div className="flex justify-center items-center">
             <img src="/images/img-person.jpg" alt="" className="h-20 w-20 rounded-full" />
           </div>
-          <Input type="text" id="nama" label="Nama" placeholder="Nama Keluarga" />
+          <Input type="text" id="Nomor KTP" label="Nomor KTP" placeholder="Nomor KTP" />
           <Select
-            placeholder="Pilih"
-            label="Keluarga"
-            id="keluarga "
+            placeholder="Status"
+            label="Status"
+            id="Status "
             list={keluarga}
-            styleParent=" pb-5 w-full"
+            styleParent=" w-full"
             onChange={(e: any) => props.onChange()}
           />
           <Input
             type="text"
-            id="ktp"
-            label="No. KTP"
-            placeholder="No. KTP"
+            id="Wajib Masuk"
+            label="Wajib Masuk"
+            placeholder="Wajib Masuk"
             styleParent="col-span-2 w-full"
           />
 
           <Input
             type="text"
-            id="propinsi"
-            label="Provinsi"
-            placeholder="Provinsi"
+            id="Pengurang"
+            label="Pengurang"
+            placeholder="Pengurang"
             styleParent="row-start-5"
           />
-          <Input type="text" id="kota" label="Kabupaten/Kota" placeholder="Kabupaten/Kota" />
+          <Input type="text" id="Index" label="Index" placeholder="Index" />
           <Select
-            placeholder="Pilih"
-            label="Keluarga"
-            id="keluarga "
+            placeholder="Indexins"
+            label="Indexins"
+            id="Indexins "
             list={keluarga}
-            styleParent=" pb-5 w-full"
+            styleParent="  w-full"
             onChange={(e: any) => props.onChange()}
           />
-          <Input type="text" id="kecamatan" label="Kecamatan" placeholder="Kecamatan" />
-          <Input type="text" id="desa" label="Desa" placeholder="Desa" />
-          <Input type="text" id="nohp" label="No.Hp" placeholder="No. Handphone" />
+          <Input type="text" id="Mulai Kontrak" label="Mulai Kontrak" placeholder="Mulai Kontrak" />
+          <Input type="text" id="Cuti Diambil" label="Cuti Diambil" placeholder="Cuti Diambil" />
+          <Input type="text" id="Dankes" label="Dankes" placeholder="Dankes" />
         </div>
       </div>
     </div>

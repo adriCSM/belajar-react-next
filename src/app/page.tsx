@@ -25,16 +25,16 @@ export default function Home() {
               id="username"
               placeholder="Username"
               type="text"
-              inputStyle="pl-10  py-3  shadow-2xl focus:border-x-4 focus:border-lime-300 outline-none placeholder:text-gray-500 mb-5 text-black "
+              inputStyle="pl-10  py-3 outline-0  shadow-2xl focus:border-x-4 focus:border-lime-300 placeholder:text-gray-500 mb-5 text-black "
             />
           </div>
           <div className="relative   ">
-            <FaLock className="absolute left-3 top-3 text-slate-400 pointer-events-none group-focus-within:text-blue-500" />
+            <FaLock className="absolute left-3 top-3 text-slate-400  pointer-events-none group-focus-within:text-blue-500" />
             <Input
               id="password"
               placeholder="Password"
               type="password"
-              inputStyle="pl-10  py-3 shadow-2xl  placeholder:text-gray-500 text-black "
+              inputStyle="pl-10  py-3 shadow-2xl outline-0 placeholder:text-gray-500 text-black "
             />
           </div>
           <Button
