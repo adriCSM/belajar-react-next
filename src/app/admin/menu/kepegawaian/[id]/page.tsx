@@ -10,8 +10,14 @@ export default function DetailKepegawaian(props: id) {
         <h1>Profil Pegawai</h1>
       </div>
       <div className="flex">
-        <div className="w-1/3 p-5 bg-white rounded-2xl me-5 shadow-md">
-          <Image src="/images/img-person.jpg" alt="" className="rounded-full" />
+        <div className="w-1/3 p-5 bg-white flex justify-center items-center  rounded-2xl me-5 shadow-md">
+          <Image
+            src="/images/img-person.jpg"
+            alt="foto pegawai"
+            width={300}
+            height={300}
+            className="rounded-full "
+          />
         </div>
         <div className="w-2/3 p-5 bg-white rounded-2xl shadow-md">
           <table className="table-auto text-left  h-full">

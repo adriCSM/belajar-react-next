@@ -4,6 +4,7 @@ import Input from '@/components/Elements/Input';
 import { FaLock, FaUser } from 'react-icons/fa6';
 
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 export default function Home() {
   const router = useRouter();
   const login = () => {
@@ -14,7 +15,7 @@ export default function Home() {
       <div className="h-auto w-5/6 md:w-[25vw] flex flex-col bg-lime-100 ring-4 ring-white shadow-lg   rounded-2xl flex items-center">
         <div className="h-20  rounded-t-xl  w-full   flex items-center justify-center">
           <div className="container   mx-5 -mt-[80px] p-5 flex items-center justify-center rounded-2xl bg-white shadow-lg">
-            <img src="../logo/icon-512x512.png" alt="" className="h-16 w-16 me-5" />
+            <Image src="../logo/icon-512x512.png" alt="" className=" me-5" width={64} height={64} />
             <p className="text-3xl md:text-5xl font-bold text-lime-500">mLite</p>
           </div>
         </div>

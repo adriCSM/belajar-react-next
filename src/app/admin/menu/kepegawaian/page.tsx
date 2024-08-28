@@ -91,7 +91,7 @@ export default function LayoutKepegawaian() {
         <ul>
           {listPegawai.map((item, index) => {
             return (
-              <li>
+              <li key={index}>
                 <CheckBox id={item} name={item} />
               </li>
             );

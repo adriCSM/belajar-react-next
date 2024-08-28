@@ -27,7 +27,13 @@ export default function CardPegawai({ ...props }) {
         </div>
         <div className=" flex  justify-center">
           <div className="relative ">
-            <Image src="/images/img-person.jpg" alt="" className={`rounded-full w-28 h-28 `} />
+            <Image
+              src="/images/img-person.jpg"
+              alt=""
+              className={`rounded-full `}
+              width={112}
+              height={112}
+            />
             <FaMars className="text-blue-400 font-bold absolute bottom-4 right-4 bg-white rounded-full " />
           </div>
         </div>

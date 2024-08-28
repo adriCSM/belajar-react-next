@@ -49,7 +49,7 @@ export default function MenuBar() {
                 : 'hover:text-lime-300 '
             }  rounded-xl`}
           >
-            <Image src={menu.src} alt={menu.name} className="h-[20px] w-[20px]" />
+            <Image src={menu.src} alt={menu.name} width={20} height={20} />
             <li className={`cursor-pointer ps-1 `}>{menu.name}</li>
           </Link>
         );

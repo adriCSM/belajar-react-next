@@ -225,7 +225,7 @@ export default function FormRegistrasi({ ...props }) {
         </div>
         <div className=" w-1/3 gap-x-4 md:p-5 text-gray-600 md:max-h-[500px] md:overflow-auto mx-5 md:border-t-4 border-red-300 ">
           <div className="flex justify-center items-center">
-            <Image src="/images/img-person.jpg" alt="" className="h-20 w-20 rounded-full" />
+            <Image src="/images/img-person.jpg" alt="" width={80} height={80} />
           </div>
           <Input type="text" id="Nomor KTP" label="Nomor KTP" placeholder="Nomor KTP" />
           <Select

@@ -57,8 +57,10 @@ export default function SidebarAdmin({ ...props }) {
         <Link href={'/admin'} className="flex h-full  items-center ">
           <Image
             src="/logo/icon-512x512.png"
-            alt=""
-            className={`${!show ? 'h-[50px]' : 'h-[40px] w-[40px] animate-bounce'} z-100  `}
+            alt="logo"
+            className={`${!show && ' animate-bounce'} z-100  `}
+            width={!show ? 50 : 40}
+            height={!show ? 50 : 40}
           />
           <h1
             className={`text-3xl font-bold ps-5 text-nowrap  transition-opacity duration-300 ${
@@ -86,20 +88,10 @@ export default function SidebarAdmin({ ...props }) {
               <li className={`cursor-pointer flex`}>
                 {show ? (
                   <Tooltip title={menu.name} placement="right">
-                    <Image
-                      src={menu.src}
-                      alt={menu.name}
-                      className="h-[30px] w-[30px]"
-                      key={menu.name}
-                    />
+                    <Image src={menu.src} alt={menu.name} width={30} height={30} key={menu.name} />
                   </Tooltip>
                 ) : (
-                  <Image
-                    src={menu.src}
-                    alt={menu.name}
-                    className="h-[30px] w-[30px]"
-                    key={menu.name}
-                  />
+                  <Image src={menu.src} alt={menu.name} height={30} width={30} key={menu.name} />
                 )}
                 <p
                   className={` pl-5 text-nowrap  transition-opacity duration-300 ${
