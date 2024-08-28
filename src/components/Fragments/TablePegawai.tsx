@@ -28,11 +28,19 @@ export default function Table({ ...props }) {
                   )}
                   {header == 'Aksi' && (
                     <div className="flex">
-                      <Button lable="Info" Icon={FaInfoCircle} />
-                      <Button lable="Hapus" Icon={FaTrashAlt} />
+                      <Button
+                        text="Info"
+                        Icon={FaInfoCircle}
+                        styleButton="bg-blue-500 text-white me-2"
+                      />
+                      <Button
+                        text="Hapus"
+                        Icon={FaTrashAlt}
+                        styleButton="bg-red-500 text-white ring-red-500"
+                      />
                     </div>
                   )}
-                  {header != 'Nama Pasien' && props.values[i]}
+                  {header != 'Nama Pasien' && header != 'Aksi' && props.values[i]}
                 </td>
               ))}
             </tr>
