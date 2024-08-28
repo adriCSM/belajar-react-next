@@ -44,8 +44,8 @@ export default function LayoutKepegawaian() {
   };
   const listPegawai = ['Dokter', 'Perawat', 'Staf', 'Satpam'];
   return (
-    <div className="h-auto px-5 container mx-auto  mt-6 flex  ">
-      <div className="w-4/5 p-5 bg-white rounded-xl shadow-lg ">
+    <div className="h-auto px-5 container mx-auto  mt-6 flex flex-col md:flex-row  ">
+      <div className="w-full md:w-4/5 p-5 bg-white rounded-xl shadow-lg ">
         <div className="flex justify-between items-center mb-2  sticky top-0 bg-white">
           <div className="flex">
             <Search />
@@ -87,7 +87,7 @@ export default function LayoutKepegawaian() {
           </div>
         )}
       </div>
-      <div className="w-1/5 h-[85vh] bg-white ms-5 rounded-xl shadow-md p-5 sticky top-[105px]">
+      <div className="w-full flex-first md:flex-last md:w-1/5 h-[85vh] bg-white ms-5 rounded-xl shadow-md p-5 sticky top-[105px]">
         <ul>
           {listPegawai.map((item, index) => {
             return (

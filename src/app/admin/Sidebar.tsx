@@ -45,16 +45,16 @@ export default function SidebarAdmin({ ...props }) {
   ];
   return (
     <nav
-      className={`sticky top-0 h-[100vh]  transition-width transform duration-300   rounded-br-xl bg-gradient-to-tr from-lime-500 to-lime-400  ${
-        show ? 'w-[5%] ' : 'w-[20%]'
-      }   divide-y divide-white z-20`}
+      className={`fixed md:sticky top-0 h-[100vh]  transition-width transform duration-300   rounded-br-xl bg-gradient-to-tr from-lime-500 to-lime-400  ${
+        show ? 'md:w-[5%] -translate-x-full ' : 'w-3/5 md:w-[20%] translate-x-0 '
+      }   divide-y divide-white z-30 md:transform-none`}
     >
       <div
         className={` w-full ${
           !show ? 'flex justify-center items-center' : ''
         }  items-center mx-auto  p-3 h-24 overflow-hidden`}
       >
-        <Link href={'/admin'} className="flex h-full  items-center ">
+        <Link href={'/admin'} className="flex h-full  items-center justify-center md:justify-start">
           <Image
             src="/logo/icon-512x512.png"
             alt="logo"
