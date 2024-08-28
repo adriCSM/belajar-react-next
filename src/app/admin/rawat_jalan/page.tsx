@@ -8,7 +8,7 @@ import { FaPlus } from 'react-icons/fa';
 import { TfiReload } from 'react-icons/tfi';
 import Button from '@/components/Elements/Button';
 import CardRiwayat from '@/components/Fragments/CardRiwayat';
-import Table from '@/components/Fragments/Table';
+import Table from '@/components/Fragments/TablePasien';
 import { useState } from 'react';
 import { FaUserGroup } from 'react-icons/fa6';
 import Search from '@/components/Elements/Search';

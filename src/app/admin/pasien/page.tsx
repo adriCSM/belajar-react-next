@@ -5,7 +5,7 @@ import FormRegistrasi from '@/components/Fragments/FormRegistrasi';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import CardPasien from '@/components/Fragments/CardPasien';
 import { FaPlus, FaList } from 'react-icons/fa';
-import Table from '@/components/Fragments/Table';
+import Table from '@/components/Fragments/TablePasien';
 import { useEffect, useState } from 'react';
 import { FaUserGroup } from 'react-icons/fa6';
 import Search from '@/components/Elements/Search';

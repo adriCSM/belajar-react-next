@@ -6,7 +6,7 @@ import { FaPlus } from 'react-icons/fa6';
 import CardPegawai from '@/components/Fragments/CardPegawai';
 import Select from '@/components/Elements/Select';
 import { useState } from 'react';
-import Table from '@/components/Fragments/Table';
+import TablePegawai from '@/components/Fragments/TablePegawai';
 import CheckBox from '@/components/Elements/CheckBox';
 export default function LayoutKepegawaian() {
   const headers = [
@@ -83,7 +83,7 @@ export default function LayoutKepegawaian() {
           <div
             className={`  border-t-4 border-blue-300 md:w-full max-h-[560px]  overflow-auto rounded-lg ring-2 mt-5 mx-2 ring-lime-100`}
           >
-            <Table headers={headers} values={values} />
+            <TablePegawai headers={headers} values={values} />
           </div>
         )}
       </div>

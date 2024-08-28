@@ -9,7 +9,7 @@ import { TfiReload } from 'react-icons/tfi';
 
 import CardRiwayat from '@/components/Fragments/CardRiwayat';
 import { useState } from 'react';
-import Table from '@/components/Fragments/Table';
+import Table from '@/components/Fragments/TablePasien';
 import { FaUserGroup } from 'react-icons/fa6';
 import Search from '@/components/Elements/Search';
 export default function RawatInapPage() {
