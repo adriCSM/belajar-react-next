@@ -1,6 +1,7 @@
 'use client';
 import Tooltip from '@mui/material/Tooltip';
 import { Manuale } from 'next/font/google';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FaAngleDoubleLeft } from 'react-icons/fa';
@@ -85,7 +86,7 @@ export default function SidebarAdmin({ ...props }) {
               <li className={`cursor-pointer flex`}>
                 {show ? (
                   <Tooltip title={menu.name} placement="right">
-                    <img
+                    <Image
                       src={menu.src}
                       alt={menu.name}
                       className="h-[30px] w-[30px]"
