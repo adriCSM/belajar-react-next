@@ -74,6 +74,7 @@ export default function SidebarAdmin({ ...props }) {
         {menus.map((menu, i) => {
           return (
             <Link
+              key={menu.name}
               href={menu.href}
               className={`flex px-3 py-2 items-center transition duration-150 transform   ${
                 pathname == menu.href
@@ -81,13 +82,23 @@ export default function SidebarAdmin({ ...props }) {
                   : 'hover:bg-lime-200 hover:shadow-md hover:text-black'
               }  rounded-s-xl`}
             >
-              <li className={`cursor-pointer flex`} key={menu.name}>
+              <li className={`cursor-pointer flex`}>
                 {show ? (
                   <Tooltip title={menu.name} placement="right">
-                    <img src={menu.src} alt={menu.name} className="h-[30px] w-[30px]" />
+                    <img
+                      src={menu.src}
+                      alt={menu.name}
+                      className="h-[30px] w-[30px]"
+                      key={menu.name}
+                    />
                   </Tooltip>
                 ) : (
-                  <img src={menu.src} alt={menu.name} className="h-[30px] w-[30px]" />
+                  <img
+                    src={menu.src}
+                    alt={menu.name}
+                    className="h-[30px] w-[30px]"
+                    key={menu.name}
+                  />
                 )}
                 <p
                   className={` pl-5 text-nowrap  transition-opacity duration-300 ${
