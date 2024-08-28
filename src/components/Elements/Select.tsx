@@ -20,7 +20,7 @@ export default function Select({ ...props }) {
         onChange={handleChange}
         defaultValue={placeholder}
         id={props.id}
-        className="rounded-2xl outline w-auto outline-2 outline-gray-300 text-sm px-2 py-1 pr-5 focus:outline-lime-300 "
+        className="rounded-2xl outline w-auto outline-2  outline-gray-300 text-sm px-2 py-2 pr-5 focus:border-x-4 focus:border-lime-300 "
       >
         <option value={placeholder} disabled>
           {placeholder}

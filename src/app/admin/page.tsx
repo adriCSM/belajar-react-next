@@ -37,7 +37,7 @@ export default function AdminPage() {
 
   const [show, setShow] = useState(false);
   return (
-    <div className="min-h-svh">
+    <div className="min-h-svh px-5">
       <div className="w-full h-auto  bg-white my-5 pb-10 pt-3  rounded-2xl">
         <h1 className="text-gray-400 ps-5 pt-5">Informasi Kamar</h1>
         <div className="flex justify-end  text-gray-400 -mt-4 pb-5 transition-change duration-700">
@@ -65,7 +65,9 @@ export default function AdminPage() {
                     } rounded-xl p-3   transition-m  duration-700 `}
                   />
                   <div className={`${show ? 'text-end' : 'hidden'}`}>
-                    <h1 className={`${item.textColor} md:text-3xl font-bold `}>{item.jenis}</h1>
+                    <h1 className={`${item.textColor} text-nowrap md:text-3xl font-bold `}>
+                      {item.jenis}
+                    </h1>
                     <h1 className="text-end md:text-2xl ">{item.jumlah}</h1>
                   </div>
                 </div>

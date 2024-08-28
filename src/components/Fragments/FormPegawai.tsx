@@ -50,21 +50,36 @@ export default function FormRegistrasi({ ...props }) {
     <div className="  sm:m-3 ">
       <h1 className="md:text-2xl text-lg font-bold pb-4">{props.title}</h1>
       <div className="flex flex-col sm:flex-row text-sm w-full justify-center max-h-[70vh]  overflow-auto ">
-        <div className="grid grid-cols-2 gap-x-4 md:p-5 text-gray-600  md:max-h-[500px] mx-5 md:overflow-auto border-t-4 border-blue-300">
-          <Input type="text" id="nomorRm" label="Nomor RM" placeholder="Nomor RM" required={true} />
+        <div className="grid grid-cols-6 w-2/3 gap-x-4 md:p-5 text-gray-600  md:max-h-[500px] mx-5 md:overflow-auto border-t-4 border-blue-300">
           <Input
-            type="date"
+            type="text"
+            id="nomorRm"
+            label="Kode Pegawai (NIP)"
+            placeholder="Kode Pegawai (NIP)"
+            required={true}
+            styleParent="col-span-3"
+          />
+          <Input
+            type="text"
             id="tglDaftar"
-            label="Tgl. Daftar"
-            value={daftar}
+            label="Nama Pegawai"
+            placeholder="Kode Pegawai (NIP)"
             onChange={(e: any) => setDaftar(e.target.value)}
+            styleParent="col-span-3"
           />
           <Input
             type="text"
             id="jenisKelamin"
-            label="Nama"
-            placeholder="Nama Lengkap"
-            styleParent="col-span-2 w-full"
+            label="Tempat Lahir"
+            placeholder="Tempat Lahir"
+            styleParent="col-span-2"
+          />
+          <Input
+            type="date"
+            id="jenisKelamin"
+            label="Tanggal Lahir"
+            placeholder="Tanggal Lahir"
+            styleParent="col-span-2"
           />
           <Select
             placeholder="Pilih"
@@ -72,21 +87,31 @@ export default function FormRegistrasi({ ...props }) {
             id="nama"
             list={listGender}
             onChange={(e: any) => props.onChange()}
+            styleParent="col-span-2"
           />
+          <TextArea styleParent="col-span-6" />
           <Input
             type="date"
             id="tgllahir"
             label="Tgl. Lahir"
             value={lahir}
             onChange={(e: any) => setLahir(e.target.value)}
+            styleParent="col-span-6"
           />
-          <Input type="text" id="namaIbu" label="Nama Ibu" placeholder="Nama Ibu" />
           <Select
             placeholder="Pilih"
             label="Darah"
             id="darah "
             list={listGolDarah}
             onChange={(e: any) => props.onChange()}
+            styleParent="col-span-3"
+          />
+          <Input
+            type="text"
+            id="namaIbu"
+            label="Nama Ibu"
+            placeholder="Nama Ibu"
+            styleParent="col-span-3"
           />
           <Select
             placeholder="Pilih"
@@ -94,6 +119,7 @@ export default function FormRegistrasi({ ...props }) {
             id="status "
             list={listStatus}
             onChange={(e: any) => props.onChange()}
+            styleParent="col-span-3"
           />
           <Select
             placeholder="Pilih"
@@ -101,14 +127,15 @@ export default function FormRegistrasi({ ...props }) {
             id="agama "
             list={listAgama}
             onChange={(e: any) => props.onChange()}
+            styleParent="col-span-3"
           />
-          <Input type="text" id="pekerjaan" label="Pekerjaan" placeholder="Pekerjaan" />
           <Select
             placeholder="Pilih"
             label="Pendidikan"
             id="pendidikan "
             list={listPendidikan}
             onChange={(e: any) => props.onChange()}
+            styleParent="col-span-3"
           />
           <Select
             placeholder="Pilih"
@@ -116,19 +143,98 @@ export default function FormRegistrasi({ ...props }) {
             id="jaminan "
             list={jaminan}
             onChange={(e: any) => props.onChange()}
+            styleParent="col-span-3"
           />
-          <Input type="text" id="kartu" label="No. Kartu" placeholder="Nomor Kartu" />
+          <Select
+            placeholder="Pilih"
+            label="Penjamin"
+            id="jaminan "
+            list={jaminan}
+            onChange={(e: any) => props.onChange()}
+            styleParent="col-span-3"
+          />
+          <Select
+            placeholder="Pilih"
+            label="Penjamin"
+            id="jaminan "
+            list={jaminan}
+            onChange={(e: any) => props.onChange()}
+            styleParent="col-span-3"
+          />
+          <Select
+            placeholder="Pilih"
+            label="Penjamin"
+            id="jaminan "
+            list={jaminan}
+            onChange={(e: any) => props.onChange()}
+            styleParent="col-span-2"
+          />
+          <Select
+            placeholder="Pilih"
+            label="Penjamin"
+            id="jaminan "
+            list={jaminan}
+            onChange={(e: any) => props.onChange()}
+            styleParent="col-span-2"
+          />
+          <Input
+            type="text"
+            id="pekerjaan"
+            label="Pekerjaan"
+            placeholder="Pekerjaan"
+            styleParent="col-span-2"
+          />
+          <Input
+            type="text"
+            id="kartu"
+            label="No. Kartu"
+            placeholder="Nomor Kartu"
+            styleParent="col-span-2"
+          />
+          <Input
+            type="text"
+            id="kartu"
+            label="No. Kartu"
+            placeholder="Nomor Kartu"
+            styleParent="col-span-2"
+          />{' '}
+          <Select
+            placeholder="Pilih"
+            label="Penjamin"
+            id="jaminan "
+            list={jaminan}
+            onChange={(e: any) => props.onChange()}
+            styleParent="col-span-2"
+          />
+          <Select
+            placeholder="Pilih"
+            label="Penjamin"
+            id="jaminan "
+            list={jaminan}
+            onChange={(e: any) => props.onChange()}
+            styleParent="col-span-3"
+          />
+          <Input
+            type="text"
+            id="kartu"
+            label="No. Kartu"
+            placeholder="Nomor Kartu"
+            styleParent="col-span-3"
+          />
         </div>
-        <div className="grid grid-cols-2 gap-x-4 md:p-5 text-gray-600 md:max-h-[500px] md:overflow-auto mx-5 md:border-t-4 border-red-300 ">
+        <div className=" w-1/3 gap-x-4 md:p-5 text-gray-600 md:max-h-[500px] md:overflow-auto mx-5 md:border-t-4 border-red-300 ">
+          <div className="flex justify-center items-center">
+            <img src="/images/img-person.jpg" alt="" className="h-20 w-20 rounded-full" />
+          </div>
+          <Input type="text" id="nama" label="Nama" placeholder="Nama Keluarga" />
           <Select
             placeholder="Pilih"
             label="Keluarga"
             id="keluarga "
             list={keluarga}
-            styleParent=" pb-5"
+            styleParent=" pb-5 w-full"
             onChange={(e: any) => props.onChange()}
           />
-          <Input type="text" id="nama" label="Nama" placeholder="Nama Keluarga" />
           <Input
             type="text"
             id="ktp"
@@ -136,12 +242,7 @@ export default function FormRegistrasi({ ...props }) {
             placeholder="No. KTP"
             styleParent="col-span-2 w-full"
           />
-          <TextArea
-            id="alamat"
-            label="Alamat"
-            placeholder="Alamat Lengkap"
-            styleParent="col-span-2 w-full rows-span-2"
-          />
+
           <Input
             type="text"
             id="propinsi"
@@ -150,10 +251,17 @@ export default function FormRegistrasi({ ...props }) {
             styleParent="row-start-5"
           />
           <Input type="text" id="kota" label="Kabupaten/Kota" placeholder="Kabupaten/Kota" />
+          <Select
+            placeholder="Pilih"
+            label="Keluarga"
+            id="keluarga "
+            list={keluarga}
+            styleParent=" pb-5 w-full"
+            onChange={(e: any) => props.onChange()}
+          />
           <Input type="text" id="kecamatan" label="Kecamatan" placeholder="Kecamatan" />
           <Input type="text" id="desa" label="Desa" placeholder="Desa" />
           <Input type="text" id="nohp" label="No.Hp" placeholder="No. Handphone" />
-          <Input type="email" id="email" label="Email" placeholder="Email" />
         </div>
       </div>
     </div>

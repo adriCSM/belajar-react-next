@@ -7,6 +7,7 @@ import CardPegawai from '@/components/Fragments/CardPegawai';
 import Select from '@/components/Elements/Select';
 import { useState } from 'react';
 import Table from '@/components/Fragments/Table';
+import CheckBox from '@/components/Elements/CheckBox';
 export default function LayoutKepegawaian() {
   const headers = [
     'Kode Pegawai',
@@ -44,14 +45,7 @@ export default function LayoutKepegawaian() {
   const listPegawai = ['Dokter', 'Perawat', 'Staf', 'Satpam'];
   return (
     <div className="h-auto px-5 container mx-auto  mt-6 flex  ">
-      <div className="w-1/6 h-full bg-white me-5 rounded-xl shadow-md p-5 sticky top-[105px]">
-        <ul>
-          {listPegawai.map((item, index) => {
-            return <li>{item}</li>;
-          })}
-        </ul>
-      </div>
-      <div className="w-full p-5 bg-white rounded-xl shadow-lg ">
+      <div className="w-4/5 p-5 bg-white rounded-xl shadow-lg ">
         <div className="flex justify-between items-center mb-2  sticky top-0 bg-white">
           <div className="flex">
             <Search />
@@ -78,10 +72,10 @@ export default function LayoutKepegawaian() {
         </div>
         {viewGrid && (
           <div
-            className={` border-t-4 border-blue-300 grid grid-cols-2   md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 justify-between rounded-lg py-2 md:p-5 ring-2 mt-5 md:mx-2 ring-lime-100 transition-width duration-300"`}
+            className={` border-t-4 border-blue-300 grid grid-cols-2   md:grid-cols-3 lg:grid-cols-4  gap-4 justify-between rounded-lg py-2 md:p-5 ring-2 mt-5 md:mx-2 ring-lime-100 transition-width duration-300"`}
           >
             {Array.from({ length: 9 }).map((_, index) => {
-              return <CardPegawai key={index} path="/admin/pasien/detail" />;
+              return <CardPegawai key={index} path="/admin/menu/kepegawaian/detail" />;
             })}
           </div>
         )}
@@ -92,6 +86,17 @@ export default function LayoutKepegawaian() {
             <Table headers={headers} values={values} />
           </div>
         )}
+      </div>
+      <div className="w-1/5 h-[85vh] bg-white ms-5 rounded-xl shadow-md p-5 sticky top-[105px]">
+        <ul>
+          {listPegawai.map((item, index) => {
+            return (
+              <li>
+                <CheckBox id={item} name={item} />
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </div>
   );

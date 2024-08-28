@@ -7,7 +7,8 @@ export default function Card(props: any) {
     <Link href={href}>
       <div
         key={i}
-        className={`${styleCard} flex flex-col items-center h-32 justify-around md:h-40 lg:h-60  items-center flex flex-col  ring-4 shadow-md rounded-md md:rounded-2xl transition transform duration-300 active:scale-105`}
+        className={`${styleCard} relative
+         flex flex-col items-center h-32 justify-around md:h-40 lg:h-60  items-center flex flex-col  ring-4 shadow-md rounded-md md:rounded-2xl transition transform duration-300 active:scale-105         `}
       >
         <div className=" w-auto h-4/5  m-3 flex ">
           <Icon

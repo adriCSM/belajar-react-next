@@ -15,7 +15,7 @@ export default function Home() {
         <div className="h-20  rounded-t-xl  w-full   flex items-center justify-center">
           <div className="container   mx-5 -mt-[80px] p-5 flex items-center justify-center rounded-2xl bg-white shadow-lg">
             <img src="../logo/icon-512x512.png" alt="" className="h-16 w-16 me-5" />
-            <p className="text-3xl md:text-5xl font-bold">mLite</p>
+            <p className="text-3xl md:text-5xl font-bold text-lime-500">mLite</p>
           </div>
         </div>
         <div className="md:h-2/3 w-full p-5">
@@ -34,7 +34,7 @@ export default function Home() {
               id="password"
               placeholder="Password"
               type="password"
-              inputStyle="pl-10  py-3 shadow-2xl focus:border-x-4 focus:border-lime-300 outline-none placeholder:text-gray-500 text-black "
+              inputStyle="pl-10  py-3 shadow-2xl  placeholder:text-gray-500 text-black "
             />
           </div>
           <Button

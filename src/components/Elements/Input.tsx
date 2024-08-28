@@ -17,7 +17,7 @@ export default function Input(props: any) {
         id={id}
         required={required}
         placeholder={placeholder}
-        className={`rounded-2xl outline  text-sm p-2   invalid:border-pink-500 ${inputStyle}`}
+        className={`rounded-2xl  outline text-sm p-2 focus:border-x-4 focus:border-lime-300 outline-gray-300 outline-2  invalid:border-pink-500 ${inputStyle}`}
       />
     </div>
   );
