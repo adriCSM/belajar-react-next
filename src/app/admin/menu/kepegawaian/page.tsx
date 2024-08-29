@@ -45,21 +45,19 @@ export default function LayoutKepegawaian() {
   const listPegawai = ['Dokter', 'Perawat', 'Staf', 'Satpam'];
   return (
     <div className="h-auto px-5 container mx-auto  mt-6 flex flex-col md:flex-row  ">
-      <div className="w-full flex-2 md:w-4/5 p-5 bg-white rounded-xl shadow-lg ">
-        <div className="flex flex-col md:flex-row justify-between items-center mb-2  md:sticky top-0 bg-white">
-          <div className="flex">
-            <Search />
+      <div className="w-full md:w-4/5  bg-white rounded-xl shadow-lg h-[85vh] overflow-auto mb-5 ">
+        <div className="border-b-4 px-5  border-blue-300 sticky top-0 flex  justify-between items-center mb-2 py-5 bg-white z-10  bg-white">
+          <div className="flex  ">
             <select
               id="view"
-              className="rounded-full me-3 border-2 bg-transparent w-1/2  p-1 pr-7  focus:outline-blue-600  text-xs md:text-sm"
+              className="rounded-full me-3 border-2 bg-transparent   p-1 pr-7  focus:outline-blue-600  text-xs md:text-sm"
               onChange={ubahView}
             >
               <option value="grid">Grid View</option>
               <option value="list">List View</option>
             </select>
           </div>
-          <div className="flex mt-5 md:mt-0 items-center">
-            <Select list={list} styleParent="w-40 " placeholder="Sort By" />
+          <div className="flex items-center">
             <BasicModal
               Form={FormPegawai}
               styleButton="bg-blue-500  text-white hover:bg-blue-600 ms-5 "
@@ -72,7 +70,7 @@ export default function LayoutKepegawaian() {
         </div>
         {viewGrid && (
           <div
-            className={` border-t-4 border-blue-300 grid grid-cols-2   md:grid-cols-3 lg:grid-cols-4  gap-4 justify-between rounded-lg py-2 md:p-5 ring-2 mt-5 md:mx-2 ring-lime-100 transition-width duration-300"`}
+            className={` grid grid-cols-2 mx-5  md:grid-cols-3 lg:grid-cols-4  gap-4 justify-between rounded-lg py-2 md:p-5 ring-2  md:mx-2 ring-lime-100 transition-width duration-300"`}
           >
             {Array.from({ length: 9 }).map((_, index) => {
               return <CardPegawai key={index} path="/admin/menu/kepegawaian/detail" />;
@@ -80,14 +78,13 @@ export default function LayoutKepegawaian() {
           </div>
         )}
         {viewTable && (
-          <div
-            className={`  border-t-4 border-blue-300 md:w-full max-h-[560px]  overflow-auto rounded-lg ring-2 mt-5 mx-2 ring-lime-100`}
-          >
+          <div className={`px-5   overflow-auto rounded-lg ring-2 mx-2 ring-lime-100`}>
             <TablePegawai headers={headers} values={values} />
           </div>
         )}
       </div>
       <div className="w-full order-first md:order-last md:w-1/5 md:h-[85vh] bg-white md:ms-5 mb-5 md:mb-0 rounded-xl shadow-md p-5 md:sticky top-[105px]">
+        <Search className="pb-5" />
         <ul>
           {listPegawai.map((item, index) => {
             return (
