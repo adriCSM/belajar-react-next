@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { FaRegSun } from 'react-icons/fa';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
-  const [sidebar, setSidebar] = useState(false);
+  const [sidebar, setSidebar] = useState(true);
   const [darkMode, setDarkMode] = useState(false);
 
   const changeSidebar = () => {

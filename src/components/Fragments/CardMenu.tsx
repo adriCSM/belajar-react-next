@@ -15,7 +15,9 @@ export default function Card(props: any) {
             className={`text-5xl md:text-7xl self-center hover:scale-125 transition scale duration-300 ${styleText}`}
           />
         </div>
-        <h1 className={`md:text-xl h-1/5 text-center font-bold ${styleText} truncate`}>{name}</h1>
+        <h1 className={`text-xs md:text-xl h-1/5 text-center font-bold ${styleText} truncate`}>
+          {name}
+        </h1>
       </div>
     </Link>
   );

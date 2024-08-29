@@ -45,20 +45,20 @@ export default function LayoutKepegawaian() {
   const listPegawai = ['Dokter', 'Perawat', 'Staf', 'Satpam'];
   return (
     <div className="h-auto px-5 container mx-auto  mt-6 flex flex-col md:flex-row  ">
-      <div className="w-full md:w-4/5 p-5 bg-white rounded-xl shadow-lg ">
-        <div className="flex justify-between items-center mb-2  sticky top-0 bg-white">
+      <div className="w-full flex-2 md:w-4/5 p-5 bg-white rounded-xl shadow-lg ">
+        <div className="flex flex-col md:flex-row justify-between items-center mb-2  md:sticky top-0 bg-white">
           <div className="flex">
             <Search />
             <select
               id="view"
-              className=" rounded-full me-3 border-2 bg-transparent p-1 pr-7 focus:ring-2 focus:outline-none focus:ring-2 focus:ring-blue-600 text-xs md:text-sm"
+              className="rounded-full me-3 border-2 bg-transparent w-1/2  p-1 pr-7  focus:outline-blue-600  text-xs md:text-sm"
               onChange={ubahView}
             >
               <option value="grid">Grid View</option>
               <option value="list">List View</option>
             </select>
           </div>
-          <div className="flex items-center">
+          <div className="flex mt-5 md:mt-0 items-center">
             <Select list={list} styleParent="w-40 " placeholder="Sort By" />
             <BasicModal
               Form={FormPegawai}
@@ -87,7 +87,7 @@ export default function LayoutKepegawaian() {
           </div>
         )}
       </div>
-      <div className="w-full flex-first md:flex-last md:w-1/5 h-[85vh] bg-white ms-5 rounded-xl shadow-md p-5 sticky top-[105px]">
+      <div className="w-full order-first md:order-last md:w-1/5 md:h-[85vh] bg-white md:ms-5 mb-5 md:mb-0 rounded-xl shadow-md p-5 md:sticky top-[105px]">
         <ul>
           {listPegawai.map((item, index) => {
             return (

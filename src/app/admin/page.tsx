@@ -65,7 +65,7 @@ export default function AdminPage() {
                     } rounded-xl p-3   transition-m  duration-700 `}
                   />
                   <div className={`${show ? 'text-end' : 'hidden'}`}>
-                    <h1 className={`${item.textColor} text-nowrap md:text-3xl font-bold `}>
+                    <h1 className={`${item.textColor} md:text-nowrap md:text-3xl font-bold `}>
                       {item.jenis}
                     </h1>
                     <h1 className="text-end md:text-2xl ">{item.jumlah}</h1>
