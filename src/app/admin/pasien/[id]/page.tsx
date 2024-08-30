@@ -3,6 +3,7 @@ import { TfiReload } from 'react-icons/tfi';
 import TabPasien from '@/components/Fragments/TabPasien/MainTab';
 import Image from 'next/image';
 import { FaMars } from 'react-icons/fa6';
+import { FaRegFileAlt } from 'react-icons/fa';
 
 type id = { params: { id: string } };
 export default function DetailPasien(props: id) {
@@ -23,7 +24,7 @@ export default function DetailPasien(props: id) {
                     height={80}
                     width={80}
                   />
-                  <FaMars className="text-blue-400 text-2xl p-1 font-bold absolute bottom-1 right-1 bg-white rounded-full " />
+                  <FaMars className="text-blue-400 text-2xl p-1 font-bold absolute bottom-2 right-2 bg-white rounded-full " />
                 </div>
                 <h1 className="text-center mt-2">Usia</h1>
               </div>
@@ -35,7 +36,8 @@ export default function DetailPasien(props: id) {
                 <p>08123456</p>
               </div>
             </div>
-            <div className="bg-lime-100 h-1/3 rounded-xl p-5 ring-2 ring-amber-500">
+            <div className="bg-lime-100 h-1/3 rounded-xl p-5 ring-2 ring-amber-500 flex items-center gap-2 justify-center">
+              <FaRegFileAlt />
               <h1 className="text-center">Belum ada Catatan</h1>
             </div>
           </div>
