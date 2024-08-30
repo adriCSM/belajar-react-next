@@ -2,8 +2,7 @@
 import SidebarAdmin from './Sidebar';
 import NavbarAdmin from './navbar';
 import { useState } from 'react';
-import { FaRegSun } from 'react-icons/fa';
-
+import { BsFillMoonStarsFill, BsSunFill } from 'react-icons/bs';
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const [sidebar, setSidebar] = useState(true);
   const [darkMode, setDarkMode] = useState(false);
@@ -27,7 +26,18 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <div className="w-full ">
           <NavbarAdmin onClick={changeSidebar} showSidebar={sidebar} />
           <div className="container mx-auto ">{children}</div>
-          <div className="bg-red fixed bot-0 right-0 rounded-full h-12 w-12 "></div>
+          <div
+            className={`${
+              darkMode ? 'bg-white ring-2  ring-amber-500' : 'bg-black ring-2 ring-white'
+            } fixed bottom-5 right-5 md:bottom-5 md:right-5 shadow-md rounded-full h-12 w-12 z-50 flex justify-center text-2xl items-center`}
+            onClick={changeMode}
+          >
+            {darkMode ? (
+              <BsSunFill className="text-amber-500 animate-pulse" />
+            ) : (
+              <BsFillMoonStarsFill className="text-white animate-pulse" />
+            )}
+          </div>
         </div>
       </div>
     </div>

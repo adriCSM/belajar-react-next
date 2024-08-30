@@ -135,7 +135,7 @@ export default function PasienPage() {
               Form={FormRegistrasi}
               styleButton="bg-blue-500  text-white hover:bg-blue-600 "
               buttonText="Pasien Baru"
-              styleModal="w-5/6 md:w-4/5 sm:w-2/3 h-auto p-3 md:p-5"
+              styleModal="w-5/6 md:w-4/5 sm:w-2/3  h-5/6 p-3 md:p-5"
               Icon={FaPlus}
               title="Registrasi Pasien Baru"
             />

@@ -3,9 +3,9 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import { useState } from 'react';
-import PersonalInfo from './PersonalInfo';
-import Education from './Education';
-import WorkExperience from './WorkExperience';
+import Home from './Home';
+import PengkajianAwal from './PengkajianAwal';
+
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
@@ -35,7 +35,7 @@ function a11yProps(index: number) {
   };
 }
 
-export default function MainTabs() {
+export default function MainTabsPasien() {
   const [value, setValue] = useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -52,13 +52,10 @@ export default function MainTabs() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <PersonalInfo />
+        <Home />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <Education />
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={2}>
-        <WorkExperience />
+        <PengkajianAwal />
       </CustomTabPanel>
     </Box>
   );

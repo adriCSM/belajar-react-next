@@ -20,9 +20,6 @@ export default function NavbarAdmin(props: any) {
       <div>
         <ul className="flex items-center text-[1.4rem]">
           <li>
-            <FaRegSun className="rounded-full bg-gray-200  h-10 w-10 p-2 me-5 text-lime-500 text-2xl hidden md:block" />
-          </li>
-          <li>
             <AccountMenu
               className="h-10 w-10 ring-2 ring-lime-500 rounded-full"
               src={'/images/img-person.jpg'}
