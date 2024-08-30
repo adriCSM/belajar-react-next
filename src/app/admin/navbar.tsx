@@ -1,6 +1,4 @@
 import { FaBars, FaMoon, FaRegSun, FaRegBell, FaSistrix, FaUserMd } from 'react-icons/fa';
-import MenuBar from '@/components/Fragments/MenuBar';
-import Link from 'next/link';
 import AccountMenu from '@/components/Elements/AccountMenu';
 export default function NavbarAdmin(props: any) {
   const { onClick, showSidebar } = props;

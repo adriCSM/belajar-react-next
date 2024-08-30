@@ -149,7 +149,7 @@ export default function RawatJalanPage() {
         <div className="w-full h-full md:flex ">
           {viewTable && (
             <div
-              className={` border-t-4 border-blue-300 md:w-3/4 max-h-[560px]  overflow-auto rounded-lg ring-2 mt-5 mx-2 ring-lime-100`}
+              className={` border-t-4 border-blue-300 w-full max-h-[560px]  overflow-auto rounded-lg ring-2 mt-5 mx-2 ring-lime-100`}
             >
               <Table headers={headers} values={values} />
             </div>
@@ -157,31 +157,13 @@ export default function RawatJalanPage() {
 
           {viewGrid && (
             <div
-              className={` border-t-4 border-blue-300 grid md:w-3/4 grid-cols-2 max-h-[560px]  overflow-auto md:grid-cols-3 lg:grid-cols-4 gap-4 justify-between rounded-lg md:p-5 ring-2 mt-5 md:mx-2 ring-lime-100`}
+              className={` border-t-4 border-blue-300 grid w-full grid-cols-2 max-h-[560px]  overflow-auto md:grid-cols-3 lg:grid-cols-4 gap-4 justify-between rounded-lg md:p-5 ring-2 mt-5 md:mx-2 ring-lime-100`}
             >
               {Array.from({ length: 9 }).map((_, index) => {
                 return <CardPasien key={`ralan${index}`} path="/admin/pasien/ralan" />;
               })}
             </div>
           )}
-          <div className="md:w-1/4 max-h-[560px] border-2 overflow-auto  mt-5 rounded-lg md:px-1 lg:px-3">
-            <div className="sticky top-0 bg-white py-3 border-b-4 text-sm lg-text-md border-red-300">
-              <div className="pb-2 flex justify-between   items-center">
-                <h1>Riwayat Registrasi</h1>
-                <div className="bg-gray-100 hover:bg-gray-200 text-blue-500 cursor-pointer h-9 w-9 p-2 rounded-full flex">
-                  <TfiReload className="animate-spin m-auto" />
-                </div>
-              </div>
-              <div>
-                <h1 className="font-bold text-center mb-3">Instalasi Rawat Jalan</h1>
-              </div>
-            </div>
-            <div className="  p-2 rounded-lg   overflow-auto ">
-              {Array.from({ length: 15 }).map((_, index) => {
-                return <CardRiwayat key={index} />;
-              })}
-            </div>
-          </div>
         </div>
       </div>
     </div>

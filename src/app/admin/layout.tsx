@@ -27,6 +27,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <div className="w-full ">
           <NavbarAdmin onClick={changeSidebar} showSidebar={sidebar} />
           <div className="container mx-auto ">{children}</div>
+          <div className="bg-red fixed bot-0 right-0 rounded-full h-12 w-12 "></div>
         </div>
       </div>
     </div>
