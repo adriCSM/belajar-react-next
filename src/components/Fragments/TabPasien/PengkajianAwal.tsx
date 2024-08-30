@@ -1,7 +1,7 @@
 export default function PengkajianAwalPasien() {
   return (
     <div>
-      <h1>Education</h1>
+      <h1>Pengkajian awal</h1>
     </div>
   );
 }

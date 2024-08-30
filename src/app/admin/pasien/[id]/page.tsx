@@ -1,15 +1,44 @@
 import CardRiwayat from '@/components/Fragments/CardRiwayat';
 import { TfiReload } from 'react-icons/tfi';
+import TabPasien from '@/components/Fragments/TabPasien/MainTab';
+import Image from 'next/image';
+import { FaMars } from 'react-icons/fa6';
 
 type id = { params: { id: string } };
 export default function DetailPasien(props: id) {
   const { id } = props.params;
-  console.log(id);
+
   return (
     <div className="h-auto  container mx-auto p-5">
       <div>
         <div className="h-60 flex flex-col md:flex-row  gap-5 ">
-          <div className="bg-white h-full rounded-xl bg-white shadow-lg md:w-1/4"></div>
+          <div className="bg-white h-full rounded-xl bg-white shadow-lg md:w-1/4 p-5 flex flex-col justify-between">
+            <div className="flex gap-2 h-full  items-center">
+              <div className="w-1/3">
+                <div className="relative ">
+                  <Image
+                    src="/images/img-person.jpg"
+                    alt=""
+                    className={`rounded-full ring-2 ring-offset-4 ring-amber-500`}
+                    height={80}
+                    width={80}
+                  />
+                  <FaMars className="text-blue-400 text-2xl p-1 font-bold absolute bottom-1 right-1 bg-white rounded-full " />
+                </div>
+                <h1 className="text-center mt-2">Usia</h1>
+              </div>
+              <div className="w-2/3  overflow-hidden text-nowrap text-xs">
+                <h1 className="truncate text-xl font-bold">Adri Candra Saputra Mangidi</h1>
+                <p>740123456789</p>
+                <p>740123456789</p>
+                <p>Cirebon, 29 desember 2029</p>
+                <p>08123456</p>
+              </div>
+            </div>
+            <div className="bg-lime-100 h-1/3 rounded-xl p-5 ring-2 ring-amber-500">
+              <h1 className="text-center">Belum ada Catatan</h1>
+            </div>
+          </div>
           <div className="bg-white h-full rounded-xl bg-white shadow-lg md:w-2/4"></div>
           <div className="bg-white h-full rounded-xl bg-white shadow-lg md:w-1/4"></div>
         </div>
@@ -33,7 +62,9 @@ export default function DetailPasien(props: id) {
               })}
             </div>
           </div>
-          <div className="bg-white h-full rounded-xl bg-white shadow-lg w-3/4 ring-2 ring-lime-200 md:w-3/4 w-full"></div>
+          <div className="bg-white h-full rounded-xl bg-white shadow-lg w-3/4 ring-2 ring-lime-200 md:w-3/4 w-full">
+            <TabPasien />
+          </div>
         </div>
       </div>
     </div>

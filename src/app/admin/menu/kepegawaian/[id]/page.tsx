@@ -1,4 +1,4 @@
-import MainTab from '@/components/Fragments/tab/MainTab';
+import MainTab from '@/components/Fragments/TabPegawai/MainTab';
 import Image from 'next/image';
 
 type id = { params: { id: string } };

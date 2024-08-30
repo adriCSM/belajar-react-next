@@ -5,6 +5,8 @@ import Box from '@mui/material/Box';
 import { useState } from 'react';
 import Home from './Home';
 import PengkajianAwal from './PengkajianAwal';
+import { FaLaptopMedical } from 'react-icons/fa';
+import { FaRegFile } from 'react-icons/fa6';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -43,12 +45,16 @@ export default function MainTabsPasien() {
   };
 
   return (
-    <Box sx={{ width: '100%' }} className="bg-white mt-5 rounded-2xl shadow-md">
+    <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Personal Info" {...a11yProps(0)} />
-          <Tab label="Education" {...a11yProps(1)} />
-          <Tab label="Work Experience" {...a11yProps(2)} />
+          <Tab icon={<FaLaptopMedical />} label="Home" {...a11yProps(0)} iconPosition="start" />
+          <Tab
+            icon={<FaRegFile />}
+            label="Pengkajian Awal"
+            {...a11yProps(1)}
+            iconPosition="start"
+          />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
