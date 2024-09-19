@@ -11,43 +11,40 @@ export default function Home() {
     router.push('/admin');
   };
   return (
-    <main className="flex h-screen items-center  bg-home bg-cover justify-center bg-white">
-      <div className="h-auto w-5/6 md:w-[25vw] flex flex-col bg-lime-100 ring-4 ring-white shadow-lg   rounded-2xl flex items-center">
-        <div className="h-20  rounded-t-xl  w-full   flex items-center justify-center">
-          <div className="container   mx-5 -mt-[80px] p-5 flex items-center justify-center rounded-2xl bg-white shadow-lg">
-            <Image src="/logo/icon-512x512.png" alt="" className="me-5" width={64} height={64} />
-            <p className="text-3xl md:text-5xl font-bold text-lime-500">mLite</p>
-          </div>
+    <main className="flex items-center justify-center bg-white">
+      <section className="w-2/5  flex justify-center flex-col items-center">
+        <div className=" flex items-center justify-center my-5 bg-white ">
+          <Image src="/logo/icon-512x512.png" alt="" className="me-5" width={64} height={64} />
+          <p className="text-3xl md:text-5xl font-bold text-lime-500">mLite</p>
         </div>
-        <div className="md:h-2/3 w-full p-5">
+        <div className="md:h-2/3 w-3/4 p-5 ">
           <div className="relative   ">
             <FaUser className="absolute left-3 top-3 text-slate-400 pointer-events-none group-focus-within:text-blue-500" />
             <Input
               id="username"
               placeholder="Username"
               type="text"
-              inputStyle="pl-10  py-3 outline-0  shadow-2xl focus:border-x-4 focus:border-lime-300 placeholder:text-gray-500 mb-5 text-black "
+              inputStyle="pl-10  py-3 outline-0 focus:border-x-4 focus:border-lime-300 placeholder:text-gray-500 mb-5 text-black "
             />
           </div>
-          <div className="relative   ">
+          <div className="relative ">
             <FaLock className="absolute left-3 top-3 text-slate-400  pointer-events-none group-focus-within:text-blue-500" />
             <Input
               id="password"
               placeholder="Password"
               type="password"
-              inputStyle="pl-10  py-3 shadow-2xl outline-0 placeholder:text-gray-500 text-black "
+              inputStyle="pl-10  py-3 outline-0 placeholder:text-gray-500 text-black "
             />
           </div>
           <Button
-            styleButton="my-5 py-2 bg-gray-100 w-full before:h-full before:left-0 before:rounded-full  before:w-0 before:bg-gradient-to-r 
-            before:from-lime-400 before:to-green-400 before:content-[''] active:scale-105 transition
-            before:bg-lime-200 before:-z-10 hover:before:w-full before:top-0  before:absolute shadow-md ring-lime-300 shadow-xl  transform    before:transition-width before:duration-700 before:ease-in-out hover:text-white font-bold text-lime-700"
+            styleButton="my-5 py-2 bg-green-700 w-full text-white font-bold "
             handleClick={login}
             text="Login"
             disable={false}
           />
         </div>
-      </div>
+      </section>
+      <section className=" bg-home  h-screen bg-cover w-3/5 rounded-l-lg"></section>
     </main>
   );
 }

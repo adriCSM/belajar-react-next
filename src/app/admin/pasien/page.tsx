@@ -4,11 +4,13 @@ import Switch from '@mui/material/Switch';
 import FormRegistrasi from '@/components/Fragments/FormRegistrasi';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import CardPasien from '@/components/Fragments/CardPasien';
-import { FaPlus, FaList } from 'react-icons/fa';
+import { FaPlus } from 'react-icons/fa';
 import Table from '@/components/Fragments/TablePasien';
-import { useEffect, useState } from 'react';
-import { FaUserGroup } from 'react-icons/fa6';
+import { SyntheticEvent, useEffect, useState } from 'react';
+
 import Search from '@/components/Elements/Search';
+import { pasien, situasi } from '@/utils/pasien';
+
 export default function PasienPage() {
   const headers = [
     'No. RM',
@@ -43,7 +45,10 @@ export default function PasienPage() {
 
   const [viewGrid, setViewGrid] = useState(true);
   const [viewTable, setViewTable] = useState(false);
-
+  const [p, setP] = useState(pasien);
+  const [search, setSearch] = useState('');
+  const [newPasien, setNewPasien] = useState(p);
+  const [status, setStatus] = useState('aktif');
   const ubahView = (e: any) => {
     if (e.target.value == 'list') {
       setViewGrid(false);
@@ -54,32 +59,36 @@ export default function PasienPage() {
     }
   };
 
-  const kondisi = [
-    {
-      name: 'Total Pasien',
-      jumlah: '350',
-      icon: FaUserGroup,
-    },
-    {
-      name: 'Menunggu dipanggil',
-      jumlah: '150',
-      icon: FaUserGroup,
-    },
-    {
-      name: 'Dalam Pelayanan',
-      jumlah: '100',
-      icon: FaUserGroup,
-    },
-    {
-      name: 'Selesai',
-      jumlah: '100',
-      icon: FaUserGroup,
-    },
-  ];
-
-  const search = () => {
-    console.log('adri');
+  const statusEvent = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    if (event.target.checked) {
+      setStatus('aktif');
+    } else {
+      setStatus('inaktif');
+    }
   };
+
+  const searchEvent = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setSearch(event.target.value);
+  };
+
+  useEffect(() => {
+    const filteredPasien = p.filter((item) => {
+      const nama = item.pasien.nama.toLowerCase().includes(search.toLowerCase());
+      const nik = item.pasien.nik.includes(search, 0);
+      const noReg = item.pasien.no_reg.includes(search, 0);
+      return nama || nik || noReg;
+    });
+    setNewPasien(filteredPasien);
+  }, [search, p]);
+
+  useEffect(() => {
+    const filteredPasien = p.filter((item) => {
+      const statusFilter = item.status.toLowerCase() === status.toLowerCase();
+      return statusFilter;
+    });
+    filteredPasien.length ? setNewPasien(filteredPasien) : setNewPasien(p);
+  }, [status]);
+
   return (
     <div className="p-5 w-auto ">
       <div className="flex flex-col md:flex-row">
@@ -93,7 +102,7 @@ export default function PasienPage() {
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4 mt-5 md:mt-0 md:w-1/3 ">
-          {kondisi.map((item, index) => (
+          {situasi.map((item, index) => (
             <div
               key={index}
               className={`ring-2  text-center rounded-lg p-2 flex flex-col   text-white  w-full justify-center ${
@@ -115,7 +124,7 @@ export default function PasienPage() {
 
       <div className="w-full h-auto bg-white mt-5 rounded-xl shadow-md p-5">
         <h1 className="text-md md:text-xl font-bold ">
-          Pasien <span className="font-normal text-sm md:text-md">(546 total)</span>
+          Pasien <span className="font-normal text-sm md:text-md">({p.length} total)</span>
         </h1>
         <div>
           <div>
@@ -126,11 +135,11 @@ export default function PasienPage() {
               <option value="grid">Grid View</option>
               <option value="list">List View</option>
             </select>
-            <FormControlLabel control={<Switch defaultChecked />} label="(Pasien Aktif)" />
+            <FormControlLabel control={<Switch onChange={statusEvent} />} label="(Pasien Aktif)" />
           </div>
 
           <div className="flex flex-col md:flex-row justify-end md:-mt-3 me-2 mt-2">
-            <Search search={search} />
+            <Search search={searchEvent} />
             <BasicModal
               Form={FormRegistrasi}
               styleButton="bg-blue-500  text-white hover:bg-blue-600 "
@@ -152,11 +161,19 @@ export default function PasienPage() {
 
           {viewGrid && (
             <div
-              className={` border-t-4 border-blue-300 grid grid-cols-2 max-h-[560px]  overflow-auto md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 justify-between rounded-lg py-2 md:p-5 ring-2 mt-5 md:mx-2 ring-lime-100 transition-width duration-300"`}
+              className={` border-t-4 border-blue-300  max-h-[560px]  overflow-auto  justify-between rounded-lg py-2 md:p-5 ring-2 mt-5 md:mx-2 ring-lime-100 transition-width duration-300"`}
             >
-              {Array.from({ length: 9 }).map((_, index) => {
-                return <CardPasien key={index} path="/admin/pasien/detail" />;
-              })}
+              {newPasien.length ? (
+                <div
+                  className={` grid grid-cols-2 md:grid-cols-3  gap-4 lg:grid-cols-4 xl:grid-cols-5"`}
+                >
+                  {newPasien.map((pasien) => {
+                    return <CardPasien path="/admin/pasien/detail" data={pasien} key={pasien.id} />;
+                  })}
+                </div>
+              ) : (
+                <h1 className="text-center w-full">Pasien Tidak Ada</h1>
+              )}
             </div>
           )}
         </div>

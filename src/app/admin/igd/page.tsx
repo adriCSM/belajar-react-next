@@ -10,6 +10,7 @@ import { useState } from 'react';
 import Table from '@/components/Fragments/TablePasien';
 import { FaUserGroup } from 'react-icons/fa6';
 import Search from '@/components/Elements/Search';
+import { pasien } from '@/utils/pasien';
 export default function RawatJalanPage() {
   const headers = [
     'No. RM',
@@ -154,8 +155,8 @@ export default function RawatJalanPage() {
             <div
               className={` border-t-4 border-blue-300 grid w-full grid-cols-2 max-h-[560px]  overflow-auto md:grid-cols-3 xl:grid-cols-4 gap-4 justify-between rounded-lg md:p-5 ring-2 mt-5 md:mx-2 ring-lime-100`}
             >
-              {Array.from({ length: 9 }).map((_, index) => {
-                return <CardPasien key={index} path="/admin/pasien/igd" />;
+              {pasien.map((data, index) => {
+                return <CardPasien path="/admin/pasien/igd" data={data} key={index} />;
               })}
             </div>
           )}

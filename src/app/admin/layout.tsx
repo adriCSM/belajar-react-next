@@ -3,6 +3,8 @@ import SidebarAdmin from './Sidebar';
 import NavbarAdmin from './navbar';
 import { useState } from 'react';
 import { BsFillMoonStarsFill, BsSunFill } from 'react-icons/bs';
+import { pasien } from '@/utils/pasien';
+
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const [sidebar, setSidebar] = useState(true);
   const [darkMode, setDarkMode] = useState(false);
@@ -14,7 +16,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     setDarkMode(!darkMode);
   };
   return (
-    <div className="bg-gray-100 text-gray-600  ">
+    <div className="#fafafa text-gray-600  ">
       <div className="flex">
         <SidebarAdmin showSidebar={sidebar} />
         <div
@@ -25,7 +27,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         ></div>
         <div className="w-full ">
           <NavbarAdmin onClick={changeSidebar} showSidebar={sidebar} />
-          <div className="container mx-auto ">{children}</div>
+          <div className="container mx-auto">{children}</div>
           <div
             className={`${
               darkMode ? 'bg-white ring-2  ring-amber-500' : 'bg-black ring-2 ring-white'

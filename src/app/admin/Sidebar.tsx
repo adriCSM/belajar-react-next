@@ -6,53 +6,22 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FaAngleDoubleLeft } from 'react-icons/fa';
 import { FaXmark } from 'react-icons/fa6';
+import { menus } from '../../utils/menu';
 
 export default function SidebarAdmin({ ...props }) {
   const show = props.showSidebar;
   const pathname = usePathname();
 
-  const menus = [
-    {
-      name: 'Menu',
-      href: '/admin/menu',
-      src: '/icons/icon-home.png',
-    },
-    {
-      name: 'Pasien',
-      href: '/admin/pasien',
-      src: '/icons/icon-pasien.png',
-    },
-    {
-      name: 'IGD',
-      href: '/admin/igd',
-      src: '/icons/icon-igd.png',
-    },
-    {
-      name: 'Rawat Jalan',
-      href: '/admin/rawat_jalan',
-      src: '/icons/icon-ralan.png',
-    },
-    {
-      name: 'Rawat Inap',
-      href: '/admin/rawat_inap',
-      src: '/icons/icon-ranap.png',
-    },
-    {
-      name: 'Anjungan',
-      href: '/admin/anjungan',
-      src: '/icons/icon-informasi.png',
-    },
-  ];
   return (
     <nav
-      className={`fixed md:sticky top-0 h-[100vh]  transition-width transform duration-300   rounded-br-xl bg-gradient-to-tr from-lime-500 to-lime-400  ${
+      className={`fixed md:sticky top-0 h-[100vh]  transition-width transform duration-300  ${
         show ? 'md:w-[5%] -translate-x-full ' : 'w-3/5 md:w-[20%] translate-x-0 '
-      }   divide-y divide-white z-30 md:transform-none`}
+      }    z-30 md:transform-none`}
     >
       <div
         className={` w-full ${
           !show ? 'flex justify-center items-center' : ''
-        }  items-center mx-auto  p-3 h-24 overflow-hidden`}
+        }  items-center mx-auto  p-3 h-20 overflow-hidden border-b-2 border-gray-100 `}
       >
         <Link href={'/admin'} className="flex h-full  items-center justify-center md:justify-start">
           <Image
@@ -68,21 +37,19 @@ export default function SidebarAdmin({ ...props }) {
             } `}
           >
             <span className="text-lime-600">m</span>
-            <span className="text-white">LITE</span>
+            <span className="text-gray-500">LITE</span>
           </h1>
         </Link>
       </div>
 
-      <ul className={`pt-5 ps-2  overflow-hidden text-white`}>
+      <ul className={`pt-5 ps-2  overflow-hidden text-white  border-r-2 border-gray-100 `}>
         {menus.map((menu, i) => {
           return (
             <Link
               key={menu.name}
               href={menu.href}
-              className={`flex px-3 py-2 items-center transition duration-150 transform   ${
-                pathname == menu.href
-                  ? 'bg-gray-100  border-l-2 text-black border-y-2 border-lime-400'
-                  : 'hover:bg-lime-200 hover:shadow-md hover:text-black'
+              className={`flex px-3 py-2 items-center transition duration-150    transform text-black ${
+                pathname == menu.href ? 'bg-lime-200 shadow-md' : 'hover:bg-lime-100'
               }  rounded-s-xl`}
             >
               <li className={`cursor-pointer flex`}>

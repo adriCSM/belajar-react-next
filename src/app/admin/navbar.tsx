@@ -1,20 +1,29 @@
-import { FaBars, FaMoon, FaRegSun, FaRegBell, FaSistrix, FaUserMd } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import AccountMenu from '@/components/Elements/AccountMenu';
 export default function NavbarAdmin(props: any) {
   const { onClick, showSidebar } = props;
   const show = showSidebar;
   return (
     <nav
-      className={`w-full flex h-20 bg-white px-5  justify-between rounded-br-xl p-3 z-10 sticky top-0 shadow-md items-center`}
+      className={`w-full flex h-20 bg-white px-5  justify-between rounded-br-xl p-3 z-10 sticky top-0 border-b-2 border-gray-100 items-center`}
     >
-      <div className="">
+      <div className=" transition">
         <button>
-          <FaBars
-            className="text-2xl text-lime-400"
-            onClick={() => {
-              onClick();
-            }}
-          />
+          {show ? (
+            <FaChevronRight
+              className="text-2xl text-lime-400"
+              onClick={() => {
+                onClick();
+              }}
+            />
+          ) : (
+            <FaChevronLeft
+              className="text-2xl text-lime-400"
+              onClick={() => {
+                onClick();
+              }}
+            />
+          )}
         </button>
       </div>
       <div>
