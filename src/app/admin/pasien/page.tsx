@@ -6,7 +6,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import CardPasien from '@/components/Fragments/CardPasien';
 import { FaPlus } from 'react-icons/fa';
 import Table from '@/components/Fragments/TablePasien';
-import { SyntheticEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Search from '@/components/Elements/Search';
 import { pasien, situasi } from '@/utils/pasien';

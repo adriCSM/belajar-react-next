@@ -12,6 +12,7 @@ import Table from '@/components/Fragments/TablePasien';
 import { useState } from 'react';
 import { FaUserGroup } from 'react-icons/fa6';
 import Search from '@/components/Elements/Search';
+import { pasien, situasi } from '@/utils/pasien';
 export default function RawatJalanPage() {
   const headers = [
     'No. RM',
@@ -46,6 +47,10 @@ export default function RawatJalanPage() {
 
   const [viewGrid, setViewGrid] = useState(true);
   const [viewTable, setViewTable] = useState(false);
+  const [p, setP] = useState(pasien);
+  const [search, setSearch] = useState('');
+  const [newPasien, setNewPasien] = useState(p);
+  const [status, setStatus] = useState('aktif');
 
   const ubahView = (e: any) => {
     if (e.target.value == 'list') {
@@ -56,31 +61,7 @@ export default function RawatJalanPage() {
       setViewTable(false);
     }
   };
-  const kondisi = [
-    {
-      name: 'Total Pasien',
-      jumlah: '350',
-      icon: FaUserGroup,
-    },
-    {
-      name: 'Menunggu dipanggil',
-      jumlah: '150',
-      icon: FaUserGroup,
-    },
-    {
-      name: 'Dalam Pelayanan',
-      jumlah: '100',
-      icon: FaUserGroup,
-    },
-    {
-      name: 'Selesai',
-      jumlah: '100',
-      icon: FaUserGroup,
-    },
-  ];
-  const search = () => {
-    console.log('adri');
-  };
+
   return (
     <div className="p-5  container mx-auto">
       <div className="md:flex ">
@@ -93,7 +74,7 @@ export default function RawatJalanPage() {
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4 mt-5 md:mt-0 md:w-1/3 ">
-          {kondisi.map((item, index) => (
+          {situasi.map((item, index) => (
             <div
               key={index}
               className={`ring-2  text-center rounded-lg p-2 flex flex-col   text-white  w-full justify-center ${
@@ -157,11 +138,19 @@ export default function RawatJalanPage() {
 
           {viewGrid && (
             <div
-              className={` border-t-4 border-blue-300 grid w-full grid-cols-2 max-h-[560px]  overflow-auto md:grid-cols-3 lg:grid-cols-4 gap-4 justify-between rounded-lg md:p-5 ring-2 mt-5 md:mx-2 ring-lime-100`}
+              className={` border-t-4 border-blue-300  w-full max-h-[560px]  overflow-auto  justify-between rounded-lg py-2 md:p-5 ring-2 mt-5 md:mx-2 ring-lime-100 transition-width duration-300"`}
             >
-              {Array.from({ length: 9 }).map((_, index) => {
-                return <CardPasien key={`ralan${index}`} path="/admin/pasien/ralan" />;
-              })}
+              {newPasien.length ? (
+                <div
+                  className={` grid grid-cols-2 md:grid-cols-3  gap-4 lg:grid-cols-4 xl:grid-cols-5"`}
+                >
+                  {newPasien.map((pasien) => {
+                    return <CardPasien path="/admin/pasien/detail" data={pasien} key={pasien.id} />;
+                  })}
+                </div>
+              ) : (
+                <h1 className="text-center w-full">Pasien Tidak Ada</h1>
+              )}
             </div>
           )}
         </div>

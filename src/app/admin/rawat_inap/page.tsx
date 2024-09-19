@@ -5,13 +5,11 @@ import FormRawatInap from '@/components/Fragments/FormRawatInap';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import CardPasien from '@/components/Fragments/CardPasien';
 import { FaPlus } from 'react-icons/fa';
-import { TfiReload } from 'react-icons/tfi';
-
-import CardRiwayat from '@/components/Fragments/CardRiwayat';
 import { useState } from 'react';
 import Table from '@/components/Fragments/TablePasien';
 import { FaUserGroup } from 'react-icons/fa6';
 import Search from '@/components/Elements/Search';
+import { pasien, situasi } from '@/utils/pasien';
 export default function RawatInapPage() {
   const headers = [
     'No. RM',
@@ -46,6 +44,10 @@ export default function RawatInapPage() {
 
   const [viewGrid, setViewGrid] = useState(true);
   const [viewTable, setViewTable] = useState(false);
+  const [p, setP] = useState(pasien);
+  const [search, setSearch] = useState('');
+  const [newPasien, setNewPasien] = useState(p);
+  const [status, setStatus] = useState('aktif');
 
   const ubahView = (e: any) => {
     if (e.target.value == 'list') {
@@ -78,9 +80,7 @@ export default function RawatInapPage() {
       icon: FaUserGroup,
     },
   ];
-  const search = () => {
-    console.log('adri');
-  };
+
   return (
     <div className="p-5  container mx-auto">
       <div className="flex flex-col md:flex-row">
@@ -157,11 +157,19 @@ export default function RawatInapPage() {
 
           {viewGrid && (
             <div
-              className={` border-t-4 border-blue-300 grid w-full grid-cols-2 max-h-[560px]  overflow-auto md:grid-cols-3 lg:grid-cols-4 gap-4 justify-between rounded-lg md:p-5 ring-2 mt-5 md:mx-2 ring-lime-100`}
+              className={` border-t-4 border-blue-300  w-full max-h-[560px]  overflow-auto  justify-between rounded-lg py-2 md:p-5 ring-2 mt-5 md:mx-2 ring-lime-100 transition-width duration-300"`}
             >
-              {Array.from({ length: 9 }).map((_, index) => {
-                return <CardPasien key={index} path="/admin/pasien/rawat_inap" />;
-              })}
+              {newPasien.length ? (
+                <div
+                  className={` grid grid-cols-2 md:grid-cols-3  gap-4 lg:grid-cols-4 xl:grid-cols-5"`}
+                >
+                  {newPasien.map((pasien) => {
+                    return <CardPasien path="/admin/pasien/detail" data={pasien} key={pasien.id} />;
+                  })}
+                </div>
+              ) : (
+                <h1 className="text-center w-full">Pasien Tidak Ada</h1>
+              )}
             </div>
           )}
         </div>
