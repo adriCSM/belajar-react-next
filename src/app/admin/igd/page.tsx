@@ -10,42 +10,13 @@ import { useState } from 'react';
 import Table from '@/components/Fragments/TablePasien';
 import { FaUserGroup } from 'react-icons/fa6';
 import Search from '@/components/Elements/Search';
-import { pasien } from '@/utils/pasien';
-export default function RawatJalanPage() {
-  const headers = [
-    'No. RM',
-    'Nama Pasien',
-    'Nomor Rawat',
-    'Bangsal/Kamar',
-    'Dokter',
-    'Penjamin',
-    'Nomor Asuransi',
-    'Tanggal Masuk',
-    'Tanggal Keluar',
-    'Status Bayar',
-    'Status',
-  ];
-  const values = [
-    '023293223',
-    'Adri Candra',
-    '2024/02/22/000001',
-    'Anggrek - ANG01',
-    'dr. FAUZAN AZHARI MARZUKI, Sp. KK - D002',
-    'BPJS',
-    '-',
-    '2024-06-03 07:20:30',
-    '0000-00-00 00:00:00',
-    'Belum Bayar',
-    '-',
-    '-',
-    '-',
-    '-',
-    '-',
-  ];
+import { useSelector } from 'react-redux';
+import { Pasien } from '@/model/models';
 
+export default function RawatJalanPage() {
   const [viewGrid, setViewGrid] = useState(true);
   const [viewTable, setViewTable] = useState(false);
-
+  const pasien = useSelector((state: any) => state.pasien);
   const ubahView = (e: any) => {
     if (e.target.value == 'list') {
       setViewGrid(false);
@@ -145,9 +116,13 @@ export default function RawatJalanPage() {
         <div className="w-full h-full md:flex ">
           {viewTable && (
             <div
-              className={` border-t-4 border-blue-300 w-full max-h-[560px]  overflow-auto rounded-lg ring-2 mt-5 mx-2 ring-lime-100`}
+              className={` border-t-4 border-blue-300 max-h-[560px] overflow-auto rounded-lg ring-2 mt-5 mx-2 ring-lime-100`}
             >
-              <Table headers={headers} values={values} />
+              {pasien.length ? (
+                <Table data={pasien} />
+              ) : (
+                <h1 className="text-center w-full">Pasien Tidak Ada</h1>
+              )}
             </div>
           )}
 
@@ -155,7 +130,7 @@ export default function RawatJalanPage() {
             <div
               className={` border-t-4 border-blue-300 grid w-full grid-cols-2 max-h-[560px]  overflow-auto md:grid-cols-3 xl:grid-cols-4 gap-4 justify-between rounded-lg md:p-5 ring-2 mt-5 md:mx-2 ring-lime-100`}
             >
-              {pasien.map((data, index) => {
+              {pasien.map((data: Pasien, index: number) => {
                 return <CardPasien path="/admin/pasien/igd" data={data} key={index} />;
               })}
             </div>

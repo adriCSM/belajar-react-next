@@ -1,13 +1,18 @@
 'use client';
 import SidebarAdmin from './Sidebar';
 import NavbarAdmin from './navbar';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { BsFillMoonStarsFill, BsSunFill } from 'react-icons/bs';
 import { pasien } from '@/utils/pasien';
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
+import { useRef } from 'react';
+import { Provider } from 'react-redux';
+import { makeStore, AppStore } from '@/lib/store';
+
+export default function AdminLayout({ children }: { children: any }) {
   const [sidebar, setSidebar] = useState(true);
   const [darkMode, setDarkMode] = useState(false);
+  const [pasiens, setPasien] = useState(pasien);
 
   const changeSidebar = () => {
     setSidebar(!sidebar);
@@ -15,6 +20,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const changeMode = () => {
     setDarkMode(!darkMode);
   };
+
+  const storeRef = useRef<AppStore>();
+  if (!storeRef.current) {
+    storeRef.current = makeStore();
+  }
   return (
     <div className="#fafafa text-gray-600  ">
       <div className="flex">
@@ -27,7 +37,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         ></div>
         <div className="w-full ">
           <NavbarAdmin onClick={changeSidebar} showSidebar={sidebar} />
-          <div className="container mx-auto">{children}</div>
+          <div className="container mx-auto">
+            <Provider store={storeRef.current}>{React.cloneElement(children)}</Provider>
+          </div>
           <div
             className={`${
               darkMode ? 'bg-white ring-2  ring-amber-500' : 'bg-black ring-2 ring-white'

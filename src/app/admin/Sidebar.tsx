@@ -14,7 +14,7 @@ export default function SidebarAdmin({ ...props }) {
 
   return (
     <nav
-      className={`fixed md:sticky top-0 h-[100vh]  transition-width transform duration-300  ${
+      className={`fixed md:sticky top-0 h-[100vh] bg-white  transition-width transform duration-300  ${
         show ? 'md:w-[5%] -translate-x-full ' : 'w-3/5 md:w-[20%] translate-x-0 '
       }    z-30 md:transform-none`}
     >

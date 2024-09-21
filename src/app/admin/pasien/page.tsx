@@ -9,46 +9,47 @@ import Table from '@/components/Fragments/TablePasien';
 import { useEffect, useState } from 'react';
 
 import Search from '@/components/Elements/Search';
-import { pasien, situasi } from '@/utils/pasien';
+import { situasi } from '@/utils/pasien';
+import { useSelector } from 'react-redux';
+import { Pasien } from '@/model/models';
 
 export default function PasienPage() {
-  const headers = [
-    'No. RM',
-    'Nama Pasien',
-    'Nomor Rawat',
-    'Bangsal/Kamar',
-    'Dokter',
-    'Penjamin',
-    'Nomor Asuransi',
-    'Tanggal Masuk',
-    'Tanggal Keluar',
-    'Status Bayar',
-    'Status',
-  ];
-  const values = [
-    '023293223',
-    'Adri Candra',
-    '2024/02/22/000001',
-    'Anggrek - ANG01',
-    'dr. FAUZAN AZHARI MARZUKI, Sp. KK - D002',
-    'BPJS',
-    '-',
-    '2024-06-03 07:20:30',
-    '0000-00-00 00:00:00',
-    'Belum Bayar',
-    '-',
-    '-',
-    '-',
-    '-',
-    '-',
-  ];
-
   const [viewGrid, setViewGrid] = useState(true);
   const [viewTable, setViewTable] = useState(false);
-  const [p, setP] = useState(pasien);
+
+  const data = useSelector((state: any) => state.pasien);
+
+  const [status, setStatus] = useState(false);
+  const [pasiens, setPasiens] = useState([]);
+
   const [search, setSearch] = useState('');
-  const [newPasien, setNewPasien] = useState(p);
-  const [status, setStatus] = useState('aktif');
+
+  // Ketika Filter Status Pasien
+  const statusEvent = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    if (event.target.checked) {
+      setStatus(true);
+    } else {
+      setStatus(false);
+    }
+  };
+
+  useEffect(() => {
+    if (status) {
+      setPasiens(data.filter((item: Pasien) => item.status == 'aktif'));
+    } else {
+      setPasiens(data);
+    }
+  }, [status]);
+
+  // Ketika search Pasien
+  const searchEvent = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setSearch(event.target.value);
+  };
+
+  const filterPasien = pasiens.filter((item: Pasien) =>
+    item.pasien.nama.toLowerCase().includes(search.toLowerCase()),
+  );
+
   const ubahView = (e: any) => {
     if (e.target.value == 'list') {
       setViewGrid(false);
@@ -58,36 +59,6 @@ export default function PasienPage() {
       setViewTable(false);
     }
   };
-
-  const statusEvent = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    if (event.target.checked) {
-      setStatus('aktif');
-    } else {
-      setStatus('inaktif');
-    }
-  };
-
-  const searchEvent = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setSearch(event.target.value);
-  };
-
-  useEffect(() => {
-    const filteredPasien = p.filter((item) => {
-      const nama = item.pasien.nama.toLowerCase().includes(search.toLowerCase());
-      const nik = item.pasien.nik.includes(search, 0);
-      const noReg = item.pasien.no_reg.includes(search, 0);
-      return nama || nik || noReg;
-    });
-    setNewPasien(filteredPasien);
-  }, [search, p]);
-
-  useEffect(() => {
-    const filteredPasien = p.filter((item) => {
-      const statusFilter = item.status.toLowerCase() === status.toLowerCase();
-      return statusFilter;
-    });
-    filteredPasien.length ? setNewPasien(filteredPasien) : setNewPasien(p);
-  }, [status]);
 
   return (
     <div className="p-5 w-auto ">
@@ -124,7 +95,7 @@ export default function PasienPage() {
 
       <div className="w-full h-auto bg-white mt-5 rounded-xl shadow-md p-5">
         <h1 className="text-md md:text-xl font-bold ">
-          Pasien <span className="font-normal text-sm md:text-md">({p.length} total)</span>
+          Pasien <span className="font-normal text-sm md:text-md">({pasiens.length} total)</span>
         </h1>
         <div>
           <div>
@@ -151,31 +122,32 @@ export default function PasienPage() {
           </div>
         </div>
         <div className="transition-width duration-300">
-          {viewTable && (
-            <div
-              className={` border-t-4 border-blue-300 max-h-[560px]   overflow-auto rounded-lg ring-2 mt-5 mx-2 ring-lime-100`}
-            >
-              <Table headers={headers} values={values} />
-            </div>
-          )}
-
-          {viewGrid && (
-            <div
-              className={` border-t-4 border-blue-300  max-h-[560px]  overflow-auto  justify-between rounded-lg py-2 md:p-5 ring-2 mt-5 md:mx-2 ring-lime-100 transition-width duration-300"`}
-            >
-              {newPasien.length ? (
-                <div
-                  className={` grid grid-cols-2 md:grid-cols-3  gap-4 lg:grid-cols-4 xl:grid-cols-5"`}
-                >
-                  {newPasien.map((pasien) => {
-                    return <CardPasien path="/admin/pasien/detail" data={pasien} key={pasien.id} />;
-                  })}
-                </div>
+          <div
+            className={` border-t-4 border-blue-300 h-[560px] overflow-auto rounded-lg ring-2 mt-5   ring-lime-100 ${
+              !viewTable ? 'justify-between py-2 md:p-5 md:mx-2' : 'mx-2'
+            } ${filterPasien.length ? '' : 'flex items-center'}`}
+          >
+            {viewTable ? (
+              filterPasien.length ? (
+                <Table data={filterPasien} />
               ) : (
-                <h1 className="text-center w-full">Pasien Tidak Ada</h1>
-              )}
-            </div>
-          )}
+                <h1 className="text-center w-full text-5xl">Pasien Tidak Ditemukan</h1>
+              )
+            ) : // <div
+            //   className={` border-t-4 border-blue-300  h-[560px]  overflow-auto   rounded-lg  ring-2 mt-5  ring-lime-100 transition-width duration-300"`}
+            // >
+            filterPasien.length ? (
+              <div
+                className={` grid grid-cols-2 md:grid-cols-3  gap-4 lg:grid-cols-4 xl:grid-cols-5"`}
+              >
+                {filterPasien.map((pasien: Pasien) => {
+                  return <CardPasien path="/admin/pasien/detail" data={pasien} key={pasien.id} />;
+                })}
+              </div>
+            ) : (
+              <h1 className="text-center w-full">Pasien Tidak Ada</h1>
+            )}
+          </div>
         </div>
       </div>
     </div>
