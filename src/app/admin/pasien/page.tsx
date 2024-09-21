@@ -14,14 +14,11 @@ import { useSelector } from 'react-redux';
 import { Pasien } from '@/model/models';
 
 export default function PasienPage() {
-  const [viewGrid, setViewGrid] = useState(true);
-  const [viewTable, setViewTable] = useState(false);
-
   const data = useSelector((state: any) => state.pasien);
 
+  const [viewTable, setViewTable] = useState(false);
   const [status, setStatus] = useState(false);
   const [pasiens, setPasiens] = useState([]);
-
   const [search, setSearch] = useState('');
 
   // Ketika Filter Status Pasien
@@ -46,18 +43,19 @@ export default function PasienPage() {
     setSearch(event.target.value);
   };
 
-  const filterPasien = pasiens.filter((item: Pasien) =>
-    item.pasien.nama.toLowerCase().includes(search.toLowerCase()),
-  );
+  const filterPasien = pasiens.filter((item: Pasien) => {
+    const name = item.pasien.nama.toLowerCase().includes(search.toLowerCase());
+    const nik = item.pasien.nik.toLowerCase().includes(search.toLowerCase());
+    return name || nik;
+  });
 
   const ubahView = (e: any) => {
     if (e.target.value == 'list') {
-      setViewGrid(false);
       setViewTable(true);
     } else {
-      setViewGrid(true);
       setViewTable(false);
     }
+    setSearch('');
   };
 
   return (
@@ -110,7 +108,7 @@ export default function PasienPage() {
           </div>
 
           <div className="flex flex-col md:flex-row justify-end md:-mt-3 me-2 mt-2">
-            <Search search={searchEvent} />
+            <Search search={searchEvent} value={search} />
             <BasicModal
               Form={FormRegistrasi}
               styleButton="bg-blue-500  text-white hover:bg-blue-600 "
@@ -121,33 +119,29 @@ export default function PasienPage() {
             />
           </div>
         </div>
-        <div className="transition-width duration-300">
-          <div
-            className={` border-t-4 border-blue-300 h-[560px] overflow-auto rounded-lg ring-2 mt-5   ring-lime-100 ${
-              !viewTable ? 'justify-between py-2 md:p-5 md:mx-2' : 'mx-2'
-            } ${filterPasien.length ? '' : 'flex items-center'}`}
-          >
-            {viewTable ? (
-              filterPasien.length ? (
-                <Table data={filterPasien} />
-              ) : (
-                <h1 className="text-center w-full text-5xl">Pasien Tidak Ditemukan</h1>
-              )
-            ) : // <div
-            //   className={` border-t-4 border-blue-300  h-[560px]  overflow-auto   rounded-lg  ring-2 mt-5  ring-lime-100 transition-width duration-300"`}
-            // >
+
+        <div
+          className={` border-t-4 border-blue-300 h-[560px] overflow-auto rounded-lg ring-2 mt-5   ring-lime-100 ${
+            !viewTable ? 'justify-between py-2 md:p-5 md:mx-2' : 'mx-2'
+          } ${filterPasien.length ? '' : 'flex items-center'}`}
+        >
+          {viewTable ? (
             filterPasien.length ? (
-              <div
-                className={` grid grid-cols-2 md:grid-cols-3  gap-4 lg:grid-cols-4 xl:grid-cols-5"`}
-              >
-                {filterPasien.map((pasien: Pasien) => {
-                  return <CardPasien path="/admin/pasien/detail" data={pasien} key={pasien.id} />;
-                })}
-              </div>
+              <Table data={filterPasien} />
             ) : (
-              <h1 className="text-center w-full">Pasien Tidak Ada</h1>
-            )}
-          </div>
+              <h1 className="text-center w-full text-xl">Pasien Tidak Ditemukan</h1>
+            )
+          ) : filterPasien.length ? (
+            <div
+              className={` grid grid-cols-2 md:grid-cols-3  gap-4 lg:grid-cols-4 xl:grid-cols-5"`}
+            >
+              {filterPasien.map((pasien: Pasien) => {
+                return <CardPasien path="/admin/pasien/detail" data={pasien} key={pasien.id} />;
+              })}
+            </div>
+          ) : (
+            <h1 className="text-center w-full text-xl">Pasien Tidak Ditemukan</h1>
+          )}
         </div>
       </div>
     </div>

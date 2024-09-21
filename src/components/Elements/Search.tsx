@@ -10,6 +10,7 @@ export default function Search({ ...props }) {
           type="text"
           aria-label="Filter projects"
           placeholder="Search..."
+          value={props.value}
           onChange={props.search}
         />
       </form>

@@ -4,7 +4,7 @@ import { headers } from '@/utils/pasien';
 export default function Table({ data }: { data: Pasien[] }) {
   return (
     <div>
-      <table className="table-auto mx-auto  hover:table-fixed divide-y-2 text-center text-xs md:text-sm lg:text-md text-nowrap">
+      <table className="table-auto mx-auto min-w-full hover:table-fixed divide-y-2 text-center text-xs md:text-sm lg:text-md text-nowrap">
         <thead className="sticky top-0 ">
           <tr className="odd:bg-white even:bg-slate-50">
             {headers.map((item: string, index: number) => {

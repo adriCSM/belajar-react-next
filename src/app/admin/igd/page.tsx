@@ -6,50 +6,56 @@ import FormIgd from '@/components/Fragments/FormIgd';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import CardPasien from '@/components/Fragments/CardPasien';
 import { FaPlus } from 'react-icons/fa';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Table from '@/components/Fragments/TablePasien';
-import { FaUserGroup } from 'react-icons/fa6';
 import Search from '@/components/Elements/Search';
 import { useSelector } from 'react-redux';
 import { Pasien } from '@/model/models';
+import { situasi } from '@/utils/pasien';
 
 export default function RawatJalanPage() {
-  const [viewGrid, setViewGrid] = useState(true);
+  const data = useSelector((state: any) => state.pasien);
+
   const [viewTable, setViewTable] = useState(false);
-  const pasien = useSelector((state: any) => state.pasien);
-  const ubahView = (e: any) => {
-    if (e.target.value == 'list') {
-      setViewGrid(false);
-      setViewTable(true);
+  const [status, setStatus] = useState(false);
+  const [pasiens, setPasiens] = useState([]);
+  const [search, setSearch] = useState('');
+
+  // Ketika Filter Status Pasien
+  const statusEvent = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    if (event.target.checked) {
+      setStatus(true);
     } else {
-      setViewGrid(true);
-      setViewTable(false);
+      setStatus(false);
     }
   };
-  const kondisi = [
-    {
-      name: 'Total Pasien',
-      jumlah: '350',
-      icon: FaUserGroup,
-    },
-    {
-      name: 'Menunggu dipanggil',
-      jumlah: '150',
-      icon: FaUserGroup,
-    },
-    {
-      name: 'Dalam Pelayanan',
-      jumlah: '100',
-      icon: FaUserGroup,
-    },
-    {
-      name: 'Selesai',
-      jumlah: '100',
-      icon: FaUserGroup,
-    },
-  ];
-  const search = () => {
-    console.log('adri');
+
+  useEffect(() => {
+    if (status) {
+      setPasiens(data.filter((item: Pasien) => item.status == 'aktif'));
+    } else {
+      setPasiens(data);
+    }
+  }, [status]);
+
+  // Ketika search Pasien
+  const searchEvent = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setSearch(event.target.value);
+  };
+
+  const filterPasien = pasiens.filter((item: Pasien) => {
+    const name = item.pasien.nama.toLowerCase().includes(search.toLowerCase());
+    const nik = item.pasien.nik.toLowerCase().includes(search.toLowerCase());
+    return name || nik;
+  });
+
+  const ubahView = (e: any) => {
+    if (e.target.value == 'list') {
+      setViewTable(true);
+    } else {
+      setViewTable(false);
+    }
+    setSearch('');
   };
   return (
     <div className="p-5  container mx-auto">
@@ -64,7 +70,7 @@ export default function RawatJalanPage() {
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4 mt-5 md:mt-0 md:w-1/3 ">
-          {kondisi.map((item, index) => (
+          {situasi.map((item, index) => (
             <div
               key={index}
               className={`ring-2  text-center rounded-lg p-2 flex flex-col   text-white  w-full justify-center ${
@@ -97,11 +103,11 @@ export default function RawatJalanPage() {
               <option value="grid">Grid View</option>
               <option value="list">List View</option>
             </select>
-            <FormControlLabel control={<Switch defaultChecked />} label="(Pasien Aktif)" />
+            <FormControlLabel control={<Switch onChange={statusEvent} />} label="(Pasien Aktif)" />
           </div>
 
           <div className="flex flex-col md:flex-row justify-end md:-mt-3 me-2 mt-2">
-            <Search search={search} />
+            <Search search={searchEvent} value={search} />
             <BasicModal
               Form={FormIgd}
               styleButton="bg-blue-500  text-white hover:bg-blue-600 text-sm md:text-base"
@@ -113,27 +119,27 @@ export default function RawatJalanPage() {
           </div>
         </div>
 
-        <div className="w-full h-full md:flex ">
-          {viewTable && (
+        <div
+          className={` border-t-4 border-blue-300 h-[560px] overflow-auto rounded-lg ring-2 mt-5   ring-lime-100 ${
+            !viewTable ? 'justify-between py-2 md:p-5 md:mx-2' : 'mx-2'
+          } ${filterPasien.length ? '' : 'flex items-center'}`}
+        >
+          {viewTable ? (
+            filterPasien.length ? (
+              <Table data={filterPasien} />
+            ) : (
+              <h1 className="text-center w-full text-xl">Pasien Tidak Ditemukan</h1>
+            )
+          ) : filterPasien.length ? (
             <div
-              className={` border-t-4 border-blue-300 max-h-[560px] overflow-auto rounded-lg ring-2 mt-5 mx-2 ring-lime-100`}
+              className={` grid grid-cols-2 md:grid-cols-3  gap-4 lg:grid-cols-4 xl:grid-cols-5"`}
             >
-              {pasien.length ? (
-                <Table data={pasien} />
-              ) : (
-                <h1 className="text-center w-full">Pasien Tidak Ada</h1>
-              )}
-            </div>
-          )}
-
-          {viewGrid && (
-            <div
-              className={` border-t-4 border-blue-300 grid w-full grid-cols-2 max-h-[560px]  overflow-auto md:grid-cols-3 xl:grid-cols-4 gap-4 justify-between rounded-lg md:p-5 ring-2 mt-5 md:mx-2 ring-lime-100`}
-            >
-              {pasien.map((data: Pasien, index: number) => {
-                return <CardPasien path="/admin/pasien/igd" data={data} key={index} />;
+              {filterPasien.map((pasien: Pasien) => {
+                return <CardPasien path="/admin/pasien/detail" data={pasien} key={pasien.id} />;
               })}
             </div>
+          ) : (
+            <h1 className="text-center w-full text-xl">Pasien Tidak Ditemukan</h1>
           )}
         </div>
       </div>
