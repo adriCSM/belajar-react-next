@@ -4,17 +4,17 @@ import Switch from '@mui/material/Switch';
 import FormIgd from '@/components/Fragments/FormIgd';
 
 import FormControlLabel from '@mui/material/FormControlLabel';
-import CardPasien from '@/components/Fragments/CardPasien';
+import CardPasienIgd from '@/components/Fragments/Card/CardPasienIgd';
 import { FaPlus } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 import Table from '@/components/Fragments/TablePasien';
 import Search from '@/components/Elements/Search';
 import { useSelector } from 'react-redux';
-import { Pasien } from '@/model/models';
+import { Igd } from '@/model/models';
 import { situasi } from '@/utils/pasien';
 
 export default function RawatJalanPage() {
-  const data = useSelector((state: any) => state.pasien);
+  const data = useSelector((state: any) => state.igd);
 
   const [viewTable, setViewTable] = useState(false);
   const [status, setStatus] = useState(false);
@@ -32,7 +32,7 @@ export default function RawatJalanPage() {
 
   useEffect(() => {
     if (status) {
-      setPasiens(data.filter((item: Pasien) => item.status == 'aktif'));
+      setPasiens(data.filter((item: Igd) => item.status == 'aktif'));
     } else {
       setPasiens(data);
     }
@@ -43,7 +43,7 @@ export default function RawatJalanPage() {
     setSearch(event.target.value);
   };
 
-  const filterPasien = pasiens.filter((item: Pasien) => {
+  const filterPasien = pasiens.filter((item: Igd) => {
     const name = item.pasien.nama.toLowerCase().includes(search.toLowerCase());
     const nik = item.pasien.nik.toLowerCase().includes(search.toLowerCase());
     return name || nik;
@@ -134,8 +134,8 @@ export default function RawatJalanPage() {
             <div
               className={` grid grid-cols-2 md:grid-cols-3  gap-4 lg:grid-cols-4 xl:grid-cols-5"`}
             >
-              {filterPasien.map((pasien: Pasien) => {
-                return <CardPasien path="/admin/pasien/detail" data={pasien} key={pasien.id} />;
+              {filterPasien.map((pasien: Igd) => {
+                return <CardPasienIgd path="/admin/pasien/detail" data={pasien} key={pasien.id} />;
               })}
             </div>
           ) : (

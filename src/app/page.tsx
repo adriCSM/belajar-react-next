@@ -11,7 +11,7 @@ export default function Home() {
     router.push('/admin');
   };
   return (
-    <main className="flex items-center justify-center bg-white">
+    <div className="flex items-center justify-center bg-white">
       <section className="w-2/5  flex justify-center flex-col items-center">
         <div className=" flex items-center justify-center my-5 bg-white ">
           <Image src="/logo/icon-512x512.png" alt="" className="me-5" width={64} height={64} />
@@ -45,6 +45,6 @@ export default function Home() {
         </div>
       </section>
       <section className=" bg-home  h-screen bg-cover w-3/5 rounded-l-lg"></section>
-    </main>
+    </div>
   );
 }

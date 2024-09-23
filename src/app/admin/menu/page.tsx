@@ -1,4 +1,4 @@
-import CardMenu from '../../../components/Fragments/CardMenu';
+import CardMenu from '../../../components/Fragments/Card/CardMenu';
 import listMenu from './listMenu';
 
 export default function MenuPage() {

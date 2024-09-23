@@ -1,12 +1,10 @@
 'use client';
 import BasicModal from '@/components/Fragments/Modal';
-import Switch from '@mui/material/Switch';
 import FormRegistrasi from '@/components/Fragments/FormRegistrasi';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import CardPasien from '@/components/Fragments/CardPasien';
+import CardPasien from '@/components/Fragments/Card/CardPasien';
 import { FaPlus } from 'react-icons/fa';
 import Table from '@/components/Fragments/TablePasien';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import Search from '@/components/Elements/Search';
 import { situasi } from '@/utils/pasien';
@@ -16,50 +14,27 @@ import { Pasien } from '@/model/models';
 export default function PasienPage() {
   const data = useSelector((state: any) => state.pasien);
 
-  const [viewTable, setViewTable] = useState(false);
-  const [status, setStatus] = useState(false);
-  const [pasiens, setPasiens] = useState([]);
+  const [viewTable, setViewTable] = useState('grid');
   const [search, setSearch] = useState('');
-
-  // Ketika Filter Status Pasien
-  const statusEvent = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    if (event.target.checked) {
-      setStatus(true);
-    } else {
-      setStatus(false);
-    }
-  };
-
-  useEffect(() => {
-    if (status) {
-      setPasiens(data.filter((item: Pasien) => item.status == 'aktif'));
-    } else {
-      setPasiens(data);
-    }
-  }, [status]);
 
   // Ketika search Pasien
   const searchEvent = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setSearch(event.target.value);
   };
 
-  const filterPasien = pasiens.filter((item: Pasien) => {
-    const name = item.pasien.nama.toLowerCase().includes(search.toLowerCase());
-    const nik = item.pasien.nik.toLowerCase().includes(search.toLowerCase());
+  const filterPasien = data.filter((item: Pasien) => {
+    const name = item.nm_pasien.toLowerCase().includes(search.toLowerCase());
+    const nik = item.no_ktp.toLowerCase().includes(search.toLowerCase());
     return name || nik;
   });
 
-  const ubahView = (e: any) => {
-    if (e.target.value == 'list') {
-      setViewTable(true);
-    } else {
-      setViewTable(false);
-    }
+  const ubahView = (event: React.ChangeEvent<HTMLInputElement>):void => {
+    setViewTable(event.target.value);
     setSearch('');
   };
 
   return (
-    <div className="p-5 w-auto ">
+    <div className="px-5 pt-5 w-auto ">
       <div className="flex flex-col md:flex-row">
         <div className="w-full md:w-2/3 border-2 border-cyan-500  bg-register bg-contain bg-no-repeat bg-[#66cdcc]  h-80  shadow-md rounded-xl me-5  ">
           <div className="h-full  w-full flex lg:items-center items-end  lg:justify-center ">
@@ -93,7 +68,7 @@ export default function PasienPage() {
 
       <div className="w-full h-auto bg-white mt-5 rounded-xl shadow-md p-5">
         <h1 className="text-md md:text-xl font-bold ">
-          Pasien <span className="font-normal text-sm md:text-md">({pasiens.length} total)</span>
+          Pasien <span className="font-normal text-sm md:text-md">({data.length} total)</span>
         </h1>
         <div>
           <div>
@@ -104,7 +79,6 @@ export default function PasienPage() {
               <option value="grid">Grid View</option>
               <option value="list">List View</option>
             </select>
-            <FormControlLabel control={<Switch onChange={statusEvent} />} label="(Pasien Aktif)" />
           </div>
 
           <div className="flex flex-col md:flex-row justify-end md:-mt-3 me-2 mt-2">
@@ -122,10 +96,10 @@ export default function PasienPage() {
 
         <div
           className={` border-t-4 border-blue-300 h-[560px] overflow-auto rounded-lg ring-2 mt-5   ring-lime-100 ${
-            !viewTable ? 'justify-between py-2 md:p-5 md:mx-2' : 'mx-2'
+            viewTable ? 'justify-between py-2 md:p-5 md:mx-2' : 'mx-2'
           } ${filterPasien.length ? '' : 'flex items-center'}`}
         >
-          {viewTable ? (
+          {viewTable=='list' ? (
             filterPasien.length ? (
               <Table data={filterPasien} />
             ) : (
@@ -136,7 +110,9 @@ export default function PasienPage() {
               className={` grid grid-cols-2 md:grid-cols-3  gap-4 lg:grid-cols-4 xl:grid-cols-5"`}
             >
               {filterPasien.map((pasien: Pasien) => {
-                return <CardPasien path="/admin/pasien/detail" data={pasien} key={pasien.id} />;
+                return (
+                  <CardPasien path="/admin/pasien/detail" data={pasien} key={pasien.no_rkm_medis} />
+                );
               })}
             </div>
           ) : (

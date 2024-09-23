@@ -9,6 +9,8 @@ import { FaInfoCircle, FaTrashAlt } from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
 
 import Link from 'next/link';
+import { useDispatch } from 'react-redux';
+import { pasienSlice } from '@/lib/features/todos/todosSlice';
 export default function DetailMenu({ ...props }) {
   const route = useRouter();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -19,6 +21,7 @@ export default function DetailMenu({ ...props }) {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const dispatch = useDispatch();
   return (
     <React.Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
@@ -75,7 +78,14 @@ export default function DetailMenu({ ...props }) {
           <FaInfoCircle className="text-blue-500" /> Details
         </MenuItem>
 
-        <MenuItem onClick={handleClose} className="flex items-center gap-2">
+        <MenuItem
+          onClick={() => {
+            console.log('tt');
+            console.log(props.data.no_rkm_medis);
+            dispatch(pasienSlice.actions.deletePasien(props.data.no_rkm_medis));
+          }}
+          className="flex items-center gap-2"
+        >
           <FaTrashAlt className="text-red-500" /> Delete
         </MenuItem>
       </Menu>

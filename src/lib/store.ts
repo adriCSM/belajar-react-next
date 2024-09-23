@@ -1,10 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { pasienSlice } from './features/todos/todosSlice';
+import { pasienSlice, igdSlice } from './features/todos/todosSlice';
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       pasien: pasienSlice.reducer,
+      igd: igdSlice.reducer,
     },
   });
 };

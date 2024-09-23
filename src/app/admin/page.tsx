@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { FaMinus, FaExpand, FaCalendar, FaBed, FaList, FaHospitalAlt } from 'react-icons/fa';
+import { FaExpand, FaCalendar, FaBed, FaList, FaHospitalAlt } from 'react-icons/fa';
 import { FaCompress } from 'react-icons/fa6';
 
 export default function AdminPage() {

@@ -1,9 +1,11 @@
+import { Pasien } from '@/model/models';
 import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import Input from '../Elements/Input';
 import Select from '../Elements/Select';
 import TextArea from '../Elements/TextArea';
-export default function FormRegistrasi({ ...props }) {
+import { showFormattedDate } from '@/utils/attribut';
+export default function FormRegistrasi({ datar, title }: { datar: Pasien; title: string }) {
   const listGolDarah = ['A', 'B', 'AB', 'O'];
   const listGender = ['Laki-laki', 'Perempuan'];
   const listStatus = ['Menikah', 'Belum Menikah', 'Janda', 'Duda'];
@@ -25,39 +27,19 @@ export default function FormRegistrasi({ ...props }) {
   ];
   const jaminan = ['BPJS Kesehatan', 'Umum'];
   const keluarga = ['Ayah', 'Ibu', 'Suami', 'Istri', 'Saudara', 'Anak'];
-  const [data, setData] = useState({
-    nomorRm: '',
-    tglDaftar: '',
-    jenisKelamin: '',
-    tglLahir: '',
-    golDarah: '',
-    status: '',
-    agama: '',
-    pendidikan: '',
-    alamat: '',
-    keluarga: '',
-    jaminan: '',
-  });
-
-  const date = new Date();
-  const yyyy = date.getFullYear();
-  const mm = String(date.getMonth() + 1).padStart(2, '0');
-  const dd = String(date.getDate()).padStart(2, '0');
-
-  const [daftar, setDaftar] = useState(`${yyyy}-${mm}-${dd}`);
-  const [lahir, setLahir] = useState(`${yyyy}-${mm}-${dd}`);
 
   return (
     <div className="  sm:m-3 ">
-      <h1 className="md:text-2xl text-lg font-bold pb-4">{props.title}</h1>
+      <h1 className="md:text-2xl text-lg font-bold pb-4">{datar.no_rkm_medis}</h1>
       <div className="flex flex-col sm:flex-row text-sm w-full justify-center max-h-[70vh]  overflow-auto ">
-        <div className="grid grid-cols-6 w-2/3 gap-x-4 md:p-5 text-gray-600  md:max-h-[500px] mx-5 md:overflow-auto border-t-4 border-blue-300">
+        <div className="grid grid-cols-6 w-2/3 gap-x-4 md:p-1 text-gray-600  md:max-h-[500px] mx-5 lg:mx-0 md:overflow-auto border-t-4 border-blue-300">
           <Input
             type="text"
             id="nomorRm"
             label="Kode Pegawai (NIP)"
             placeholder="Kode Pegawai (NIP)"
             required={true}
+            value={datar.no_rkm_medis}
             styleParent="col-span-3"
           />
           <Input
@@ -65,13 +47,14 @@ export default function FormRegistrasi({ ...props }) {
             id="tglDaftar"
             label="Nama Pegawai"
             placeholder="Kode Pegawai (NIP)"
-            onChange={(e: any) => setDaftar(e.target.value)}
+            value={datar.tgl_daftar}
             styleParent="col-span-3"
           />
           <Input
             type="text"
-            id="jenisKelamin"
+            id="tempatLahir"
             label="Tempat Lahir"
+            value={datar.tgl_daftar}
             placeholder="Tempat Lahir"
             styleParent="col-span-2"
           />
@@ -87,7 +70,6 @@ export default function FormRegistrasi({ ...props }) {
             label="Jenis Kelamin"
             id="nama"
             list={listGender}
-            onChange={(e: any) => props.onChange()}
             styleParent="col-span-2"
           />
           <TextArea styleParent="col-span-6" />
@@ -95,8 +77,7 @@ export default function FormRegistrasi({ ...props }) {
             type="date"
             id="tgllahir"
             label="Tgl. Lahir"
-            value={lahir}
-            onChange={(e: any) => setLahir(e.target.value)}
+            value={datar.tgl_lahir}
             styleParent="col-span-6"
           />
           <Select
@@ -104,7 +85,6 @@ export default function FormRegistrasi({ ...props }) {
             label="Darah"
             id="darah "
             list={listGolDarah}
-            onChange={(e: any) => props.onChange()}
             styleParent="col-span-3"
           />
           <Input
@@ -119,7 +99,6 @@ export default function FormRegistrasi({ ...props }) {
             label="Status Nikah"
             id="status "
             list={listStatus}
-            onChange={(e: any) => props.onChange()}
             styleParent="col-span-3"
           />
           <Select
@@ -127,7 +106,6 @@ export default function FormRegistrasi({ ...props }) {
             label="Agama"
             id="agama "
             list={listAgama}
-            onChange={(e: any) => props.onChange()}
             styleParent="col-span-3"
           />
           <Select
@@ -135,7 +113,6 @@ export default function FormRegistrasi({ ...props }) {
             label="Pendidikan"
             id="pendidikan "
             list={listPendidikan}
-            onChange={(e: any) => props.onChange()}
             styleParent="col-span-3"
           />
           <Select
@@ -143,7 +120,6 @@ export default function FormRegistrasi({ ...props }) {
             label="Penjamin"
             id="jaminan "
             list={jaminan}
-            onChange={(e: any) => props.onChange()}
             styleParent="col-span-3"
           />
           <Select
@@ -151,7 +127,6 @@ export default function FormRegistrasi({ ...props }) {
             label="Penjamin"
             id="jaminan "
             list={jaminan}
-            onChange={(e: any) => props.onChange()}
             styleParent="col-span-3"
           />
           <Select
@@ -159,7 +134,6 @@ export default function FormRegistrasi({ ...props }) {
             label="Penjamin"
             id="jaminan "
             list={jaminan}
-            onChange={(e: any) => props.onChange()}
             styleParent="col-span-3"
           />
           <Select
@@ -167,7 +141,6 @@ export default function FormRegistrasi({ ...props }) {
             label="Penjamin"
             id="jaminan "
             list={jaminan}
-            onChange={(e: any) => props.onChange()}
             styleParent="col-span-2"
           />
           <Select
@@ -175,7 +148,6 @@ export default function FormRegistrasi({ ...props }) {
             label="Penjamin"
             id="jaminan "
             list={jaminan}
-            onChange={(e: any) => props.onChange()}
             styleParent="col-span-2"
           />
           <Input
@@ -204,7 +176,6 @@ export default function FormRegistrasi({ ...props }) {
             label="Penjamin"
             id="jaminan "
             list={jaminan}
-            onChange={(e: any) => props.onChange()}
             styleParent="col-span-2"
           />
           <Select
@@ -212,7 +183,6 @@ export default function FormRegistrasi({ ...props }) {
             label="Penjamin"
             id="jaminan "
             list={jaminan}
-            onChange={(e: any) => props.onChange()}
             styleParent="col-span-3"
           />
           <Input
@@ -234,7 +204,6 @@ export default function FormRegistrasi({ ...props }) {
             id="Status "
             list={keluarga}
             styleParent=" w-full"
-            onChange={(e: any) => props.onChange()}
           />
           <Input
             type="text"
@@ -258,7 +227,6 @@ export default function FormRegistrasi({ ...props }) {
             id="Indexins "
             list={keluarga}
             styleParent="  w-full"
-            onChange={(e: any) => props.onChange()}
           />
           <Input type="text" id="Mulai Kontrak" label="Mulai Kontrak" placeholder="Mulai Kontrak" />
           <Input type="text" id="Cuti Diambil" label="Cuti Diambil" placeholder="Cuti Diambil" />

@@ -19,20 +19,22 @@ export default function Table({ data }: { data: Pasien[] }) {
         <tbody className="divide-y ">
           {data.map((item: Pasien, index: number) => (
             <tr key={index} className={`odd:bg-white even:bg-lime-50`}>
-              <td className="p-3 ">{item.no_rkm_medis}</td>
+              <td className="p-3 ">{item.pasien.no_rm}</td>
               <td className="p-3 text-left">
                 <Link href={`/admin/pasien/${index} `} className="text-lime-500 " key={index}>
                   {' '}
-                  {item.nm_pasien}
+                  {item.pasien.nama}
                 </Link>
               </td>
-              <td className="p-3 ">{item.tgl_lahir}</td>
-              <td className="p-3 ">{item.jk}</td>
-              <td className="p-3 ">{item.no_ktp}</td>
-              <td className="p-3 ">{item.pekerjaan}</td>
-              <td className="p-3 ">{item.alamat}</td>
-              <td className="p-3 ">{item.no_tlp}</td>
-              <td className="p-3 ">{item.tgl_daftar}</td>
+              <td className="p-3 ">{item.pasien.nomor_rawat}</td>
+              <td className="p-3 ">{item.pasien.bangsal}</td>
+              <td className="p-3 ">{item.pasien.dokter}</td>
+              <td className="p-3 ">{item.asuransi}</td>
+              <td className="p-3 ">{item.pasien.nomor_asuransi}</td>
+              <td className="p-3 ">{item.pasien.tanggal_masuk}</td>
+              <td className="p-3 ">{item.pasien.tanggal_keluar}</td>
+              <td className="p-3 ">{item.pasien.status_bayar}</td>
+              <td className="p-3 ">{item.status}</td>
             </tr>
           ))}
         </tbody>
