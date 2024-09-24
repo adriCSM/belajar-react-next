@@ -4,16 +4,16 @@ import FormRegistrasi from '@/components/Fragments/FormRegistrasi';
 import CardPasien from '@/components/Fragments/Card/CardPasien';
 import { FaPlus } from 'react-icons/fa';
 import Table from '@/components/Fragments/TablePasien';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Search from '@/components/Elements/Search';
 import { situasi } from '@/utils/pasien';
 import { useSelector } from 'react-redux';
 import { Pasien } from '@/model/models';
+import { RootState } from '@/lib/store';
 
 export default function PasienPage() {
-  const data = useSelector((state: any) => state.pasien);
-
+  const data = useSelector((state: RootState) => state.pasien);
   const [viewTable, setViewTable] = useState('grid');
   const [search, setSearch] = useState('');
 
@@ -28,7 +28,7 @@ export default function PasienPage() {
     return name || nik;
   });
 
-  const ubahView = (event: React.ChangeEvent<HTMLInputElement>):void => {
+  const ubahView = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setViewTable(event.target.value);
     setSearch('');
   };
@@ -99,7 +99,7 @@ export default function PasienPage() {
             viewTable ? 'justify-between py-2 md:p-5 md:mx-2' : 'mx-2'
           } ${filterPasien.length ? '' : 'flex items-center'}`}
         >
-          {viewTable=='list' ? (
+          {viewTable == 'list' ? (
             filterPasien.length ? (
               <Table data={filterPasien} />
             ) : (

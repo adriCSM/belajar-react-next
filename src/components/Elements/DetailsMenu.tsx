@@ -7,10 +7,8 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import { FaInfoCircle, FaTrashAlt } from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
+import ModalKonfirmasi from '@/components/Fragments/ModalKonfirmasi';
 
-import Link from 'next/link';
-import { useDispatch } from 'react-redux';
-import { pasienSlice } from '@/lib/features/todos/todosSlice';
 export default function DetailMenu({ ...props }) {
   const route = useRouter();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -21,7 +19,11 @@ export default function DetailMenu({ ...props }) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const dispatch = useDispatch();
+
+  const [openModal, setOpenModal] = React.useState(false);
+  const openHandler = () => {
+    setOpenModal(!openModal);
+  };
   return (
     <React.Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
@@ -44,7 +46,7 @@ export default function DetailMenu({ ...props }) {
         id="account-menu"
         open={open}
         onClose={handleClose}
-        onClick={handleClose}
+        // onClick={handleClose}
         PaperProps={{
           elevation: 0,
           sx: {
@@ -74,20 +76,25 @@ export default function DetailMenu({ ...props }) {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuItem className="flex items-center gap-2" onClick={() => route.push(props.path)}>
+        <MenuItem
+          className="flex items-center gap-2 text-blue-500 font-thin"
+          onClick={() => {
+            route.push(props.path);
+            handleClose();
+          }}
+        >
           <FaInfoCircle className="text-blue-500" /> Details
         </MenuItem>
 
-        <MenuItem
-          onClick={() => {
-            console.log('tt');
-            console.log(props.data.no_rkm_medis);
-            dispatch(pasienSlice.actions.deletePasien(props.data.no_rkm_medis));
-          }}
-          className="flex items-center gap-2"
-        >
+        <MenuItem onClick={openHandler} className="flex items-center gap-2 font-thin text-red-500">
           <FaTrashAlt className="text-red-500" /> Delete
         </MenuItem>
+        <ModalKonfirmasi
+          open={openModal}
+          no_rm={props.data.no_rkm_medis}
+          handleClose={openHandler}
+          nama={props.data.nm_pasien}
+        />
       </Menu>
     </React.Fragment>
   );

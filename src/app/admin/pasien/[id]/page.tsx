@@ -1,4 +1,4 @@
-import CardRiwayat from '@/components/Fragments/CardRiwayat';
+import CardRiwayat from '@/components/Fragments/Card/CardRiwayat';
 import { TfiReload } from 'react-icons/tfi';
 import TabPasien from '@/components/Fragments/TabPasien/MainTab';
 import Image from 'next/image';

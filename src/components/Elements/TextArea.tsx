@@ -20,7 +20,7 @@ export default function TextArea({
         id={id}
         onChange={onChange}
         placeholder={placeholder}
-        className={`rounded-2xl outline outline-2 outline-gray-300 text-sm p-2 focus:outline-lime-300 max-w-full min-h-[100px] `}
+        className={`rounded-2xl outline  outline-2 outline-gray-300 text-sm p-2 focus:outline-lime-300 max-w-full min-h-[100px] `}
       ></textarea>
     </div>
   );
